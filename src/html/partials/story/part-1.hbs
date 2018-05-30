@@ -1,0 +1,16 @@
+<section id='part-1'>
+  <div class='text-content'>
+    <p class='section-head'>{{{copy.part1-title}}}</p>
+    <p class='section-sub'>{{copy.part1-sub}}</p>
+
+    {{#each copy.part1-intro}}
+      <p class='prose'>{{{value}}}</p>
+    {{/each}}
+
+    {{> story/measurement }}
+  </div>
+
+  <div class='part-1__graphic'>
+    <svg></svg>
+  </div>
+</section>

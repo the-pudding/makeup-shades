@@ -1,0 +1,24 @@
+#part-1
+  .text-content
+    max-width $column-width
+    margin 0 auto
+
+    .section-head
+      padding 0 1rem
+    .section-sub
+      padding 0 1rem
+  .measurement
+    max-width 30rem
+    margin 2rem auto
+    background-color lighten($gray-light, 10)
+    padding 0.5rem 2rem
+
+    &-title
+      margin 0.25rem 0
+      font-weight 600
+      set-type-size('small', true)
+
+    &-steps
+      list-style-type circle
+      li
+        set-type-size('small', true)
