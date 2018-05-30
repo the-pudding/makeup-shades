@@ -7,20 +7,6 @@ let groupDict = null
 
 let brandMap = null
 
-function cleanData(data){
-  return data.map(d => ({
-    ...d,
-    brand: brandMap.get(d.brand).brand,
-    product: findProduct(d.brand, d.product),
-    hex: d.hex,
-    H: +d.H,
-    S: +d.S,
-    V: +d.V,
-    L: +d.L,
-    group: d.group
-  }))
-}
-
 function loadDictionaries(){
   console.log("loadDictionaries ran")
   const path = 'assets/data'
@@ -58,17 +44,33 @@ function findProduct(brand, product){
 }
 
 
-
 function loadShades(){
   const file = 'assets/data/shades.csv'
   d3.loadData(file, setupShades)
 }
 
-function resize() {}
-
 function setupShades(err, response){
   shadeData = cleanData(response[0])
 }
+
+function cleanData(data){
+  return data.map(d => ({
+    ...d,
+    brand: brandMap.get(d.brand).brand,
+    product: findProduct(d.brand, d.product),
+    hex: d.hex,
+    H: +d.H,
+    S: +d.S,
+    V: +d.V,
+    L: +d.L,
+    group: d.group
+  }))
+}
+
+
+
+function resize() {}
+
 
 function handleError(error){
 	console.error(error)
