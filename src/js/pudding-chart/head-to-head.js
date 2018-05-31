@@ -56,9 +56,12 @@ d3.selection.prototype.headToHead = function init(options) {
 
           const competitors = [...new Set(competitorsDup)]
 
+          let lightnessGroups = []
+
           // fill in missing values
           const allNested = nested.map(e => {
             const f = e.values
+            lightnessGroups.push(f)
             const updatedVal = d3.range(0, 10).map(i => {
               const key = i.toString()
               const match = f.find(d => d.key === key)
@@ -69,7 +72,9 @@ d3.selection.prototype.headToHead = function init(options) {
           return {key: e.key, values: updatedVal}
         })
 
-        console.log({allNested})
+        const lightness1 = lightnessGroups[0]
+        const lightness2 = lightnessGroups[1]
+        const allLightness = lightness1.concat(lightness2)
 
         // enter category divs
           const brands = $sel
@@ -78,6 +83,7 @@ d3.selection.prototype.headToHead = function init(options) {
             .enter()
             .append('div')
             .attr('class', (d, i) => `bin-brand bin-brand-${i}`)
+            .attr('data-brand', (d, i) => i)
 
           const categories = brands
             .selectAll('.bin-category')
@@ -108,9 +114,19 @@ d3.selection.prototype.headToHead = function init(options) {
             .data(d => [d])
             .enter()
             .append('text')
-            .attr('class', d => {
-              console.log({d})
-              return 'bin-count'
+            .attr('data-value', d => d.values.length)
+            .attr('data-group', d => d.key)
+            .attr('class', (d, i) => {
+              const filtered = allLightness.filter(e => e.key == d.key)
+              const filtMap = filtered.map(f => {
+                const length = f.values.length
+                return length
+              })
+              const maximum = Math.max(...filtMap)
+
+              if (d.values.length == 0) return 'tk-atlas bin-count bin-count-zero'
+              else if (d.values.length == maximum) return 'tk-atlas bin-count bin-count-winner'
+              else return 'tk-atlas bin-count'
             })
             .text(d => d.values.length)
 

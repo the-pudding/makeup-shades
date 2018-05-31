@@ -55,10 +55,17 @@
           display inline-block
           align-self center
           margin 0 0.5rem
+          set-type-size('small', true)
+          font-weight 600
           //width 20px
           text-align center
-          background-color $primary
           padding 0.2rem 0.5rem
+
+          &-winner
+            background-color $primary
+
+          &-zero
+            color $gray-light
 
 
       .bin-swatchGroup
