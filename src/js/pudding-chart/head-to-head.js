@@ -48,8 +48,8 @@ d3.selection.prototype.headToHead = function init(options) {
 			// update scales and render chart
 			render() {
           const nested = d3.nest()
-            .key(d => d.lightnessGroup)
             .key(e => e.brand_short)
+            .key(d => d.lightnessGroup)
             .entries(data)
 
           const competitorsDup = data.map(d => d.brand_short)
@@ -57,55 +57,62 @@ d3.selection.prototype.headToHead = function init(options) {
           const competitors = [...new Set(competitorsDup)]
 
           // fill in missing values
-          const allNested = d3.range(0, 10).map(i => {
-            const key = i.toString()
-            const match = nested.find(d => d.key === key)
-            const comp = competitors.map(d => {
-              return {key: d, values:[{}]}
-            })
-            if (match) return match
-            else return {key, values: comp}
+          const allNested = nested.map(e => {
+            const f = e.values
+            const updatedVal = d3.range(0, 10).map(i => {
+              const key = i.toString()
+              const match = f.find(d => d.key === key)
+
+              if (match) return match
+              else return {key, values: []}
           })
+          return {key: e.key, values: updatedVal}
+        })
+
+        console.log({allNested})
 
         // enter category divs
-          const categories = $sel
-            .selectAll('.bin-category')
-            .data(allNested)
-            .enter()
-            .append('div')
-            .attr('class', (d, i) => `bin-category bin-category-${i}`)
-
-            console.log({allNested})
-
-          const brands = categories
+          const brands = $sel
             .selectAll('.bin-brand')
-            .data(d => {
-              if(d != null){
-                return d.values
-              }
-                else return d})
+            .data(allNested)
             .enter()
             .append('div')
             .attr('class', (d, i) => `bin-brand bin-brand-${i}`)
 
-            console.log({brands})
-
-          const swatches = brands
-            .selectAll('.bin-swatch')
-            .data(d => {
-              const val = d.values
-              console.log({val})
-              return d.values
-            })
+          const categories = brands
+            .selectAll('.bin-category')
+            .data(d => d.values)
             .enter()
             .append('div')
-            .attr('class', 'bin-swatch')
-            .style('height', `3px`)
+            .attr('class', (d, i) => `bin-category spread bin-category-${i}`)
+
+          const swatchGroup = categories
+            .selectAll('.bin-swatchGroup')
+            .data(d => [d])
+            .enter()
+            .append('div')
+            .attr('class', 'bin-swatchGroup')
+
+          const swatches = swatchGroup
+            .selectAll('.bin-swatch')
+            .data(d => d.values)
+            .enter()
+            .append('div')
+            .attr('class', d => `bin-swatch bin-swatch-${d.L}`)
+            .style('height', `4px`)
             .style('width', `75px`)
-            .style('background-color', d => {
+            .style('background-color', d => `#${d.hex}`)
+
+          const counts = categories
+            .selectAll('.bin-count')
+            .data(d => [d])
+            .enter()
+            .append('text')
+            .attr('class', d => {
               console.log({d})
-              return `#${d.hex}`
+              return 'bin-count'
             })
+            .text(d => d.values.length)
 
 
 

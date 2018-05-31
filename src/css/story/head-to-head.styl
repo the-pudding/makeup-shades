@@ -1,26 +1,76 @@
 .h2h
   max-width 30rem
   margin 0 auto
+  display flex
+  flex-direction row
+  align-items center
+  justify-content: center
 
-  .bin-category
+  .bin-brand
     display flex
-    justify-content center
+    justify-content flex-start
     align-items flex-end;
-    flex-direction row
-    height 55px
-    border 1px dashed $gray-light
+    flex-direction column
     padding-bottom 1px
     margin 5px 0
 
-    .bin-brand
-      max-width $column-width / 2
-      margin 0 2rem
-      display flex
-      flex-direction column
-      justify-content: center
-      align-items: flex-end;
+    &-0
+      .bin-swatchGroup
+        margin-left 0.5rem
 
-      .bin-swatch
-        margin 0.5px 0
-        border-radius 3px
-        display relative
+      .bin-category
+        &.spread
+          border-left 1px dashed $gray-light
+
+    &-1
+
+      .bin-count
+        order 0
+
+      .bin-swatchGroup
+        order 1
+        margin-right 0.5rem
+
+      .bin-category
+        &.spread
+          border-right 1px dashed $gray-light
+
+
+
+    .bin-category
+      width 100%
+      display flex
+      flex-direction row
+      align-items flex-end;
+      justify-content space-between;
+
+      &.spread
+        height 65px
+        border-top 1px dashed $gray-light
+        border-bottom 1px dashed $gray-light
+        margin 3px
+        padding-bottom 2px
+
+        .bin-count
+          display inline-block
+          align-self center
+          margin 0 0.5rem
+          //width 20px
+          text-align center
+          background-color $primary
+          padding 0.2rem 0.5rem
+
+
+      .bin-swatchGroup
+        display flex
+        flex-direction column
+        justify-content flex-end;
+        align-items flex-end;
+
+        .bin-swatch
+          margin 0.5px auto
+          border-radius 3px
+          display relative
+
+      .bin-count
+        display none
