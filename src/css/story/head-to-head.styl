@@ -4,17 +4,20 @@
   display flex
   flex-direction row
   align-items center
-  justify-content: center
+  justify-content center
 
   .bin-brand
     display flex
     justify-content flex-start
-    align-items flex-end;
+    align-items center;
     flex-direction column
     padding-bottom 1px
     margin 5px 0
 
     &-0
+      order 1
+      margin-right 0
+
       .bin-swatchGroup
         margin-left 0.5rem
 
@@ -23,6 +26,8 @@
           border-left 1px dashed $gray-light
 
     &-1
+      order 3
+      margin-left 0
 
       .bin-count
         order 0
@@ -35,8 +40,6 @@
         &.spread
           border-right 1px dashed $gray-light
 
-
-
     .bin-category
       width 100%
       display flex
@@ -45,10 +48,10 @@
       justify-content space-between;
 
       &.spread
-        height 65px
+        height 60px
         border-top 1px dashed $gray-light
         border-bottom 1px dashed $gray-light
-        margin 3px
+        margin 2px
         padding-bottom 2px
 
         .bin-count
@@ -81,3 +84,87 @@
 
       .bin-count
         display none
+
+  .bin-vsGroup
+    order 2
+    display flex
+    justify-content center
+    align-items center
+    flex-direction column
+    padding 2px
+    margin 5px 0
+
+    .bin-vsCat
+      height 60px
+      border-top 1px dashed $gray-light
+      border-bottom 1px dashed $gray-light
+      margin 2px 0
+      padding-bottom 2px
+      display flex
+      justify-content center
+      align-content center
+      flex-direction column
+
+      &-0
+        visibility hidden
+
+      .bin-vs
+        set-type-size('small', true)
+        color $gray
+
+
+
+  .bin-labelGroup
+    order 0
+    display flex
+    justify-content center
+    align-items center
+    flex-direction column
+    padding 2px
+    margin 5px 1rem
+
+    .bin-labelTGroup
+      display flex
+      flex-direction column
+      justify-content: center
+      height 60px
+      margin 2px 0
+
+      text
+        text-align center
+        set-type-size('small', true)
+        color $gray
+
+    .bin-labelCat
+      height 60px
+      margin 2px 0
+      padding-bottom 2px
+      display flex
+      justify-content center
+      align-content center
+      flex-direction column
+
+      .bin-label
+        set-type-size('x-small', true)
+        color $gray
+
+  .bin-brandTGroup
+    display flex
+    flex-direction column
+    justify-content: center
+    height 60px
+    margin 2px 0
+
+    text
+      text-align center
+
+    .bin-brandTitle
+      font-weight 600
+
+    .bin-brandProduct
+      set-type-size('x-small', true)
+
+    .bin-brandTotal
+      set-type-size('xx-small', true)
+      color $gray
+      text-transform uppercase
