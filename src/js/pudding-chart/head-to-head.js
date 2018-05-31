@@ -33,18 +33,7 @@ d3.selection.prototype.headToHead = function init(options) {
 		const Chart = {
 			// called once at start
 			init() {
-				$svg = $sel.append('svg.pudding-chart');
-				const $g = $svg.append('g');
-
-				// offset chart for margins
-				$g.at('transform', `translate(${marginLeft}, ${marginTop})`);
-
-				// create axis
-				$axis = $svg.append('g.g-axis');
-
-				// setup viz group
-				$vis = $g.append('g.g-vis');
-
+        console.log({data})
 				Chart.resize();
 				Chart.render();
 			},
@@ -53,14 +42,74 @@ d3.selection.prototype.headToHead = function init(options) {
 				// defaults to grabbing dimensions from container element
 				width = $sel.node().offsetWidth - marginLeft - marginRight;
 				height = $sel.node().offsetHeight - marginTop - marginBottom;
-				$svg.at({
-					width: width + marginLeft + marginRight,
-					height: height + marginTop + marginBottom
-				});
+
 				return Chart;
 			},
 			// update scales and render chart
 			render() {
+          const nested = d3.nest()
+            .key(d => d.lightnessGroup)
+            .key(e => e.brand_short)
+            .entries(data)
+
+          const competitorsDup = data.map(d => d.brand_short)
+
+          const competitors = [...new Set(competitorsDup)]
+
+          // fill in missing values
+          const allNested = d3.range(0, 10).map(i => {
+            const key = i.toString()
+            const match = nested.find(d => d.key === key)
+            const comp = competitors.map(d => {
+              return {key: d, values:[{}]}
+            })
+            if (match) return match
+            else return {key, values: comp}
+          })
+
+        // enter category divs
+          const categories = $sel
+            .selectAll('.bin-category')
+            .data(allNested)
+            .enter()
+            .append('div')
+            .attr('class', (d, i) => `bin-category bin-category-${i}`)
+
+            console.log({allNested})
+
+          const brands = categories
+            .selectAll('.bin-brand')
+            .data(d => {
+              if(d != null){
+                return d.values
+              }
+                else return d})
+            .enter()
+            .append('div')
+            .attr('class', (d, i) => `bin-brand bin-brand-${i}`)
+
+            console.log({brands})
+
+          const swatches = brands
+            .selectAll('.bin-swatch')
+            .data(d => {
+              const val = d.values
+              console.log({val})
+              return d.values
+            })
+            .enter()
+            .append('div')
+            .attr('class', 'bin-swatch')
+            .style('height', `3px`)
+            .style('width', `75px`)
+            .style('background-color', d => {
+              console.log({d})
+              return `#${d.hex}`
+            })
+
+
+
+        //enter update exit goes here
 				return Chart;
 			},
 			// get / set data
