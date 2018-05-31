@@ -6,12 +6,6 @@ let brandDict = null
 let groupDict = null
 
 let brandMap = null
-let binGenerator = d3.histogram()
-  .domain([0, 100])
-  .thresholds(9)
-  .value(d => d.L)
-
-let bins = null
 
 // selections
 const $h2h = d3.selectAll('.h2h')
@@ -133,65 +127,9 @@ function setupH2H(){
 
   const filtered = shadeData.filter(d => d.brand_short == comp1 || d.brand_short == comp2)
 
-  bins = binGenerator(filtered)
-
-  console.log({filtered})
-
   const chart = $sel.datum(filtered).headToHead()
 
   //generateElements($sel, filtered, competitors)
-}
-
-function generateElements(selection, filData, competitors){
-  const categories = selection
-    .selectAll('.bin-category')
-    .data([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])
-    .enter()
-    .append('div')
-    .attr('class', (d, i) => `bin-category, bin-category-${i}`)
-
-  const comp1Fil = shadeData.filter(d => d.brand_short == competitors[0])
-  const comp2Fil = shadeData.filter(d => d.brand_short == competitors[1])
-
-  const comp1Bin = binGenerator(comp1Fil)
-  const comp2Bin = binGenerator(comp2Fil)
-
-  const nested = d3.nest()
-    .key(d => d.brand_short)
-    .rollup(e => {
-      const brandBin = binGenerator(e)
-      return brandBin
-    })
-    .entries(filData)
-    console.log({nested})
-
-  const brands = categories
-    .selectAll('.bin-brand')
-    .data(nested)
-    .enter()
-    .append('div')
-    .attr('class', (d, i) => `bin-brand bin-brand-${i}`)
-
-  const swatches = brands
-    .selectAll('.bin-swatch')
-    .data(d => d.value)
-    .enter()
-    .append('div')
-    .attr('class', 'bin-swatch')
-
-    console.log({brands, swatches})
-
-  // const test = valMap.get(35).hex
-  // console.log({valMap})
-  //
-  // const swatches = categories
-  //   .selectAll('.bin-swatch')
-  //   .data(d => {
-  //     const hex = valMap.get(d).hex
-  //   })
-  //   .enter()
-  //   .append('div')
-  //   .attr('class', (d, i) => `bin-swatch bin-swatch-${i}`)
 }
 
 
