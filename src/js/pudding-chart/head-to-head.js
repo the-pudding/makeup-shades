@@ -134,7 +134,7 @@ d3.selection.prototype.headToHead = function init(options) {
             .enter()
             .append('div')
             .attr('class', d => `bin-swatch bin-swatch-${d.L}`)
-            .style('height', `3px`)
+            .style('height', `2px`)
             .style('width', `75px`)
             .style('background-color', d => `#${d.hex}`)
 
@@ -241,7 +241,13 @@ d3.selection.prototype.headToHead = function init(options) {
 				$sel.datum(data);
 				Chart.render();
 				return Chart;
-			}
+			},
+      toggle(){
+        console.log("toggle ran")
+        // add selection to elements to toggle
+        // add arguments for each step (separate functions maybe?)
+        return Chart
+      }
 		};
 		Chart.init();
 

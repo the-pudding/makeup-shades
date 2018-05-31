@@ -8,35 +8,6 @@
     .section-sub
       padding 0 1rem
 
-  .graphic-hed
-    max-width $column-width
-    margin 0 auto
-
-    .graphic-title
-      text-transform uppercase
-      set-type-size('large', true)
-      margin-bottom 0
-
-    .graphic-sub
-      text-transform uppercase
-      set-type-size('x-large', true)
-      font-weight 600
-      margin-top 0
-
-    .graphic-legend
-      set-type-size('small', true)
-      color $gray
-      text-transform uppercase
-
-      #winner
-        background-color $primary
-        color $off-black
-        font-weight 600
-        padding 0.2rem 0.5rem
-        border-radius 5px
-        margin-right 0.2rem
-
-
   .measurement
     max-width 30rem
     margin 2rem auto
@@ -52,3 +23,72 @@
       list-style-type circle
       li
         set-type-size('small', true)
+
+  .scroll
+    display flex
+    flex-direction row
+    justify-content: flex-end
+    position relative
+
+    &-text
+      max-width 20rem
+      position relative
+      padding 0 1rem
+      width 33%
+      margin-right 2rem
+
+      .step
+        margin 2rem auto
+
+    &-graphic-container
+      position absolute
+      top 0
+      left 0
+      bottom auto
+      margin-left 2rem
+
+      &.is-fixed
+        position fixed
+
+      &.is-bottom
+        bottom 0
+        top auto
+
+      .scroll-graphic
+        position absolute
+        left 1rem
+        top 50%
+        transform translateY(-50%)
+
+      // .h2h
+      //   position absolute
+      //   right 1rem
+      //   top 50%
+
+      .graphic-hed
+        max-width $column-width
+        margin 0 auto
+
+        .graphic-title
+          text-transform uppercase
+          set-type-size('large', true)
+          margin-bottom 0
+
+        .graphic-sub
+          text-transform uppercase
+          set-type-size('x-large', true)
+          font-weight 600
+          margin-top 0
+
+        .graphic-legend
+          set-type-size('small', true)
+          color $gray
+          text-transform uppercase
+
+          #winner
+            background-color $primary
+            color $off-black
+            font-weight 600
+            padding 0.2rem 0.5rem
+            border-radius 5px
+            margin-right 0.2rem

@@ -1,4 +1,7 @@
-import './pudding-chart/head-to-head';
+import './pudding-chart/head-to-head'
+import scrollama from 'scrollama'
+
+const scroller = scrollama()
 
 // data
 let shadeData = null
@@ -9,6 +12,14 @@ let brandMap = null
 
 // selections
 const $h2h = d3.selectAll('.h2h')
+
+// part one scrolly selections
+const container = d3.selectAll('.scroll-part1')
+const graphic = container.select('.scroll-graphic-container')
+const chart = graphic.select('.scroll-graphic')
+const text = container.select('.scroll-text')
+const step = text.selectAll('.step')
+
 
 function loadDictionaries(){
   console.log("loadDictionaries ran")
@@ -129,14 +140,71 @@ function setupH2H(){
 
   const chart = $sel.datum(filtered).headToHead()
 
+  chart.toggle()
+
+  scrollResize()
+  setupScroll()
+
   //generateElements($sel, filtered, competitors)
 }
 
 
+function scrollResize(){
+  const stepHeight = Math.floor(window.innerHeight * 0.75)
+
+  step
+    .style('height',`${stepHeight}px`)
+
+  const bodyWidth = d3.select('body').node().offsetWidth
+
+  graphic
+    .style('width', `${bodyWidth}px`)
+    .style('height', `${window.innerHeight}px`)
+
+  const chartMargin = 32
+  const textWidth = text.node().offsetWidth
+  const chartWidth = graphic.node().offsetWidth - textWidth - chartMargin
+
+  chart
+    .style('width', `${chartWidth}px`)
+    .style('height', `${Math.floor(window.innerHeight / 2)}px`)
+
+  scroller.resize()
+}
+
+function handleStepEnter(response){
+  // step things go here
+  console.log({response})
+}
+
+function handleContainerEnter(response){
+  graphic.classed('is-fixed', true)
+  graphic.classed('is-bottom', false)
+}
+
+function handleContainerExit(response){
+  graphic.classed('is-fixed', false)
+  graphic.classed('is-bottom', response.direction === 'down')
+}
+
+function setupScroll(){
+  scroller.setup({
+    container: '.scroll',
+    graphic: '.scroll-graphic-container',
+    text: '.scroll-text',
+    step: '.step',
+    debug: false
+  })
+  .onStepEnter(handleStepEnter)
+  .onContainerEnter(handleContainerEnter)
+  .onContainerExit(handleContainerExit)
+}
 
 function resize() {
+
   // runs resize function from head-to-head.js
   chart.resize()
+  scrollResize()
 }
 
 
