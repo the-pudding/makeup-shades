@@ -47,15 +47,13 @@
       flex-direction row
       align-items flex-end;
       justify-content space-between
-      border-color rgba(0,0,0,0)
-      transition border-color 3s linear
       //height 5px
 
       &.spread
         //height 45px
         border-top 1px dashed $gray-light
         border-bottom 1px dashed $gray-light
-        margin 2px
+        //margin 2px
         padding-bottom 2px
 
 
@@ -68,7 +66,6 @@
           //width 20px
           text-align center
           padding 0.2rem 0.5rem
-          opacity 1
 
           &-winner
             background-color $primary
@@ -88,9 +85,6 @@
           border-radius 3px
           display relative
 
-      .bin-count
-        opacity 0
-
   .bin-vsGroup
     order 2
     display flex
@@ -101,7 +95,6 @@
     margin 5px 0
 
     .bin-vsCat
-      height 45px
       border-top 1px dashed $gray-light
       border-bottom 1px dashed $gray-light
       margin 2px 0
@@ -113,7 +106,6 @@
 
       &-0
         visibility hidden
-        height 53px
 
       .bin-vs
         set-type-size('small', true)

@@ -167,6 +167,17 @@ d3.selection.prototype.headToHead = function init(options) {
               else if (d.values.length == maximum) return 'tk-atlas bin-count bin-count-winner'
               else return 'tk-atlas bin-count'
             })
+            .attr('data-status', (d, i) => {
+              const filtered = allLightness.filter(e => e.key == d.key)
+              const filtMap = filtered.map(f => {
+                const length = f.values.length
+                return length
+              })
+              const maximum = Math.max(...filtMap)
+
+              if (d.values.length == maximum) return 'winner'
+              else return 'loser'
+            })
             .text(d => d.values.length)
 
             // Setting up vs divs
@@ -253,42 +264,129 @@ d3.selection.prototype.headToHead = function init(options) {
 				return Chart;
 			},
       toggle(step){
-        console.log({step})
-
+        // selections
+        const brands = $sel.selectAll('.bin-category')
+        const swatches = $sel.selectAll('.bin-swatch')
+        const labels = $sel.selectAll('.bin-labelGroup')
+        const counts = $sel.selectAll('.bin-count')
+        const vsCat = $sel.selectAll('.bin-vsCat')
+        const vs = $sel.selectAll('.bin-vs')
 
         function step0(){
-          const brands = $sel.selectAll('.bin-category')
+          brands
             .classed('spread', false)
             .transition()
             .duration(500)
+            .ease(d3.easeCubicInOut)
             .style('height', (d, i) => {
               const length = d.values.length
               console.log({d, length})
               return `${length * 5}px`
             })
+            .style('margin', '0px')
+            .style('border-color', 'rgba(0,0,0,0)')
 
-          const swatches = $sel.selectAll('.bin-swatch')
+          swatches
             .transition()
             .duration(500)
+            .ease(d3.easeCubicInOut)
             .style('height', '4px')
+
+          labels
+            .style('opacity', 0)
+
+          counts
+            .style('opacity', 0)
+
+          vsCat
+            .style('border-color', 'rgba(0,0,0,0)')
+            .transition()
+            .duration(500)
+            .ease(d3.easeCubicInOut)
+            .style('height', (d, i) => {
+              const brandTitles = $sel.select('.bin-brandTGroup')
+              const brandHeight = brandTitles.node().offsetHeight
+              if(i == 0) return `${brandHeight - 2}px`
+              else return '0px'
+            })
+            .style('margin', '0px')
+
+
+          vs
+            .style('opacity', 0)
         }
 
         function step1(){
-          const brands = $sel.selectAll('.bin-category')
+          brands
             .classed('spread', true)
             .transition()
             .duration(500)
+            .ease(d3.easeCubicInOut)
             //.delay((d, i) => -(d.key - 10) * 100)
             .style('height', '45px')
+            .style('margin', '2px')
+            .style('border-color', '#c9c9c9')
 
-          const swatches = $sel.selectAll('.bin-swatch')
+          swatches
             .transition()
             .duration(500)
+            .ease(d3.easeCubicInOut)
             .style('height', '2px')
+
+          labels
+            .transition()
+            .duration(500)
+            .ease(d3.easeCubicInOut)
+            .style('opacity', 1)
+
+          counts
+            .style('opacity', 0)
+            .style('background-color', 'rgba(0,0,0,0)')
+
+          vsCat
+            .transition()
+            .duration(500)
+            .ease(d3.easeCubicInOut)
+            .style('height', (d, i) => {
+              const brandTitles = $sel.select('.bin-brandTGroup')
+              const brandHeight = brandTitles.node().offsetHeight
+              if(i == 0) return `${brandHeight - 2}px`
+              else return '45px'
+            })
+            .style('border-color', '#c9c9c9')
+            .style('margin', '2px 0')
+
+          vs
+            .style('opacity', 0)
+        }
+
+        function step2(){
+          counts
+            .transition()
+            .duration(500)
+            .delay((d, i) => {
+              if (i > 10) return (i - 10) * 100
+              else return i * 100
+            })
+            .style('opacity', 1)
+            .transition()
+            .duration(500)
+            .delay(250)
+            .style('background-color', (d, i, n) => {
+              const sel = d3.select(n[i])
+
+              if (sel.classed('bin-count-winner')) return '#84F0C9'
+              else return 'rgba(0,0,0,0)'
+            })
+
+          vs
+            .style('opacity', 1)
+
         }
 
         if (step == 0) step0()
         if (step == 1) step1()
+        if (step == 2) step2()
 
         // add selection to elements to toggle
         // add arguments for each step (separate functions maybe?)
