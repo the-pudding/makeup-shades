@@ -150,20 +150,22 @@ function setupH2H(){
 
 
 function scrollResize(){
-  const stepHeight = Math.floor(window.innerHeight * 0.75)
+  const stepHeight = Math.floor(window.innerHeight * 0.8)
 
   step
     .style('height',`${stepHeight}px`)
 
-  const bodyWidth = d3.select('body').node().offsetWidth
+  const containerWidth = container.node().offsetWidth
 
   graphic
-    .style('width', `${bodyWidth}px`)
+    .style('width', `${containerWidth}px`)
     .style('height', `${window.innerHeight}px`)
 
-  const chartMargin = 32
+  const chartMargin = 50
   const textWidth = text.node().offsetWidth
   const chartWidth = graphic.node().offsetWidth - textWidth - chartMargin
+
+  console.log({containerWidth, chartWidth})
 
   chart
     .style('width', `${chartWidth}px`)

@@ -39,13 +39,14 @@
 
       .step
         margin 2rem auto
+        display flex
+        align-items center
+        border 1px solid red
 
     &-graphic
       position absolute
       top 0
-      left 1rem
       bottom auto
-      margin-left 2rem
       transform translate3d(0, 0, 0)
 
       &.is-fixed
@@ -57,7 +58,8 @@
 
       .chart
         position absolute
-        left 1rem
+        //margin-left 2rem
+        //left 1rem
         top 50%
         -moz-transform: translateY(-50%);
         -webkit-transform: translateY(-50%);
