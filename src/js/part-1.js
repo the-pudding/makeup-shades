@@ -15,8 +15,8 @@ const $h2h = d3.selectAll('.h2h')
 
 // part one scrolly selections
 const container = d3.selectAll('.scroll-part1')
-const graphic = container.select('.scroll-graphic-container')
-const chart = graphic.select('.scroll-graphic')
+const graphic = container.select('.scroll-graphic')
+const chart = graphic.select('.chart')
 const text = container.select('.scroll-text')
 const step = text.selectAll('.step')
 
@@ -167,7 +167,7 @@ function scrollResize(){
 
   chart
     .style('width', `${chartWidth}px`)
-    .style('height', `${Math.floor(window.innerHeight / 2)}px`)
+    .style('height', `${Math.floor(window.innerHeight)}px`)
 
   scroller.resize()
 }
@@ -190,7 +190,7 @@ function handleContainerExit(response){
 function setupScroll(){
   scroller.setup({
     container: '.scroll',
-    graphic: '.scroll-graphic-container',
+    graphic: '.scroll-graphic',
     text: '.scroll-text',
     step: '.step',
     debug: false

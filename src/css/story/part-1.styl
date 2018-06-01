@@ -40,12 +40,13 @@
       .step
         margin 2rem auto
 
-    &-graphic-container
+    &-graphic
       position absolute
       top 0
-      left 0
+      left 1rem
       bottom auto
       margin-left 2rem
+      transform translate3d(0, 0, 0)
 
       &.is-fixed
         position fixed
@@ -54,11 +55,13 @@
         bottom 0
         top auto
 
-      .scroll-graphic
+      .chart
         position absolute
         left 1rem
         top 50%
-        transform translateY(-50%)
+        -moz-transform: translateY(-50%);
+        -webkit-transform: translateY(-50%);
+        transform: translateY(-50%);
 
       // .h2h
       //   position absolute
@@ -73,6 +76,7 @@
           text-transform uppercase
           set-type-size('large', true)
           margin-bottom 0
+          margin-top 0
 
         .graphic-sub
           text-transform uppercase
@@ -81,9 +85,10 @@
           margin-top 0
 
         .graphic-legend
-          set-type-size('small', true)
+          set-type-size('x-small', true)
           color $gray
           text-transform uppercase
+          margin 0.5rem 0
 
           #winner
             background-color $primary
@@ -92,3 +97,4 @@
             padding 0.2rem 0.5rem
             border-radius 5px
             margin-right 0.2rem
+            set-type-size('x-small', true)
