@@ -1,4 +1,64 @@
 /* CUSTOM STORY STYLE */
+a:nth-child(odd) {
+    border-color red
+}
+a:nth-child(even) {
+    border-color blue
+}
+a:visited {
+	color #545454
+}
+
 section
   max-width 60rem
   margin 0 auto
+
+.section-head
+	font-size 1.5em
+	text-align center
+.section-sub
+	font-weight bold
+	margin 2rem 0
+
+.emojiface 
+	margin: 2rem auto 0
+	width: 8rem
+	height: auto
+
+.img1
+	+mq('bp-3')
+		display none
+	+mq('bp-5')
+		display block
+		float right
+		margin-left 2rem
+		margin-bottom 0.5rem
+		margin-right -8rem
+		width 50%
+		height auto
+		border 1px solid #eee
+
+.divider
+	margin 4rem auto
+	text-align center
+.divider-dot
+	display inline-block
+	height 0.5rem
+	width 0.5rem
+	border-radius 9999px
+.dot1
+	background-color #583218
+.dot2
+	background-color #894f29
+.dot3
+	background-color #ac7752
+.dot4
+	background-color #d59d6d
+.dot5
+	background-color #f4cca8
+.dot6
+	background-color #fde9de
+
+.part2img 
+	margin auto
+	max-width 16rem

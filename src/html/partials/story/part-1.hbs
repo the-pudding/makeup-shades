@@ -1,20 +1,27 @@
 <section id='part-1'>
   <div class='text-content'>
     <p class='section-head'>{{{copy.part1-title}}}</p>
-    <p class='section-sub'>{{copy.part1-sub}}</p>
+    <p class='section-sub loaded-atlas tk-atlas'>{{copy.part1-sub}}</p>
 
     {{#each copy.part1-intro}}
       <p class='prose'>{{{value}}}</p>
     {{/each}}
 
     {{> story/measurement }}
+
+    {{#each copy.part1-contd}}
+      <p class='prose'>{{{value}}}</p>
+    {{/each}}
   </div>
 
   <div class='graphic-hed'>
+    <p>{{{copy.part1-graphic}}}</p>
     <p class='graphic-title tk-atlas'>{{{copy.part1-graphic-title}}}</p>
-    <p class='graphic-sub tk-atlas'>{{{copy.part1-graphic-sub}}}</p>
+    <!-- <p class='graphic-sub tk-atlas'>{{{copy.part1-graphic-sub}}}</p> -->
     <p class='graphic-legend tk-atlas'>{{{copy.part1-graphic-legend}}}</p>
   </div>
   <div class='h2h h2h-part1' data-comp1='fe', data-comp2='mu'>
   </div>
 </section>
+
+{{> story/divider }}
