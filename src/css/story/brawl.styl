@@ -1,0 +1,126 @@
+.brawl
+  max-width 30rem
+  //margin 0 auto
+  display flex
+  flex-direction row
+  align-items flex-start
+  justify-content center
+
+  .bin-brand
+    display flex
+    justify-content flex-start
+    align-items center;
+    flex-direction column
+    padding-bottom 1px
+    margin 5px 0
+    width 150px
+
+    .bin-category
+      width 52px
+      display flex
+      align-items flex-start;
+      justify-content space-between
+      border 1px dashed $gray-light
+      padding 2px 0
+      height 54px
+      margin 2px
+
+      .bin-swatchGroup
+        display flex
+        flex-direction row
+        flex-wrap wrap
+        justify-content flex-start;
+        align-items flex-start;
+
+        .bin-swatch
+          margin 1px
+          border-radius 2px
+          display relative
+
+  .bin-vsGroup
+    order 2
+    display flex
+    justify-content center
+    align-items center
+    flex-direction column
+    padding 2px 0
+    margin 5px 0
+
+    .bin-vsCat
+      border-top 1px dashed $gray-light
+      border-bottom 1px dashed $gray-light
+      margin 2px 0
+      padding-bottom 2px
+      display flex
+      justify-content center
+      align-content center
+      flex-direction column
+
+      &-0
+        visibility hidden
+
+      .bin-vs
+        set-type-size('small', true)
+        color $gray
+
+
+
+  .bin-labelGroup
+    order 0
+    display flex
+    justify-content center
+    align-items center
+    flex-direction column
+    padding 2px
+    margin 5px 1rem
+
+    .bin-labelTGroup
+      display flex
+      flex-direction column
+      justify-content: center
+      height 55px
+      margin 2px 0
+
+      text
+        text-align center
+        set-type-size('small', true)
+        color $gray
+
+    .bin-labelCat
+      height 45px
+      margin 2px 0
+      padding-bottom 2px
+      display flex
+      justify-content center
+      align-content center
+      flex-direction column
+
+      .bin-label
+        set-type-size('x-small', true)
+        color $gray
+
+  .bin-brandTGroup
+    display flex
+    flex-direction column
+    justify-content: center
+    height 55px
+    margin 2px 0
+    transform rotate(-40deg)
+    max-width 40px
+
+    text
+      text-align center
+      white-space nowrap
+
+    .bin-brandTitle
+      font-weight 600
+
+    .bin-brandProduct
+      set-type-size('x-small', true)
+      color $gray
+      display none
+
+    .bin-brandTotal
+      set-type-size('xx-small', true)
+      color $gray
+      text-transform uppercase

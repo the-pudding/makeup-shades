@@ -80,6 +80,7 @@ d3.selection.prototype.headToHead = function init(options) {
         const lightness1 = lightnessGroups[0]
         const lightness2 = lightnessGroups[1]
         const allLightness = lightness1.concat(lightness2)
+        console.log({allLightness})
 
         // enter category divs
           const brands = $sel
@@ -367,7 +368,7 @@ d3.selection.prototype.headToHead = function init(options) {
             .transition()
             .duration(500)
             .delay((d, i) => {
-              if (i >= 10) return (i - 10) * 100
+              if (i > 10) return (i - 10) * 100
               else return i * 100
             })
             .ease(d3.easeCubicInOut)

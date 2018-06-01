@@ -23,84 +23,84 @@
       li
         set-type-size('small', true)
         margin-bottom 0.5em
-
-  .scroll
-    display flex
-    flex-direction row
-    justify-content: flex-end
-    position relative
-
-    &-text
-      max-width 20rem
+  .fenty-mufe
+    .scroll
+      display flex
+      flex-direction row
+      justify-content: flex-end
       position relative
-      padding 0 1rem
-      width 33%
-      margin-right 2rem
 
-      .step
-        margin 2rem auto
-        display flex
-        align-items center
+      &-text
+        max-width 20rem
+        position relative
+        padding 0 1rem
+        width 33%
+        margin-right 2rem
 
-        .winnerHighlight
-          background-color $primary
-          padding 0.1rem 0.3rem
-          border-radius 5px
+        .step
+          margin 2rem auto
+          display flex
+          align-items center
 
-    &-graphic
-      position absolute
-      top 0
-      bottom auto
-      transform translate3d(0, 0, 0)
-
-      &.is-fixed
-        position fixed
-
-      &.is-bottom
-        bottom 0
-        top auto
-
-      .chart
-        position absolute
-        //margin-left 2rem
-        //left 1rem
-        top 50%
-        -moz-transform: translateY(-50%);
-        -webkit-transform: translateY(-50%);
-        transform: translateY(-50%);
-
-      // .h2h
-      //   position absolute
-      //   right 1rem
-      //   top 50%
-
-      .graphic-hed
-        max-width $column-width
-        margin 0 auto
-
-        .graphic-title
-          text-transform uppercase
-          set-type-size('large', true)
-          margin-bottom 0
-          margin-top 0
-
-        .graphic-sub
-          text-transform uppercase
-          set-type-size('x-large', true)
-          font-weight 600
-          margin-top 0
-
-        .graphic-legend
-          set-type-size('x-small', true)
-          color $gray
-          text-transform uppercase
-          margin 0.5rem 0
-
-          #winner
+          .winnerHighlight
             background-color $primary
-            color $off-black
-            font-weight 600
-            padding 0.2rem 0.5rem
+            padding 0.1rem 0.3rem
             border-radius 5px
-            margin-right 0.2rem
+
+      &-graphic
+        position absolute
+        top 0
+        bottom auto
+        transform translate3d(0, 0, 0)
+
+        &.is-fixed
+          position fixed
+
+        &.is-bottom
+          bottom 0
+          top auto
+
+        .chart
+          position absolute
+          //margin-left 2rem
+          //left 1rem
+          top 50%
+          -moz-transform: translateY(-50%);
+          -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+
+        // .h2h
+        //   position absolute
+        //   right 1rem
+        //   top 50%
+
+        .graphic-hed
+          max-width $column-width
+          margin 0 auto
+
+          .graphic-title
+            text-transform uppercase
+            set-type-size('large', true)
+            margin-bottom 0
+            margin-top 0
+
+          .graphic-sub
+            text-transform uppercase
+            set-type-size('x-large', true)
+            font-weight 600
+            margin-top 0
+
+          .graphic-legend
             set-type-size('x-small', true)
+            color $gray
+            text-transform uppercase
+            margin 0.5rem 0
+
+            #winner
+              background-color $primary
+              color $off-black
+              font-weight 600
+              padding 0.2rem 0.5rem
+              border-radius 5px
+              margin-right 0.2rem
+              set-type-size('x-small', true)
