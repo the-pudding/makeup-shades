@@ -1,0 +1,35 @@
+<div class='text-content'>
+  {{> story/divider }}
+
+  <img src='assets/img/round12.jpg' class='part12img'>
+  <p class='section-sub tk-atlas'>{{copy.part1-2-title}}</p>
+  {{#each copy.part1-2-intro}}
+    <p class='prose'>{{{value}}}</p>
+  {{/each}}
+</div>
+
+<div class='scroll scroll-us-best'>
+  <div class='scroll-graphic'>
+    <div class='chart'>
+
+      <div class='graphic-hed'>
+        <p class='graphic-title tk-atlas'>{{{copy.part1-graphic-title}}}</p>
+        <p class='graphic-sub tk-atlas'>{{{copy.part1-usbest-graphic-sub}}}</p>
+        <p class='graphic-legend tk-atlas'>{{{copy.part1-brawl-graphic-legend}}}</p>
+      </div>
+
+      <div class='brawl brawl-usbest'>
+      </div>
+
+    </div>
+  </div>
+
+  <div class='scroll-text'>
+    {{#each copy.steps-part1-usbest}}
+      <div class='step' data-step='{{stepNumber}}'>
+        <p>{{{text}}}</p>
+      </div>
+    {{/each}}
+  </div>
+
+</div>

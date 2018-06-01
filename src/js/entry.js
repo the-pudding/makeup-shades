@@ -1,6 +1,7 @@
 // D3 is included by globally by default
 import debounce from 'lodash.debounce';
 import isMobile from './utils/is-mobile';
+import loadData from './load-data'
 import graphic from './graphic';
 import part1 from './part-1'
 

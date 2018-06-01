@@ -271,6 +271,8 @@ d3.selection.prototype.headToHead = function init(options) {
         const counts = $sel.selectAll('.bin-count')
         const vsCat = $sel.selectAll('.bin-vsCat')
         const vs = $sel.selectAll('.bin-vs')
+        const fentyHigh = $sel.selectAll('.bin-category-2, .bin-vsCat-3, .bin-category-3, .bin-vsCat-4, .bin-category-5, .bin-vsCat-6, .bin-category-9, .bin-vsCat-10')
+        const mufeHigh = $sel.selectAll('.bin-category-6, .bin-vsCat-7, .bin-category-7, .bin-vsCat-8, .bin-category-8, .bin-vsCat-9')
 
         function step0(){
           brands
@@ -324,7 +326,7 @@ d3.selection.prototype.headToHead = function init(options) {
             .ease(d3.easeCubicInOut)
             //.delay((d, i) => -(d.key - 10) * 100)
             .style('height', '45px')
-            .style('margin', '2px')
+            .style('margin', '2px 0')
             .style('border-color', '#c9c9c9')
 
           swatches
@@ -365,9 +367,10 @@ d3.selection.prototype.headToHead = function init(options) {
             .transition()
             .duration(500)
             .delay((d, i) => {
-              if (i > 10) return (i - 10) * 100
+              if (i >= 10) return (i - 10) * 100
               else return i * 100
             })
+            .ease(d3.easeCubicInOut)
             .style('opacity', 1)
             .transition()
             .duration(500)
@@ -380,13 +383,57 @@ d3.selection.prototype.headToHead = function init(options) {
             })
 
           vs
+            .transition()
+            .duration(500)
+            .delay((d, i) => i * 100)
+            .ease(d3.easeCubicInOut)
             .style('opacity', 1)
+
+          fentyHigh
+            .transition()
+            .duration(500)
+            .ease(d3.easeCubicInOut)
+            .style('background-color', 'rgba(0, 0, 0, 0)')
+
+
+
+        }
+
+        function step3(){
+          fentyHigh
+            .transition()
+            .duration(500)
+            .ease(d3.easeCubicInOut)
+            .style('background-color', 'rgba(132, 240, 201, .20)')
+
+          mufeHigh
+            .transition()
+            .duration(500)
+            .ease(d3.easeCubicInOut)
+            .style('background-color', 'rgba(0, 0, 0, 0)')
+        }
+
+        function step4(){
+          fentyHigh
+            .transition()
+            .duration(500)
+            .ease(d3.easeCubicInOut)
+            .style('background-color', 'rgba(0, 0, 0, 0)')
+
+          mufeHigh
+            .transition()
+            .duration(500)
+            .ease(d3.easeCubicInOut)
+            .style('background-color', 'rgba(132, 240, 201, .20)')
 
         }
 
         if (step == 0) step0()
         if (step == 1) step1()
         if (step == 2) step2()
+        if (step == 3) step3()
+        if (step == 4) step4()
+
 
         // add selection to elements to toggle
         // add arguments for each step (separate functions maybe?)
