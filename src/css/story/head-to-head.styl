@@ -3,7 +3,7 @@
   //margin 0 auto
   display flex
   flex-direction row
-  align-items center
+  align-items flex-start
   justify-content center
 
   .bin-brand
@@ -13,6 +13,7 @@
     flex-direction column
     padding-bottom 1px
     margin 5px 0
+    width 150px
 
     &-0
       order 1
@@ -45,14 +46,18 @@
       display flex
       flex-direction row
       align-items flex-end;
-      justify-content space-between;
+      justify-content space-between
+      border-color rgba(0,0,0,0)
+      transition border-color 3s linear
+      //height 5px
 
       &.spread
-        height 45px
+        //height 45px
         border-top 1px dashed $gray-light
         border-bottom 1px dashed $gray-light
         margin 2px
         padding-bottom 2px
+
 
         .bin-count
           display inline-block
@@ -63,6 +68,7 @@
           //width 20px
           text-align center
           padding 0.2rem 0.5rem
+          opacity 1
 
           &-winner
             background-color $primary
@@ -83,7 +89,7 @@
           display relative
 
       .bin-count
-        display none
+        opacity 0
 
   .bin-vsGroup
     order 2
@@ -107,7 +113,7 @@
 
       &-0
         visibility hidden
-        height 54px
+        height 53px
 
       .bin-vs
         set-type-size('small', true)

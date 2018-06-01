@@ -113,13 +113,22 @@ d3.selection.prototype.headToHead = function init(options) {
               .text(d => `${countMap.get(d.key).value} shades`)
               .attr('class', 'tk-atlas bin-brandTotal')
 
-          // adding lightness categories
+          // adding lightness categories spread class goes here
           const categories = brands
             .selectAll('.bin-category')
-            .data(d => d.values)
+            .data(d => {
+              const val = d.values
+              console.log({val})
+              return val
+            })
             .enter()
             .append('div')
-            .attr('class', (d, i) => `bin-category spread bin-category-${i}`)
+            .attr('class', (d, i) => `bin-category bin-category-${i}`)
+            .style('height', (d, i) => {
+              const length = d.values.length
+              return `${length * 5}px`
+            })
+
 
           const swatchGroup = categories
             .selectAll('.bin-swatchGroup')
@@ -128,13 +137,14 @@ d3.selection.prototype.headToHead = function init(options) {
             .append('div')
             .attr('class', 'bin-swatchGroup')
 
+          // Fix height value of this on toggle
           const swatches = swatchGroup
             .selectAll('.bin-swatch')
             .data(d => d.values)
             .enter()
             .append('div')
             .attr('class', d => `bin-swatch bin-swatch-${d.L}`)
-            .style('height', `2px`)
+            .style('height', `4px`)
             .style('width', `75px`)
             .style('background-color', d => `#${d.hex}`)
 
@@ -242,8 +252,44 @@ d3.selection.prototype.headToHead = function init(options) {
 				Chart.render();
 				return Chart;
 			},
-      toggle(){
-        console.log("toggle ran")
+      toggle(step){
+        console.log({step})
+
+
+        function step0(){
+          const brands = $sel.selectAll('.bin-category')
+            .classed('spread', false)
+            .transition()
+            .duration(500)
+            .style('height', (d, i) => {
+              const length = d.values.length
+              console.log({d, length})
+              return `${length * 5}px`
+            })
+
+          const swatches = $sel.selectAll('.bin-swatch')
+            .transition()
+            .duration(500)
+            .style('height', '4px')
+        }
+
+        function step1(){
+          const brands = $sel.selectAll('.bin-category')
+            .classed('spread', true)
+            .transition()
+            .duration(500)
+            //.delay((d, i) => -(d.key - 10) * 100)
+            .style('height', '45px')
+
+          const swatches = $sel.selectAll('.bin-swatch')
+            .transition()
+            .duration(500)
+            .style('height', '2px')
+        }
+
+        if (step == 0) step0()
+        if (step == 1) step1()
+
         // add selection to elements to toggle
         // add arguments for each step (separate functions maybe?)
         return Chart

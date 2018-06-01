@@ -10,6 +10,9 @@ let groupDict = null
 
 let brandMap = null
 
+// functions
+let toggle = null
+
 // selections
 const $h2h = d3.selectAll('.h2h')
 
@@ -140,10 +143,10 @@ function setupH2H(){
 
   const chart = $sel.datum(filtered).headToHead()
 
-  chart.toggle()
+  toggle = chart.toggle
 
   scrollResize()
-  setupScroll()
+  setupScroll(chart)
 
   //generateElements($sel, filtered, competitors)
 }
@@ -175,6 +178,8 @@ function scrollResize(){
 }
 
 function handleStepEnter(response){
+  const index = response.index
+  toggle(index)
   // step things go here
   console.log({response})
 }
