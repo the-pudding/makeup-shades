@@ -52,9 +52,14 @@ d3.selection.prototype.headToHead = function init(options) {
             .key(d => d.lightnessGroup)
             .entries(data)
 
-          const competitorsDup = data.map(d => d.brand_short)
+          const brandCounts = d3.nest()
+            .key(d => d.brand_short)
+            .rollup(e => e.length)
+            .entries(data)
 
-          const competitors = [...new Set(competitorsDup)]
+          const countMap = d3.map(brandCounts, d => d.key)
+
+          const brandMap = d3.map(data, d => d.brand_short)
 
           let lightnessGroups = []
 
@@ -85,12 +90,45 @@ d3.selection.prototype.headToHead = function init(options) {
             .attr('class', (d, i) => `bin-brand bin-brand-${i}`)
             .attr('data-brand', (d, i) => i)
 
-          const categories = brands
-            .selectAll('.bin-category')
-            .data(d => d.values)
+          // adding column headers
+          const brandTitleGroup = brands
+            .selectAll('.bin-brandTGroup')
+            .data(d => [d])
             .enter()
             .append('div')
-            .attr('class', (d, i) => `bin-category spread bin-category-${i}`)
+            .attr('class', 'bin-brandTGroup')
+
+          brandTitleGroup
+              .append('text')
+              .text(d => brandMap.get(d.key).brand)
+              .attr('class', 'tk-atlas bin-brandTitle')
+
+            brandTitleGroup
+              .append('text')
+              .text(d => brandMap.get(d.key).product)
+              .attr('class', 'tk-atlas bin-brandProduct')
+
+            brandTitleGroup
+              .append('text')
+              .text(d => `${countMap.get(d.key).value} shades`)
+              .attr('class', 'tk-atlas bin-brandTotal')
+
+          // adding lightness categories spread class goes here
+          const categories = brands
+            .selectAll('.bin-category')
+            .data(d => {
+              const val = d.values
+              console.log({val})
+              return val
+            })
+            .enter()
+            .append('div')
+            .attr('class', (d, i) => `bin-category bin-category-${i}`)
+            .style('height', (d, i) => {
+              const length = d.values.length
+              return `${length * 5}px`
+            })
+
 
           const swatchGroup = categories
             .selectAll('.bin-swatchGroup')
@@ -99,6 +137,7 @@ d3.selection.prototype.headToHead = function init(options) {
             .append('div')
             .attr('class', 'bin-swatchGroup')
 
+          // Fix height value of this on toggle
           const swatches = swatchGroup
             .selectAll('.bin-swatch')
             .data(d => d.values)
@@ -130,6 +169,76 @@ d3.selection.prototype.headToHead = function init(options) {
             })
             .text(d => d.values.length)
 
+            // Setting up vs divs
+
+            const vsGroup = $sel
+              .selectAll('.bin-vsGroup')
+              .data([0])
+              .enter()
+              .append('div')
+              .attr('class', 'bin-vsGroup')
+
+            const vsCat = vsGroup
+              .selectAll('.bin-vsCat')
+              .data([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
+              .enter()
+              .append('div')
+              .attr('class', (d, i) => `tk-atlas bin-vsCat bin-vsCat-${d}`)
+
+            const vs = vsCat
+              .selectAll('.bin-vs')
+              .data(d => [d])
+              .enter()
+              .append('text')
+              .attr('class', (d, i) => `tk-atlas bin-vs bin-vs-${d}`)
+              .text('vs')
+              .attr('alignment-baseline', 'middle')
+              .attr('text-anchor', 'middle')
+
+            // Setting up label divs
+
+            const labelGroup = $sel
+              .selectAll('.bin-labelGroup')
+              .data([0])
+              .enter()
+              .append('div')
+              .attr('class', 'bin-labelGroup')
+
+            const labelTitleGroup = labelGroup
+              .append('div')
+              .attr('class', 'bin-labelTGroup')
+
+            const labelTitle = labelTitleGroup
+              .selectAll('.bin-labelTitle')
+              .data(['Lightness', 'Range'])
+              .enter()
+              .append('text')
+              .text(d => d)
+              .attr('class', 'tk-atlas bin-labelTitle')
+
+
+            const labelCat = labelGroup
+              .selectAll('.bin-labelCat')
+              .data([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])
+              .enter()
+              .append('div')
+              .attr('class', 'bin-labelCat')
+
+            const label = labelCat
+              .selectAll('.bin-label')
+              .data(d => [d])
+              .enter()
+              .append('text')
+              .attr('class', 'tk-atlas bin-label')
+              .text(d => `${d * 10} - ${(d * 10) + 10}`)
+              .attr('alignment-baseline', 'middle')
+              .attr('text-anchor', 'middle')
+
+
+
+
+
+
 
 
         //enter update exit goes here
@@ -142,7 +251,49 @@ d3.selection.prototype.headToHead = function init(options) {
 				$sel.datum(data);
 				Chart.render();
 				return Chart;
-			}
+			},
+      toggle(step){
+        console.log({step})
+
+
+        function step0(){
+          const brands = $sel.selectAll('.bin-category')
+            .classed('spread', false)
+            .transition()
+            .duration(500)
+            .style('height', (d, i) => {
+              const length = d.values.length
+              console.log({d, length})
+              return `${length * 5}px`
+            })
+
+          const swatches = $sel.selectAll('.bin-swatch')
+            .transition()
+            .duration(500)
+            .style('height', '4px')
+        }
+
+        function step1(){
+          const brands = $sel.selectAll('.bin-category')
+            .classed('spread', true)
+            .transition()
+            .duration(500)
+            //.delay((d, i) => -(d.key - 10) * 100)
+            .style('height', '45px')
+
+          const swatches = $sel.selectAll('.bin-swatch')
+            .transition()
+            .duration(500)
+            .style('height', '2px')
+        }
+
+        if (step == 0) step0()
+        if (step == 1) step1()
+
+        // add selection to elements to toggle
+        // add arguments for each step (separate functions maybe?)
+        return Chart
+      }
 		};
 		Chart.init();
 
