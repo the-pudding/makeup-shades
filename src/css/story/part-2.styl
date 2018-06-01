@@ -1,0 +1,54 @@
+#part-2
+  .text-content
+    max-width $column-width
+    margin 0 auto
+
+    .section-head
+      padding 0 1rem
+    .section-sub
+      padding 0 1rem
+
+  .graphic-hed
+    max-width $column-width
+    margin 0 auto
+
+    .graphic-title
+      text-transform uppercase
+      set-type-size('large', true)
+      margin-bottom 0
+
+    .graphic-sub
+      text-transform uppercase
+      set-type-size('x-large', true)
+      font-weight 600
+      margin-top 0
+
+    .graphic-legend
+      set-type-size('small', true)
+      color $gray
+      text-transform uppercase
+
+      #winner
+        background-color $primary
+        color $off-black
+        font-weight 600
+        padding 0.2rem 0.5rem
+        border-radius 5px
+        margin-right 0.2rem
+
+
+  .measurement
+    margin 2rem 1rem
+    background-color lighten(#fde9de, 2.5)
+    padding 1rem 2rem
+
+    &-title
+      margin 0.25rem 0 1rem
+      font-weight 600
+      set-type-size('small', true)
+
+    &-steps
+      list-style-type circle
+      li
+        set-type-size('small', true)
+        margin-bottom 0.5em

@@ -1,14 +1,19 @@
 <section id='part-1'>
   <div class='text-content'>
     <p class='section-head'>{{{copy.part1-title}}}</p>
-    <p class='section-sub'>{{copy.part1-sub}}</p>
+    <p class='section-sub loaded-atlas tk-atlas'>{{copy.part1-sub}}</p>
 
     {{#each copy.part1-intro}}
       <p class='prose'>{{{value}}}</p>
     {{/each}}
 
     {{> story/measurement }}
+
+    {{#each copy.part1-contd}}
+      <p class='prose'>{{{value}}}</p>
+    {{/each}}
   </div>
+
 
   <div class='scroll scroll-part1'>
     <div class='scroll-graphic'>
@@ -33,5 +38,8 @@
         </div>
       {{/each}}
     </div>
+
   </div>
 </section>
+
+{{> story/divider }}
