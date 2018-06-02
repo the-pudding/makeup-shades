@@ -105,7 +105,6 @@ function init() {
 
   Promise.all([loadData()])
 		.then((results) => {
-      console.log({results})
 			shadeData = results[0]
 			$h2h.each(setupH2H)
 		})
