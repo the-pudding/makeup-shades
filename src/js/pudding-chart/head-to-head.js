@@ -246,13 +246,6 @@ d3.selection.prototype.headToHead = function init(options) {
               .attr('alignment-baseline', 'middle')
               .attr('text-anchor', 'middle')
 
-
-
-
-
-
-
-
         //enter update exit goes here
 				return Chart;
 			},

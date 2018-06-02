@@ -1,5 +1,5 @@
 .brawl
-  max-width 30rem
+  //max-width 30rem
   //margin 0 auto
   display flex
   flex-direction row
@@ -7,22 +7,23 @@
   justify-content center
 
   .bin-brand
+    order 1
     display flex
     justify-content flex-start
     align-items center;
     flex-direction column
     padding-bottom 1px
     margin 5px 0
-    width 150px
+    max-width 52px
 
     .bin-category
-      width 52px
+      width 44px
       display flex
       align-items flex-start;
       justify-content space-between
       border 1px dashed $gray-light
-      padding 2px 0
-      height 54px
+      padding 1px
+      height 44px
       margin 2px
 
       .bin-swatchGroup
@@ -72,7 +73,8 @@
     align-items center
     flex-direction column
     padding 2px
-    margin 5px 1rem
+    margin 5px 0
+    transform translate(0, 12px)
 
     .bin-labelTGroup
       display flex
@@ -83,11 +85,11 @@
 
       text
         text-align center
-        set-type-size('small', true)
+        set-type-size('x-small', true)
         color $gray
 
     .bin-labelCat
-      height 45px
+      height 44px
       margin 2px 0
       padding-bottom 2px
       display flex
@@ -96,16 +98,16 @@
       flex-direction column
 
       .bin-label
-        set-type-size('x-small', true)
+        set-type-size('xx-small', true)
         color $gray
 
   .bin-brandTGroup
     display flex
     flex-direction column
-    justify-content: center
+    justify-content: flex-end
     height 55px
-    margin 2px 0
-    transform rotate(-40deg)
+    margin 10px
+    transform rotate(-45deg)
     max-width 40px
 
     text
@@ -113,14 +115,20 @@
       white-space nowrap
 
     .bin-brandTitle
+      set-type-size('small', true)
       font-weight 600
 
     .bin-brandProduct
-      set-type-size('x-small', true)
+      set-type-size('xx-small', true)
       color $gray
-      display none
+      line-height 0.9
+      //display none
 
     .bin-brandTotal
       set-type-size('xx-small', true)
       color $gray
       text-transform uppercase
+      display none
+
+      text
+        line-height 0.8

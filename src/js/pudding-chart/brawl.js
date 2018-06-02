@@ -40,26 +40,31 @@ d3.selection.prototype.brawl = function init(options) {
 			// on resize, update new dimensions
 			resize() {
 				// defaults to grabbing dimensions from container element
-				width = $sel.node().offsetWidth - marginLeft - marginRight;
+				width = Math.floor(($sel.node().offsetWidth - marginLeft - marginRight) * 0.6)
+
 				height = $sel.node().offsetHeight - marginTop - marginBottom;
+
+        $sel
+          .style('width', `${width}px`)
+
+        console.log({width, marginLeft, marginRight})
 				return Chart;
 			},
 			// update scales and render chart
 			render() {
         const nested = d3.nest()
-          .key(e => e.brand_short)
+          .key(e => e.product_short)
           .key(d => d.lightnessGroup)
           .entries(data)
-          console.log({nested})
 
         const brandCounts = d3.nest()
-          .key(d => d.brand_short)
+          .key(d => d.product_short)
           .rollup(e => e.length)
           .entries(data)
 
           const countMap = d3.map(brandCounts, d => d.key)
 
-          const brandMap = d3.map(data, d => d.brand_short)
+          const brandMap = d3.map(data, d => d.product_short)
 
           let lightnessGroups = []
 
@@ -101,7 +106,11 @@ d3.selection.prototype.brawl = function init(options) {
 
           brandTitleGroup
             .append('text')
-            .text(d => brandMap.get(d.key).product)
+            .text(d => {
+              const product = brandMap.get(d.key).product
+              const count = `${countMap.get(d.key).value} shades`
+              return `${product} • ${count}`
+            })
             .attr('class', 'tk-atlas bin-brandProduct')
 
           brandTitleGroup
@@ -141,6 +150,44 @@ d3.selection.prototype.brawl = function init(options) {
             .style('background-color', d => `#${d.hex}`)
 
 
+            // Setting up label divs
+
+            const labelGroup = $sel
+              .selectAll('.bin-labelGroup')
+              .data([0])
+              .enter()
+              .append('div')
+              .attr('class', 'bin-labelGroup')
+
+            const labelTitleGroup = labelGroup
+              .append('div')
+              .attr('class', 'bin-labelTGroup')
+
+            const labelTitle = labelTitleGroup
+              .selectAll('.bin-labelTitle')
+              .data(['Lightness', 'Range'])
+              .enter()
+              .append('text')
+              .text(d => d)
+              .attr('class', 'tk-atlas bin-labelTitle')
+
+
+            const labelCat = labelGroup
+              .selectAll('.bin-labelCat')
+              .data([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])
+              .enter()
+              .append('div')
+              .attr('class', 'bin-labelCat')
+
+            const label = labelCat
+              .selectAll('.bin-label')
+              .data(d => [d])
+              .enter()
+              .append('text')
+              .attr('class', 'tk-atlas bin-label')
+              .text(d => `${d * 10} - ${(d * 10) + 10}`)
+              .attr('alignment-baseline', 'middle')
+              .attr('text-anchor', 'middle')
 
 				return Chart;
 			},
