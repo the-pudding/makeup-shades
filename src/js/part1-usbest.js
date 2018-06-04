@@ -120,24 +120,32 @@ function handleDropdown(){
 
   let selectedData = null
 
+  let button = $sel.selectAll('.is-active')
+
+  const comp = button
+    .at('data-competitors')
+
+  const action = button
+    .at('data-action')
+
+  const slider = $sel.select('.toggle input')
+
+
+  const checked = slider.property('checked')
+
+
+  console.log({slider, checked})
+
   if (selected === "White") selectedData = wholeData.filter(d => d.group == 4 || d.group == 0)
   if (selected === "BIPOC") selectedData = wholeData.filter(d => d.group == 3 || d.group == 0)
   if (selected === "All") selectedData = wholeData
 
-  // const selectedData = wholeData.filter(d => {
-  //   const group = d.group
-  //   console.log({group})
-  //
-  //   if(selected === "White") return d.group == 3 || d.group = 0
-  //   if(selected === "BIPOC") return d.group == 4 || d.group = 0
-  //   else return d
-  // })
-
-  console.log({selected, selectedData})
-
   chart
     .data(selectedData)
     .render()
+
+  dispatch.call('button', null, { comp, action })
+  dispatch.call('switch', null, { comp, checked })
 }
 
 function setupUI(){

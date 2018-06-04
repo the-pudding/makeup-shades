@@ -159,27 +159,29 @@ d3.selection.prototype.brawl = function init(options) {
           })
             .sort((a, b) => d3.descending(a.values.total, b.values.total))
 
-          // enter category divs
-          const brands = $sel
-                    .selectAll('.bin-brand')
-                    .data(allNested)
-                    .enter()
-                    .append('div')
-                    .attr('class', (d, i) => `bin-brand bin-brand-${d.key}`)
-                    .attr('data-brand', (d, i) => i)
+            $sel.selectAll('.bin-brand').remove()
 
-                // adding column headers
-                const brandTitleGroup = brands
-                  .selectAll('.bin-brandTGroup')
-                  .data(d => [d])
-                  .enter()
-                  .append('div')
-                  .attr('class', 'bin-brandTGroup')
+            // enter category divs
+          const brands = $sel
+            .selectAll('.bin-brand')
+            .data(allNested)
+            .enter()
+            .append('div')
+            .attr('class', (d, i) => `bin-brand bin-brand-${d.key}`)
+            .attr('data-brand', (d, i) => i)
+
+          // adding column headers
+          const brandTitleGroup = brands
+            .selectAll('.bin-brandTGroup')
+            .data(d => [d])
+            .enter()
+            .append('div')
+            .attr('class', 'bin-brandTGroup')
 
           brandTitleGroup
-            .append('text')
-            .text(d => brandMap.get(d.key).brand)
-            .attr('class', 'tk-atlas bin-brandTitle')
+              .append('text')
+              .text(d => brandMap.get(d.key).brand)
+              .attr('class', 'tk-atlas bin-brandTitle')
 
           brandTitleGroup
             .append('text')
@@ -224,6 +226,7 @@ d3.selection.prototype.brawl = function init(options) {
             .style('height', `8px`)
             .style('width', `8px`)
             .style('background-color', d => `#${d.hex}`)
+
 
             const numGroup = categories
               .selectAll('.bin-numGroup')
