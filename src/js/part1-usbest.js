@@ -12,7 +12,7 @@ let groupDict = null
 let brandMap = null
 let competitorMap = null
 
-const dispatch = d3.dispatch('switch')
+const dispatch = d3.dispatch('switch', 'button')
 
 // selections
 const $brawl = d3.selectAll('.brawl')
@@ -63,6 +63,7 @@ function setupBrawl(){
     .datum(filteredShades)
     .brawl()
     .on({dispatch, event: 'switch'})
+    .on({dispatch, event: 'button'})
 
   setupUI()
 }
@@ -92,7 +93,7 @@ function handleClick(){
   const action = button
     .at('data-action')
 
-  console.log({comp, action})
+  dispatch.call('button', null, { comp, action })
 }
 
 function setupUI(){

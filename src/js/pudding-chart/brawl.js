@@ -34,10 +34,24 @@ d3.selection.prototype.brawl = function init(options) {
 
     const events = {
       switch: ({ comp, checked }) => {
-        console.log({competitors})
         if (comp === competitors) {
           $sel.selectAll('.bin-brand-pf')
             .classed('is-visible', checked)
+        }
+      },
+      button: ({ comp, action }) => {
+        if (comp === competitors) {
+          let nonGroup = null
+          if (action === 'swatch') nonGroup = 'num'
+          if (action === 'num') nonGroup = 'swatch'
+
+          console.log({nonGroup})
+
+          $sel.selectAll(`.bin-${nonGroup}Group`)
+            .classed('is-visible', false)
+
+          $sel.selectAll(`.bin-${action}Group`)
+            .classed('is-visible', true)
         }
       }
     }
