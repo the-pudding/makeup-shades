@@ -33,7 +33,6 @@ d3.selection.prototype.headToHead = function init(options) {
 		const Chart = {
 			// called once at start
 			init() {
-        console.log({data})
 				Chart.resize();
 				Chart.render();
 			},
@@ -80,7 +79,6 @@ d3.selection.prototype.headToHead = function init(options) {
         const lightness1 = lightnessGroups[0]
         const lightness2 = lightnessGroups[1]
         const allLightness = lightness1.concat(lightness2)
-        console.log({allLightness})
 
         // enter category divs
           const brands = $sel
@@ -119,7 +117,6 @@ d3.selection.prototype.headToHead = function init(options) {
             .selectAll('.bin-category')
             .data(d => {
               const val = d.values
-              console.log({val})
               return val
             })
             .enter()
@@ -276,7 +273,6 @@ d3.selection.prototype.headToHead = function init(options) {
             .ease(d3.easeCubicInOut)
             .style('height', (d, i) => {
               const length = d.values.length
-              console.log({d, length})
               return `${length * 5}px`
             })
             .style('margin', '0px')

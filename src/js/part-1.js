@@ -53,8 +53,6 @@ function scrollResize(){
   const textWidth = text.node().offsetWidth
   const chartWidth = graphic.node().offsetWidth - textWidth - chartMargin
 
-  console.log({containerWidth, chartWidth})
-
   chart
     .style('width', `${chartWidth}px`)
     .style('height', `${Math.floor(window.innerHeight)}px`)
@@ -65,8 +63,6 @@ function scrollResize(){
 function handleStepEnter(response){
   const index = response.index
   toggle(index)
-  // step things go here
-  console.log({response})
 }
 
 function handleContainerEnter(response){

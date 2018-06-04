@@ -5,7 +5,6 @@ let groupDict = null
 let brandMap = null
 
 function loadDictionaries(){
-  console.log("loadDictionaries ran")
   const path = 'assets/data'
   const names = ['brand_dictionary', 'group_dictionary']
   const files = names.map(d => `${path}/${d}.csv`)
@@ -86,7 +85,6 @@ function loadShades(){
     d3.loadData(file, (err, response) => {
       if(err) reject(err)
       shadeData = cleanData(response[0])
-      console.log({response, shadeData})
       resolve(shadeData)
     })
   })

@@ -33,7 +33,6 @@ d3.selection.prototype.brawl = function init(options) {
 		const Chart = {
 			// called once at start
 			init() {
-        console.log({data})
 				Chart.resize();
 				Chart.render();
 			},
@@ -46,15 +45,20 @@ d3.selection.prototype.brawl = function init(options) {
 
         $sel
           .style('width', `${width}px`)
-
-        console.log({width, marginLeft, marginRight})
 				return Chart;
 			},
 			// update scales and render chart
 			render() {
         const nested = d3.nest()
           .key(e => e.product_short)
-          .key(d => d.lightnessGroup)
+          .rollup(leaves => {
+            const total = leaves.length
+            const group = d3.nest()
+              .key(d => d.lightnessGroup)
+              .entries(leaves)
+
+              return {total: total, group: group}
+          })
           .entries(data)
 
         const brandCounts = d3.nest()
@@ -70,7 +74,8 @@ d3.selection.prototype.brawl = function init(options) {
 
           // fill in missing values
           const allNested = nested.map(e => {
-            const f = e.values
+            const total = e.value.total
+            const f = e.value.group
             lightnessGroups.push(f)
             const updatedVal = d3.range(0, 10).map(i => {
               const key = i.toString()
@@ -79,8 +84,10 @@ d3.selection.prototype.brawl = function init(options) {
               if (match) return match
               else return {key, values: []}
             })
-            return {key: e.key, values: updatedVal}
+            const bothVal = {total: total, group: updatedVal}
+            return {key: e.key, values: bothVal}
           })
+            .sort((a, b) => d3.descending(a.values.total, b.values.total))
 
           // enter category divs
           const brands = $sel
@@ -88,7 +95,7 @@ d3.selection.prototype.brawl = function init(options) {
             .data(allNested)
             .enter()
             .append('div')
-            .attr('class', (d, i) => `bin-brand bin-brand-${i}`)
+            .attr('class', (d, i) => `bin-brand bin-brand-${d.key}`)
             .attr('data-brand', (d, i) => i)
 
           // adding column headers
@@ -108,22 +115,21 @@ d3.selection.prototype.brawl = function init(options) {
             .append('text')
             .text(d => {
               const product = brandMap.get(d.key).product
-              const count = `${countMap.get(d.key).value} shades`
+              const count = `${d.values.total} shades`
               return `${product} • ${count}`
             })
             .attr('class', 'tk-atlas bin-brandProduct')
 
           brandTitleGroup
             .append('text')
-            .text(d => `${countMap.get(d.key).value} shades`)
+            .text(d => `${d.values.total} shades`)
             .attr('class', 'tk-atlas bin-brandTotal')
 
           // adding lightness categories spread class goes here
           const categories = brands
             .selectAll('.bin-category')
             .data(d => {
-              const val = d.values
-              console.log({val})
+              const val = d.values.group
               return val
             })
             .enter()
@@ -148,6 +154,28 @@ d3.selection.prototype.brawl = function init(options) {
             .style('height', `8px`)
             .style('width', `8px`)
             .style('background-color', d => `#${d.hex}`)
+
+            const numGroup = categories
+              .selectAll('.bin-numGroup')
+              .data(d => {
+                console.log(d)
+                return [d]})
+              .enter()
+              .append('div')
+              .attr('class', 'bin-numGroup')
+
+            const num = numGroup
+              .selectAll('.bin-num')
+              .data(d => [d])
+              .enter()
+              .append('text')
+              .attr('class', d => {
+                const length = d.values.length
+                return `bin-num bin-num-${length} tk-atlas`})
+              .text(d => {
+                const length = d.values.length
+                return length
+              })
 
 
             // Setting up label divs

@@ -15,8 +15,6 @@ let competitorMap = null
 // selections
 const $brawl = d3.selectAll('.brawl')
 
-console.log({$brawl})
-
 function setupCompetitorMap(){
   const competitors = [{
     number: 0,
@@ -49,7 +47,6 @@ function setupCompetitorMap(){
 
 function setupBrawl(){
   setupCompetitorMap()
-  console.log("setup brawl ran")
   const $sel = d3.select(this)
   const comp = $sel.at('data-competitors')
 
@@ -58,7 +55,6 @@ function setupBrawl(){
     return d.group == num || d.group == 0
   })
 
-  console.log({filteredShades})
   const chart = $brawl
     .datum(filteredShades)
     .brawl()
