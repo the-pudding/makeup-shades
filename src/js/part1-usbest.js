@@ -11,6 +11,7 @@ let brandDict = null
 let groupDict = null
 let brandMap = null
 let competitorMap = null
+let chart = null
 
 const dispatch = d3.dispatch('switch', 'button')
 
@@ -19,6 +20,8 @@ const $brawl = d3.selectAll('.comp-brawl')
 const $switch = d3.selectAll('.toggle input')
 let $buttons = null
 let $sel = null
+
+const bipocSelect = null
 
 
 function setupCompetitorMap(){
@@ -56,16 +59,11 @@ function setupBrawl(){
   $sel = d3.select(this)
   const comp = $sel.at('data-competitors')
 
-  const filteredShades = shadeData.filter(d => {
-    const num = competitorMap.get(comp).number
-    return d.group == num || d.group == 0
-  })
+  const filteredShades = filterDataNoDD(comp)
 
   const thisBrawl = $brawl.select('.brawl')
 
-  console.log({$sel, filteredShades})
-
-  const chart = $sel
+  chart = $sel
     .datum(filteredShades)
     .brawl()
     .on({dispatch, event: 'switch'})
@@ -74,8 +72,18 @@ function setupBrawl(){
   setupUI()
 }
 
-function handleSwitch(){
+function filterDataNoDD(comp){
+  const filtered = shadeData.filter(d => {
+    const num = competitorMap.get(comp).number
 
+    if (num == 3 || num == 4) return d.group == 3 || d.group == 4 || d.group == 0
+    else return d.group == num || d.group == 0
+  })
+
+  return filtered
+}
+
+function handleSwitch(){
   const comp = d3.select(this)
     .at('data-competitors')
 
@@ -106,6 +114,32 @@ function handleClick(){
   dispatch.call('button', null, { comp, action })
 }
 
+function handleDropdown(){
+  const selected = this.value
+  const wholeData = shadeData.filter(d => d.group == 3 || d.group == 4 || d.group == 0)
+
+  let selectedData = null
+
+  if (selected === "White") selectedData = wholeData.filter(d => d.group == 4 || d.group == 0)
+  if (selected === "BIPOC") selectedData = wholeData.filter(d => d.group == 3 || d.group == 0)
+  if (selected === "All") selectedData = wholeData
+
+  // const selectedData = wholeData.filter(d => {
+  //   const group = d.group
+  //   console.log({group})
+  //
+  //   if(selected === "White") return d.group == 3 || d.group = 0
+  //   if(selected === "BIPOC") return d.group == 4 || d.group = 0
+  //   else return d
+  // })
+
+  console.log({selected, selectedData})
+
+  chart
+    .data(selectedData)
+    .render()
+}
+
 function setupUI(){
   $switch.on('change', handleSwitch)
 
@@ -119,7 +153,28 @@ function setupUI(){
 
   const shadeGroups = $sel.selectAll('.bin-swatchGroup')
     .classed('is-visible', true)
+
+  // drop down only for bipoc
+  if ($sel.classed('scroll-poc-marketed')){
+    const dd = $sel.select('select')
+
+    const options = ['White', 'BIPOC', 'All']
+
+    dd
+      .selectAll('option')
+      .data(options)
+      .enter()
+      .append('option')
+      .attr('value', d => d)
+      .text(d => d)
+      .property('selected', d => d == 'White')
+
+    dd
+      .on('change', handleDropdown)
+  }
 }
+
+
 
 function resize() {}
 

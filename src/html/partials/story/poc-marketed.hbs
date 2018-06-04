@@ -1,10 +1,37 @@
 <div class='text-content'>
   {{> story/divider }}
 
-  <p class='section-sub tk-atlas'>{{copy.part1-2-title}}</p>
-  {{#each copy.part1-2-intro}}
+  <p class='section-sub tk-atlas'>{{copy.part1-3-title}}</p>
+  <div class='bipoc-def'>
+    <p class='definition'>{{{copy.bipoc-def}}}</p>
+  </div>
+  {{#each copy.part1-3-intro}}
     <p class='prose'>{{{value}}}</p>
   {{/each}}
+
+
+  <div class='founders-table'>
+    <div class='bipoc-white'>
+      <p class='bipoc-title'>{{copy.white-founder-title}}</p>
+      <ul class='bipoc-list_white bipoc-list'>
+        {{#each copy.white-founders}}
+          <li>{{{this}}}</li>
+        {{/each}}
+      </ul>
+    </div>
+    <div class='bipoc-bipoc'>
+      <p class='bipoc-title'>{{copy.bipoc-founder-title}}</p>
+      <ul class='bipoc-list_bipoc bipoc-list'>
+        {{#each copy.bipoc-founders}}
+          <li>{{{this}}}</li>
+        {{/each}}
+      </ul>
+    </div>
+  </div>
+  {{#each copy.part1-3-intro2}}
+    <p class='prose'>{{{value}}}</p>
+  {{/each}}
+
   <img src='assets/img/round13.jpg' class='part13img'>
 </div>
 
@@ -16,7 +43,7 @@
 
       <div class='graphic-hed'>
         <p class='graphic-title tk-atlas'>{{{copy.part1-graphic-title}}}</p>
-        <p class='graphic-sub tk-atlas'>{{{copy.part1-usbest-graphic-sub}}}</p>
+        <p class='graphic-sub tk-atlas'>{{{copy.part1-3-graphic-sub}}}</p>
         <p class='graphic-legend tk-atlas'>{{{copy.part1-brawl-graphic-legend}}}</p>
 
         <div class='ui brawl-ui'>
@@ -48,7 +75,7 @@
   </div>
 
   <div class='scroll-text'>
-    {{#each copy.steps-part1-usbest}}
+    {{#each copy.steps-part1-3}}
       <div class='step' data-step='{{stepNumber}}'>
         <p>{{{text}}}</p>
       </div>

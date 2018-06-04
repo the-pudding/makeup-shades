@@ -13,6 +13,8 @@ d3.selection.prototype.brawl = function init(options) {
     const $sel = $selGroup.select('.brawl')
 		let data = $sel.datum();
 
+    let bipoc = false
+
 		// dimension stuff
 		let width = 0;
 		let height = 0;
@@ -42,13 +44,10 @@ d3.selection.prototype.brawl = function init(options) {
         }
       },
       button: ({ comp, action }) => {
-        console.log({comp, competitors})
         if (comp === competitors) {
           let nonGroup = null
           if (action === 'swatch') nonGroup = 'num'
           if (action === 'num') nonGroup = 'swatch'
-
-          console.log({action, nonGroup})
 
           $sel.selectAll(`.bin-${nonGroup}Group`)
             .classed('is-visible', false)
@@ -73,7 +72,7 @@ d3.selection.prototype.brawl = function init(options) {
         group: 'us-best'
       }, {
         number: 3,
-        group: 'poc-created'
+        group: 'poc-marketed'
       },{
         number: 4,
         group: 'poc-marketed'
@@ -101,6 +100,11 @@ d3.selection.prototype.brawl = function init(options) {
         const first = notFenty[0].group
         competitors = competitorMap.get(+first).group
 
+        const test = $sel.classed('brawl-pocMarketed')
+
+        console.log({$sel, test})
+
+        if ($sel.classed('brawl-pocMarketed')) bipoc = true
 			},
 			// on resize, update new dimensions
 			resize() {
@@ -157,25 +161,25 @@ d3.selection.prototype.brawl = function init(options) {
 
           // enter category divs
           const brands = $sel
-            .selectAll('.bin-brand')
-            .data(allNested)
-            .enter()
-            .append('div')
-            .attr('class', (d, i) => `bin-brand bin-brand-${d.key}`)
-            .attr('data-brand', (d, i) => i)
+                    .selectAll('.bin-brand')
+                    .data(allNested)
+                    .enter()
+                    .append('div')
+                    .attr('class', (d, i) => `bin-brand bin-brand-${d.key}`)
+                    .attr('data-brand', (d, i) => i)
 
-          // adding column headers
-          const brandTitleGroup = brands
-            .selectAll('.bin-brandTGroup')
-            .data(d => [d])
-            .enter()
-            .append('div')
-            .attr('class', 'bin-brandTGroup')
+                // adding column headers
+                const brandTitleGroup = brands
+                  .selectAll('.bin-brandTGroup')
+                  .data(d => [d])
+                  .enter()
+                  .append('div')
+                  .attr('class', 'bin-brandTGroup')
 
           brandTitleGroup
-              .append('text')
-              .text(d => brandMap.get(d.key).brand)
-              .attr('class', 'tk-atlas bin-brandTitle')
+            .append('text')
+            .text(d => brandMap.get(d.key).brand)
+            .attr('class', 'tk-atlas bin-brandTitle')
 
           brandTitleGroup
             .append('text')
@@ -280,6 +284,7 @@ d3.selection.prototype.brawl = function init(options) {
               .text(d => `${d * 10} - ${(d * 10) + 10}`)
               .attr('alignment-baseline', 'middle')
               .attr('text-anchor', 'middle')
+
 
 				return Chart;
 			},
