@@ -11,6 +11,7 @@ d3.selection.prototype.brawl = function init(options) {
 	function createChart(el) {
 		const $sel = d3.select(el);
 		let data = $sel.datum();
+
 		// dimension stuff
 		let width = 0;
 		let height = 0;
@@ -18,6 +19,9 @@ d3.selection.prototype.brawl = function init(options) {
 		const marginBottom = 0;
 		const marginLeft = 0;
 		const marginRight = 0;
+
+    let competitors = null
+    let competitorMap = null
 
 		// scales
 		const scaleX = null;
@@ -28,13 +32,56 @@ d3.selection.prototype.brawl = function init(options) {
 		let $axis = null;
 		let $vis = null;
 
+    const events = {
+      switch: ({ comp, checked }) => {
+        console.log({competitors})
+        if (comp === competitors) {
+          $sel.selectAll('.bin-brand-pf')
+            .classed('is-visible', checked)
+        }
+      }
+    }
+
 		// helper functions
+
+    function setupCompetitorMap(){
+      const competitors = [{
+        number: 0,
+        group: 'Fenty'
+      },{
+        number: 1,
+        group: 'Make Up For Ever'
+      },{
+        number: 2,
+        group: 'us-best'
+      }, {
+        number: 3,
+        group: 'poc-created'
+      },{
+        number: 4,
+        group: 'poc-marketed'
+      },{
+        number: 5,
+        group: 'nigerian-best'
+      },{
+        number: 6,
+        group: 'japanese-best'
+      },{
+        number: 7,
+        group: 'indian-best'
+      }]
+
+      competitorMap = d3.map(competitors, d => d.number)
+    }
 
 		const Chart = {
 			// called once at start
 			init() {
+        setupCompetitorMap()
 				Chart.resize();
 				Chart.render();
+        const first = data[0].group
+        competitors = competitorMap.get(+first).group
 			},
 			// on resize, update new dimensions
 			resize() {
@@ -157,9 +204,7 @@ d3.selection.prototype.brawl = function init(options) {
 
             const numGroup = categories
               .selectAll('.bin-numGroup')
-              .data(d => {
-                console.log(d)
-                return [d]})
+              .data(d => [d])
               .enter()
               .append('div')
               .attr('class', 'bin-numGroup')
@@ -225,6 +270,10 @@ d3.selection.prototype.brawl = function init(options) {
 				data = val;
 				$sel.datum(data);
 				Chart.render();
+				return Chart;
+			},
+			on({ dispatch, event }) {
+				dispatch.on(`${event}.${competitors}`, events[event]);
 				return Chart;
 			}
 		};

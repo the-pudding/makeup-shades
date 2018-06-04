@@ -12,8 +12,12 @@ let groupDict = null
 let brandMap = null
 let competitorMap = null
 
+const dispatch = d3.dispatch('switch')
+
 // selections
 const $brawl = d3.selectAll('.brawl')
+const $switch = d3.selectAll('.toggle input')
+const $buttons = d3.selectAll('.ui-display_button')
 
 function setupCompetitorMap(){
   const competitors = [{
@@ -58,6 +62,43 @@ function setupBrawl(){
   const chart = $brawl
     .datum(filteredShades)
     .brawl()
+    .on({dispatch, event: 'switch'})
+
+  setupUI()
+}
+
+function handleSwitch(){
+
+  const comp = d3.select(this)
+    .at('data-competitors')
+
+  const { checked } = this
+  console.log({comp, checked})
+  dispatch.call('switch', null, { comp, checked })
+}
+
+function handleClick(){
+  const button = d3.select(this)
+
+  $buttons
+    .classed('is-active', false)
+
+  button
+    .classed('is-active', true)
+
+  const comp = button
+    .at('data-competitors')
+
+  const action = button
+    .at('data-action')
+
+  console.log({comp, action})
+}
+
+function setupUI(){
+  $switch.on('change', handleSwitch)
+
+  $buttons.on('click', handleClick)
 }
 
 function resize() {}

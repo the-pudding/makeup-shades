@@ -19,6 +19,23 @@
     &-pf
       order 1
       margin-right 1.2rem
+      width 0
+      overflow hidden
+      transition width 500ms
+
+      .bin-numGroup
+        width 0 !important
+        overflow hidden
+
+      &.is-visible
+        width 50px
+        transition width 500ms
+        overflow visible
+
+        .bin-numGroup
+          width 40px !important
+          //height 40px
+          overflow visible
 
       .bin-brandTitle
         color #00f
