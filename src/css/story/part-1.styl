@@ -14,15 +14,16 @@
     padding 1rem 2rem
 
     &-title
-      margin 0.25rem 0 1rem
+      margin 0.25rem 0.5em 1rem
       font-weight 600
       set-type-size('small', true)
 
     &-steps
-      list-style-type circle
+      list-style-type square
       li
         set-type-size('small', true)
         margin-bottom 0.5em
+        padding-left 0.5em
   .fenty-mufe
     .scroll
       display flex
@@ -80,13 +81,12 @@
 
           .graphic-title
             text-transform uppercase
-            set-type-size('large', true)
+            set-type-size('small', true)
             margin-bottom 0
             margin-top 0
 
           .graphic-sub
-            text-transform uppercase
-            set-type-size('x-large', true)
+            set-type-size('large', true)
             font-weight 600
             margin-top 0
 
@@ -94,7 +94,7 @@
             set-type-size('x-small', true)
             color $gray
             text-transform uppercase
-            margin 0.5rem 0
+            margin 0.5rem 0 1.5rem
 
             #winner
               background-color $primary
