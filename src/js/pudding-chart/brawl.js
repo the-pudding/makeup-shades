@@ -9,7 +9,8 @@
 
 d3.selection.prototype.brawl = function init(options) {
 	function createChart(el) {
-		const $sel = d3.select(el);
+		const $selGroup = d3.select(el);
+    const $sel = $selGroup.select('.brawl')
 		let data = $sel.datum();
 
 		// dimension stuff
@@ -34,18 +35,20 @@ d3.selection.prototype.brawl = function init(options) {
 
     const events = {
       switch: ({ comp, checked }) => {
+
         if (comp === competitors) {
           $sel.selectAll('.bin-brand-pf')
             .classed('is-visible', checked)
         }
       },
       button: ({ comp, action }) => {
+        console.log({comp, competitors})
         if (comp === competitors) {
           let nonGroup = null
           if (action === 'swatch') nonGroup = 'num'
           if (action === 'num') nonGroup = 'swatch'
 
-          console.log({nonGroup})
+          console.log({action, nonGroup})
 
           $sel.selectAll(`.bin-${nonGroup}Group`)
             .classed('is-visible', false)
@@ -94,8 +97,10 @@ d3.selection.prototype.brawl = function init(options) {
         setupCompetitorMap()
 				Chart.resize();
 				Chart.render();
-        const first = data[0].group
+        const notFenty = data.filter(d => d.group != 0)
+        const first = notFenty[0].group
         competitors = competitorMap.get(+first).group
+
 			},
 			// on resize, update new dimensions
 			resize() {

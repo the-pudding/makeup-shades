@@ -15,9 +15,11 @@ let competitorMap = null
 const dispatch = d3.dispatch('switch', 'button')
 
 // selections
-const $brawl = d3.selectAll('.brawl')
+const $brawl = d3.selectAll('.comp-brawl')
 const $switch = d3.selectAll('.toggle input')
-const $buttons = d3.selectAll('.ui-display_button')
+let $buttons = null
+let $sel = null
+
 
 function setupCompetitorMap(){
   const competitors = [{
@@ -51,7 +53,7 @@ function setupCompetitorMap(){
 
 function setupBrawl(){
   setupCompetitorMap()
-  const $sel = d3.select(this)
+  $sel = d3.select(this)
   const comp = $sel.at('data-competitors')
 
   const filteredShades = shadeData.filter(d => {
@@ -59,7 +61,11 @@ function setupBrawl(){
     return d.group == num || d.group == 0
   })
 
-  const chart = $brawl
+  const thisBrawl = $brawl.select('.brawl')
+
+  console.log({$sel, filteredShades})
+
+  const chart = $sel
     .datum(filteredShades)
     .brawl()
     .on({dispatch, event: 'switch'})
@@ -81,7 +87,11 @@ function handleSwitch(){
 function handleClick(){
   const button = d3.select(this)
 
-  $buttons
+  const parent = d3.select(this.parentNode)
+
+  const theseButtons = parent.selectAll('.ui-display_button')
+
+  theseButtons
     .classed('is-active', false)
 
   button
@@ -99,7 +109,16 @@ function handleClick(){
 function setupUI(){
   $switch.on('change', handleSwitch)
 
+  $buttons = $sel.selectAll('.ui-display_button')
+  console.log({$sel})
+
   $buttons.on('click', handleClick)
+
+  const shades = $sel.select('#shades')
+    .classed('is-active', true)
+
+  const shadeGroups = $sel.selectAll('.bin-swatchGroup')
+    .classed('is-visible', true)
 }
 
 function resize() {}
