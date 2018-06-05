@@ -3,7 +3,7 @@ import './pudding-chart/brawl'
 import scrollama from 'scrollama'
 
 
-const scroller = scrollama()
+const scrollers = []
 
 // data
 let shadeData = null
@@ -21,6 +21,25 @@ let $buttons = null
 let $sel = null
 
 const bipocSelect = null
+
+const compSection = [{
+  comp: 'us-best',
+  section: 'scroll-us-best'
+}, {
+  comp: 'poc-marketed',
+  section: 'scroll-poc-marketed'
+}, {
+  comp: 'nigerian-best',
+  section: 'scroll-nigeria'
+}, {
+  comp: 'japanese-best',
+  section: 'scroll-japan'
+}, {
+  comp: 'indian-best',
+  section: 'scroll-india'
+}]
+
+const compSectionMap = d3.map(compSection, d => d.comp)
 
 
 function setupCompetitorMap(){
@@ -70,6 +89,7 @@ function setupBrawl(){
 
   setupUI(chart)
   scrollResize()
+  setupScroll(comp)
 }
 
 function filterDataNoDD(comp){
@@ -211,10 +231,53 @@ function scrollResize(){
   chart
     .style('height', `${Math.floor(window.innerHeight)}px`)
 
-  scroller.resize()
+  scrollers.forEach(scroller => scroller.resize())
 }
 
-function resize(){}
+
+
+function handleStepEnter(response, section){
+  const index = response.index
+  console.log({index})
+  //toggle(index)
+}
+
+function handleContainerEnter(response, section){
+  const graphic = d3.select(`.${section}`).select('.scroll-graphic')
+  graphic.classed('is-fixed', true)
+  graphic.classed('is-bottom', false)
+  console.log({graphic})
+}
+
+function handleContainerExit(response, section){
+    const graphic = d3.select(`.${section}`).select('.scroll-graphic')
+    graphic.classed('is-fixed', false)
+    graphic.classed('is-bottom', response.direction === 'down')
+}
+
+function setupScroll(comp){
+  const section = compSectionMap.get(comp).section
+  console.log({section})
+  const scroller = scrollama()
+  scroller.setup({
+    container: `.${section}`,
+    graphic: `.${section} .scroll-graphic`,
+    text: '.scroll-text',
+    step:  `.${section} .step`,
+    debug: false
+  })
+  .onStepEnter((response, s) => handleStepEnter(response, section))
+  .onContainerEnter((response, s) => handleContainerEnter(response, section))
+  .onContainerExit((response, s) => handleContainerExit(response, section))
+
+  scrollers.push(scroller)
+  console.log({scrollers})
+}
+
+function resize(){
+  chart.resize()
+  scrollResize()
+}
 
 function init() {
 
