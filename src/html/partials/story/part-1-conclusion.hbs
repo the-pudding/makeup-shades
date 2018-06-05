@@ -1,0 +1,13 @@
+<div class='text-content part1-conclusion'>
+  <p class='conclusion-title'>{{{copy.part1-conclusion-title}}}</p>
+  <p class='prose'>{{{copy.part1-conclusion-sub}}}</p>
+  <ul>
+  {{#each copy.part1-conclusion-list}}
+    <li>{{{this}}}</li>
+  {{/each}}
+  </ul>
+  
+  {{#each copy.part1-post-conclusion}}
+    <p class='prose'>{{{value}}}</p>
+  {{/each}}
+</div>
