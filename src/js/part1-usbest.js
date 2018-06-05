@@ -11,6 +11,7 @@ let brandDict = null
 let groupDict = null
 let brandMap = null
 let competitorMap = null
+let toggle = null
 
 const dispatch = d3.dispatch('switch', 'button')
 
@@ -87,6 +88,8 @@ function setupBrawl(){
     .on({dispatch, event: 'switch'})
     .on({dispatch, event: 'button'})
 
+  toggle = chart.toggle
+
   setupUI(chart)
   scrollResize()
   setupScroll(comp)
@@ -108,7 +111,6 @@ function handleSwitch(){
     .at('data-competitors')
 
   const { checked } = this
-  console.log({comp, checked})
   dispatch.call('switch', null, { comp, checked })
 }
 
@@ -238,8 +240,8 @@ function scrollResize(){
 
 function handleStepEnter(response, section){
   const index = response.index
-  console.log({index})
-  //toggle(index)
+  //console.log({section, index, toggle})
+  toggle(section, index)
 }
 
 function handleContainerEnter(response, section){
@@ -266,6 +268,7 @@ function setupScroll(comp){
     step:  `.${section} .step`,
     debug: false
   })
+  //.onStepEnter(handleStepEnter)
   .onStepEnter((response, s) => handleStepEnter(response, section))
   .onContainerEnter((response, s) => handleContainerEnter(response, section))
   .onContainerExit((response, s) => handleContainerExit(response, section))
