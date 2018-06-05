@@ -1,0 +1,70 @@
+<div class='text-content'>
+  {{> story/divider }}
+
+  <p class='section-sub loaded-atlas tk-atlas'>{{copy.part2-1-sub}}</p>
+
+  {{#each copy.part2-1-intro}}
+    <p class='prose'>{{{value}}}</p>
+  {{/each}}
+
+  <p class='section-sub tk-atlas'>{{copy.india-title}}</p>
+  {{#each copy.india-intro}}
+    <p class='prose'>{{{value}}}</p>
+  {{/each}}
+  <img src='assets/img/round12.jpg' class='part12img'>
+</div>
+
+{{> story/divider }}
+
+<div class='scroll-india comp-brawl' data-competitors='indian-best'>
+  <div class='scroll-graphic comp-brawl_graphic'>
+    <div class='chart'>
+
+      <div class='graphic-hed'>
+        <p class='graphic-title tk-atlas'>{{{copy.part1-graphic-title}}}</p>
+        <p class='graphic-sub tk-atlas'>{{{copy.india-graphic-sub}}}</p>
+        <p class='graphic-legend tk-atlas'>{{{copy.india-graphic-legend}}}</p>
+
+        <div class='ui brawl-ui'>
+          <div class='ui-display'>
+            <p class='ui-display_prompt tk-atlas'>Show Me</p>
+            <div class='ui-display_button' id='shades' data-competitors='indian-best' data-action='swatch'>
+              <p class='ui-button ui-button_shade tk-atlas'>Shades</p>
+            </div>
+            <div class='ui-display_button' id='count' data-competitors='indian-best' data-action='num'>
+              <p class='ui-button ui-button_count tk-atlas'>Count</p>
+            </div>
+          </div>
+
+          <div class='ui-fenty'>
+            <label class='toggle'>
+              <input type='checkbox' data-competitors='indian-best'>
+              <span class='slider'></span>
+            </label>
+
+            <p class='ui-fenty_prompt tk-atlas'>Compare to Fenty</p>
+          </div>
+        </div>
+      </div>
+
+      <div class='brawl brawl-india' data-competitors='indian-best'>
+      </div>
+
+    </div>
+  </div>
+
+  <div class='scroll-text'>
+    {{#each copy.steps-india}}
+      <div class='step' data-step='{{stepNumber}}'>
+        <p>{{{text}}}</p>
+      </div>
+    {{/each}}
+  </div>
+
+</div>
+
+<div class='text-content'>
+  {{#each copy.india-post}}
+    <p class='prose'>{{{value}}}</p>
+  {{/each}}
+</div>

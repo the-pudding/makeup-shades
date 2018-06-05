@@ -11,7 +11,6 @@ let brandDict = null
 let groupDict = null
 let brandMap = null
 let competitorMap = null
-let chart = null
 
 const dispatch = d3.dispatch('switch', 'button')
 
@@ -63,13 +62,13 @@ function setupBrawl(){
 
   const thisBrawl = $brawl.select('.brawl')
 
-  chart = $sel
+  const chart = $sel
     .datum(filteredShades)
     .brawl()
     .on({dispatch, event: 'switch'})
     .on({dispatch, event: 'button'})
 
-  setupUI()
+  setupUI(chart)
   scrollResize()
 }
 
@@ -115,13 +114,18 @@ function handleClick(){
   dispatch.call('button', null, { comp, action })
 }
 
-function handleDropdown(){
-  const selected = this.value
+function handleDropdown(chart, selected){
   const wholeData = shadeData.filter(d => d.group == 3 || d.group == 4 || d.group == 0)
+
+  console.log({selected})
 
   let selectedData = null
 
-  let button = $sel.selectAll('.is-active')
+  let section = d3.select('.scroll-poc-marketed')
+
+  console.log({section})
+
+  let button = section.selectAll('.is-active')
 
   const comp = button
     .at('data-competitors')
@@ -129,13 +133,8 @@ function handleDropdown(){
   const action = button
     .at('data-action')
 
-  const slider = $sel.select('.toggle input')
-
-
+  const slider = section.select('.toggle input')
   const checked = slider.property('checked')
-
-
-  console.log({slider, checked})
 
   if (selected === "White") selectedData = wholeData.filter(d => d.group == 4 || d.group == 0)
   if (selected === "BIPOC") selectedData = wholeData.filter(d => d.group == 3 || d.group == 0)
@@ -149,7 +148,7 @@ function handleDropdown(){
   dispatch.call('switch', null, { comp, checked })
 }
 
-function setupUI(){
+function setupUI(chart){
   $switch.on('change', handleSwitch)
 
   $buttons = $sel.selectAll('.ui-display_button')
@@ -179,7 +178,10 @@ function setupUI(){
       .property('selected', d => d == 'White')
 
     dd
-      .on('change', handleDropdown)
+      .on('change', function(d){
+        const selected = this.value
+        handleDropdown(chart, selected)
+      })
   }
 }
 
