@@ -262,6 +262,7 @@ d3.selection.prototype.headToHead = function init(options) {
         const counts = $sel.selectAll('.bin-count')
         const vsCat = $sel.selectAll('.bin-vsCat')
         const vs = $sel.selectAll('.bin-vs')
+				const legend = $sel.selectAll('.graphic-legend')
         const fentyHigh = $sel.selectAll('.bin-category-2, .bin-vsCat-3, .bin-category-3, .bin-vsCat-4, .bin-category-5, .bin-vsCat-6, .bin-category-9, .bin-vsCat-10')
         const mufeHigh = $sel.selectAll('.bin-category-6, .bin-vsCat-7, .bin-category-7, .bin-vsCat-8, .bin-category-8, .bin-vsCat-9')
 
@@ -289,6 +290,7 @@ d3.selection.prototype.headToHead = function init(options) {
 
           counts
             .style('opacity', 0)
+						.style('background-color', 'rgba(0,0,0,0)')
 
           vsCat
             .style('border-color', 'rgba(0,0,0,0)')
@@ -303,9 +305,19 @@ d3.selection.prototype.headToHead = function init(options) {
             })
             .style('margin', '0px')
 
-
           vs
             .style('opacity', 0)
+
+					legend
+						.style('opacity', 0)
+
+					fentyHigh
+            .style('background-color', 'rgba(0, 0, 0, 0)')
+
+					mufeHigh
+						.style('background-color', 'rgba(0, 0, 0, 0)')
+
+
         }
 
         function step1(){
@@ -350,9 +362,30 @@ d3.selection.prototype.headToHead = function init(options) {
 
           vs
             .style('opacity', 0)
+
+					legend
+						.style('opacity', 0)
+
+					fentyHigh
+						.style('background-color', 'rgba(0, 0, 0, 0)')
+
+					mufeHigh
+						.style('background-color', 'rgba(0, 0, 0, 0)')
         }
 
         function step2(){
+					brands
+            .classed('spread', true)
+            .style('height', '45px')
+            .style('margin', '2px 0')
+            .style('border-color', '#c9c9c9')
+
+					swatches
+            .style('height', '2px')
+
+					labels
+            .style('opacity', 1)
+
           counts
             .transition()
             .duration(500)
@@ -372,6 +405,16 @@ d3.selection.prototype.headToHead = function init(options) {
               else return 'rgba(0,0,0,0)'
             })
 
+					vsCat
+            .style('height', (d, i) => {
+              const brandTitles = $sel.select('.bin-brandTGroup')
+              const brandHeight = brandTitles.node().offsetHeight
+              if(i == 0) return `${brandHeight - 2}px`
+              else return '45px'
+            })
+            .style('border-color', '#c9c9c9')
+            .style('margin', '2px 0')
+
           vs
             .transition()
             .duration(500)
@@ -379,17 +422,78 @@ d3.selection.prototype.headToHead = function init(options) {
             .ease(d3.easeCubicInOut)
             .style('opacity', 1)
 
+					legend
+						.transition()
+						.duration(500)
+						.ease(d3.easeCubicInOut)
+						.style('opacity', 1)
+
           fentyHigh
             .transition()
             .duration(500)
             .ease(d3.easeCubicInOut)
             .style('background-color', 'rgba(0, 0, 0, 0)')
 
-
+					mufeHigh
+						.style('background-color', 'rgba(0, 0, 0, 0)')
 
         }
 
         function step3(){
+					brands
+            .classed('spread', true)
+            .style('height', '45px')
+            .style('margin', '2px 0')
+            .style('border-color', '#c9c9c9')
+
+					swatches
+            .style('height', '2px')
+
+					labels
+            .style('opacity', 1)
+
+          counts
+            .transition()
+            .duration(500)
+            .delay((d, i) => {
+              if (i > 10) return (i - 10) * 100
+              else return i * 100
+            })
+            .ease(d3.easeCubicInOut)
+            .style('opacity', 1)
+            .transition()
+            .duration(500)
+            .delay(250)
+            .style('background-color', (d, i, n) => {
+              const sel = d3.select(n[i])
+
+              if (sel.classed('bin-count-winner')) return '#84F0C9'
+              else return 'rgba(0,0,0,0)'
+            })
+
+					vsCat
+            .style('height', (d, i) => {
+              const brandTitles = $sel.select('.bin-brandTGroup')
+              const brandHeight = brandTitles.node().offsetHeight
+              if(i == 0) return `${brandHeight - 2}px`
+              else return '45px'
+            })
+            .style('border-color', '#c9c9c9')
+            .style('margin', '2px 0')
+
+          vs
+            .transition()
+            .duration(500)
+            .delay((d, i) => i * 100)
+            .ease(d3.easeCubicInOut)
+            .style('opacity', 1)
+
+					legend
+						.transition()
+						.duration(500)
+						.ease(d3.easeCubicInOut)
+						.style('opacity', 1)
+
           fentyHigh
             .transition()
             .duration(500)
@@ -404,6 +508,60 @@ d3.selection.prototype.headToHead = function init(options) {
         }
 
         function step4(){
+					brands
+            .classed('spread', true)
+            .style('height', '45px')
+            .style('margin', '2px 0')
+            .style('border-color', '#c9c9c9')
+
+					swatches
+            .style('height', '2px')
+
+					labels
+            .style('opacity', 1)
+
+          counts
+            .transition()
+            .duration(500)
+            .delay((d, i) => {
+              if (i > 10) return (i - 10) * 100
+              else return i * 100
+            })
+            .ease(d3.easeCubicInOut)
+            .style('opacity', 1)
+            .transition()
+            .duration(500)
+            .delay(250)
+            .style('background-color', (d, i, n) => {
+              const sel = d3.select(n[i])
+
+              if (sel.classed('bin-count-winner')) return '#84F0C9'
+              else return 'rgba(0,0,0,0)'
+            })
+
+					vsCat
+            .style('height', (d, i) => {
+              const brandTitles = $sel.select('.bin-brandTGroup')
+              const brandHeight = brandTitles.node().offsetHeight
+              if(i == 0) return `${brandHeight - 2}px`
+              else return '45px'
+            })
+            .style('border-color', '#c9c9c9')
+            .style('margin', '2px 0')
+
+          vs
+            .transition()
+            .duration(500)
+            .delay((d, i) => i * 100)
+            .ease(d3.easeCubicInOut)
+            .style('opacity', 1)
+
+					legend
+						.transition()
+						.duration(500)
+						.ease(d3.easeCubicInOut)
+						.style('opacity', 1)
+
           fentyHigh
             .transition()
             .duration(500)
