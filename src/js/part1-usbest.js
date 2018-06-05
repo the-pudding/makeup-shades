@@ -190,7 +190,7 @@ function scrollResize(){
   const chart = graphic.select('.chart')
   const text = $sel.select('.scroll-text')
   const step = text.selectAll('.step')
-  
+
   step
     .style('height',`${stepHeight}px`)
 
@@ -199,15 +199,14 @@ function scrollResize(){
   console.log({containerWidth})
 
   graphic
-    .style('width', `${containerWidth }px`)
+    .style('width', `${containerWidth}px`)
     .style('height', `${window.innerHeight}px`)
 
   const chartMargin = 50
   const textWidth = text.node().offsetWidth
-  const chartWidth = graphic.node().offsetWidth - textWidth - chartMargin
+  const chartWidth = graphic.node().offsetWidth //- textWidth - chartMargin
 
   chart
-    .style('width', `${chartWidth}px`)
     .style('height', `${Math.floor(window.innerHeight)}px`)
 
   scroller.resize()

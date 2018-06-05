@@ -113,8 +113,6 @@ d3.selection.prototype.brawl = function init(options) {
 
 				height = $sel.node().offsetHeight - marginTop - marginBottom;
 
-        $sel
-          .style('width', `${width}px`)
 				return Chart;
 			},
 			// update scales and render chart
