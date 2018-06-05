@@ -262,10 +262,10 @@ d3.selection.prototype.headToHead = function init(options) {
         const counts = $sel.selectAll('.bin-count')
         const vsCat = $sel.selectAll('.bin-vsCat')
         const vs = $sel.selectAll('.bin-vs')
-				const legend = $sel.selectAll('.graphic-legend')
+				const legend = d3.selectAll('.graphic-legend')
         const fentyHigh = $sel.selectAll('.bin-category-2, .bin-vsCat-3, .bin-category-3, .bin-vsCat-4, .bin-category-5, .bin-vsCat-6, .bin-category-9, .bin-vsCat-10')
         const mufeHigh = $sel.selectAll('.bin-category-6, .bin-vsCat-7, .bin-category-7, .bin-vsCat-8, .bin-category-8, .bin-vsCat-9')
-
+				console.log({legend})
         function step0(){
           brands
             .classed('spread', false)

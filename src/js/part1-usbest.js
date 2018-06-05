@@ -77,8 +77,11 @@ function setupBrawl(){
   setupCompetitorMap()
   $sel = d3.select(this)
   const comp = $sel.at('data-competitors')
+  const num = competitorMap.get(comp).number
 
-  const filteredShades = filterDataNoDD(comp)
+  let filteredShades = null
+  if (comp == 'poc-marketed') filteredShades = filterbipoc()
+  else filteredShades = filterDataNoDD(comp)
 
   const thisBrawl = $brawl.select('.brawl')
 
@@ -92,7 +95,12 @@ function setupBrawl(){
 
   setupUI(chart)
   scrollResize()
-  setupScroll(comp)
+  setupScroll(chart, comp)
+}
+
+function filterbipoc(){
+  const filtered = shadeData.filter(d => d.group == 4 || d.group == 0)
+  return filtered
 }
 
 function filterDataNoDD(comp){
@@ -238,10 +246,28 @@ function scrollResize(){
 
 
 
-function handleStepEnter(response, section){
+function handleStepEnter(chart, response, section){
   const index = response.index
-  //console.log({section, index, toggle})
-  toggle(section, index)
+  const graphic = d3.select(`.${section}`).select('.scroll-graphic')
+  const dd = graphic.select('select')
+
+  if (section === 'scroll-poc-marketed'){
+    if (index === 0) {
+      toggle(section, 1)
+      handleDropdown(chart, "White")
+      dd.selectAll('option')
+        .property('selected', d => d == "White")
+    }
+    if (index === 1) {
+      toggle(section, 1)
+      handleDropdown(chart, "BIPOC")
+      dd.selectAll('option')
+        .property('selected', d => d == 'BIPOC')
+        console.log({dd})
+
+    }
+  } else toggle(section, index)
+
 }
 
 function handleContainerEnter(response, section){
@@ -257,7 +283,7 @@ function handleContainerExit(response, section){
     graphic.classed('is-bottom', response.direction === 'down')
 }
 
-function setupScroll(comp){
+function setupScroll(chart, comp){
   const section = compSectionMap.get(comp).section
   console.log({section})
   const scroller = scrollama()
@@ -269,7 +295,7 @@ function setupScroll(comp){
     debug: false
   })
   //.onStepEnter(handleStepEnter)
-  .onStepEnter((response, s) => handleStepEnter(response, section))
+  .onStepEnter((response, s) => handleStepEnter(chart, response, section))
   .onContainerEnter((response, s) => handleContainerEnter(response, section))
   .onContainerExit((response, s) => handleContainerExit(response, section))
 

@@ -305,23 +305,25 @@ d3.selection.prototype.brawl = function init(options) {
 				const selected = d3.select(`.${section}`)
 				const check = selected.select('.toggle input')
 
+				console.log({section})
+
 				function step0(){
 					console.log("step 0 ran")
 					check.property('checked', false)
 
 					selected.selectAll('.bin-brand-pf')
 						.classed('is-visible', false)
-
 				}
 				function step1(){
 					check.property('checked', true)
 
 					selected.selectAll('.bin-brand-pf')
 						.classed('is-visible', true)
-
 				}
-				if (step === 0) step0()
-				if (step === 1) step1()
+
+					if (step === 0) step0()
+					if (step === 1) step1()
+
 				return Chart
 			}
 		};
