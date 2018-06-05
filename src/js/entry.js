@@ -5,6 +5,7 @@ import loadData from './load-data'
 import graphic from './graphic';
 import part1 from './part-1'
 import usbest from './part1-usbest'
+import spark from './spark-graphic'
 
 const $body = d3.select('body');
 let previousWidth = 0;
@@ -28,6 +29,7 @@ function init() {
 	graphic.init();
 	part1.init()
 	usbest.init()
+	spark.init()
 }
 
 init();

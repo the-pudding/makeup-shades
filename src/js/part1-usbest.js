@@ -147,13 +147,9 @@ function handleClick(){
 function handleDropdown(chart, selected){
   const wholeData = shadeData.filter(d => d.group == 3 || d.group == 4 || d.group == 0)
 
-  console.log({selected})
-
   let selectedData = null
 
   let section = d3.select('.scroll-poc-marketed')
-
-  console.log({section})
 
   let button = section.selectAll('.is-active')
 
@@ -182,7 +178,6 @@ function setupUI(chart){
   $switch.on('change', handleSwitch)
 
   $buttons = $sel.selectAll('.ui-display_button')
-  console.log({$sel})
 
   $buttons.on('click', handleClick)
 
@@ -228,8 +223,6 @@ function scrollResize(){
 
   const containerWidth = d3.select('.scroll').node().offsetWidth
 
-  console.log({containerWidth})
-
   graphic
     .style('width', `${containerWidth}px`)
     .style('height', `${window.innerHeight}px`)
@@ -263,8 +256,6 @@ function handleStepEnter(chart, response, section){
       handleDropdown(chart, "BIPOC")
       dd.selectAll('option')
         .property('selected', d => d == 'BIPOC')
-        console.log({dd})
-
     }
   } else toggle(section, index)
 
@@ -274,7 +265,6 @@ function handleContainerEnter(response, section){
   const graphic = d3.select(`.${section}`).select('.scroll-graphic')
   graphic.classed('is-fixed', true)
   graphic.classed('is-bottom', false)
-  console.log({graphic})
 }
 
 function handleContainerExit(response, section){
@@ -285,7 +275,6 @@ function handleContainerExit(response, section){
 
 function setupScroll(chart, comp){
   const section = compSectionMap.get(comp).section
-  console.log({section})
   const scroller = scrollama()
   scroller.setup({
     container: `.${section}`,
@@ -300,7 +289,6 @@ function setupScroll(chart, comp){
   .onContainerExit((response, s) => handleContainerExit(response, section))
 
   scrollers.push(scroller)
-  console.log({scrollers})
 }
 
 function resize(){

@@ -1,0 +1,64 @@
+.spark
+  display flex
+  flex-wrap wrap
+  max-width 800px
+  margin 0 auto
+
+  .bin-group
+    display flex
+    flex-direction column
+    align-items center
+    justify-content: flex-end
+    width 150px
+    max-height 500px
+    margin 0 1rem
+
+    .bin-brandTGroup
+      text-transform uppercase
+      font-weight 600
+      align-self center
+      border-bottom 1px solid $gray-light
+      set-type-size('small', true)
+
+
+    .category-group
+      display flex
+      flex-direction row
+      align-items: flex-end
+      height: 180px
+      border-bottom 1px solid $gray
+
+      .bin-category
+        display flex
+        align-items: flex-end
+        width 15px
+
+    .bin-labelGroup
+      display flex
+      flex-direction column-reverse
+      justify-content: flex-start
+      align-items: center
+      //transform translate(8px, 0)
+
+      .bin-labelsOnly
+        order 0
+        display flex
+        flex-direction row
+        justify-content: space-between;
+        set-type-size('xx-small', true)
+        text-align left
+        color $gray-light
+        opacity 1
+        width 150px
+
+        .bin-labelCat
+          &-odd
+            opacity 0
+
+
+      .bin-labelTitle
+        set-type-size('x-small', true)
+        text-transform: uppercase;
+        color $gray-light
+        text-align center
+        order 1

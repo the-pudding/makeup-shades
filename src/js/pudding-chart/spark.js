@@ -7,7 +7,7 @@
  4b. const chart = d3.select('.thing').datum(datum).puddingChartLine();
 */
 
-d3.selection.prototype.headToHead = function init(options) {
+d3.selection.prototype.spark = function init(options) {
 	function createChart(el) {
 		const $sel = d3.select(el);
 		let data = $sel.datum();
@@ -46,19 +46,35 @@ d3.selection.prototype.headToHead = function init(options) {
 			},
 			// update scales and render chart
 			render() {
+          const groups = [{
+            num: 0,
+            group: 'Fenty'
+          }, {
+            num: 2,
+            group: 'US Bestsellers'
+          }, {
+            num: 3,
+            group: 'BIPOC Founders'
+          }, {
+            num: 4,
+            group: 'White Founders'
+          }, {
+            num: 5,
+            group: 'Nigeria'
+          }, {
+            num: 6,
+            group: 'Japan'
+          }, {
+            num: 7,
+            group: 'India'
+          }]
+
+          const groupMap = d3.map(groups, d => d.num)
+
           const nested = d3.nest()
-            .key(e => e.brand_short)
+            .key(e => e.group)
             .key(d => d.lightnessGroup)
             .entries(data)
-
-          const brandCounts = d3.nest()
-            .key(d => d.brand_short)
-            .rollup(e => e.length)
-            .entries(data)
-
-          const countMap = d3.map(brandCounts, d => d.key)
-
-          const brandMap = d3.map(data, d => d.brand_short)
 
           let lightnessGroups = []
 
@@ -76,18 +92,13 @@ d3.selection.prototype.headToHead = function init(options) {
           return {key: e.key, values: updatedVal}
         })
 
-        const lightness1 = lightnessGroups[0]
-        const lightness2 = lightnessGroups[1]
-        const allLightness = lightness1.concat(lightness2)
-
         // enter category divs
           const brands = $sel
-            .selectAll('.bin-brand')
+            .selectAll('.bin-group')
             .data(allNested)
             .enter()
             .append('div')
-            .attr('class', (d, i) => `bin-brand bin-brand-${i}`)
-            .attr('data-brand', (d, i) => i)
+            .attr('class', (d, i) => `bin-group bin-group-${i}`)
 
           // adding column headers
           const brandTitleGroup = brands
@@ -99,21 +110,16 @@ d3.selection.prototype.headToHead = function init(options) {
 
           brandTitleGroup
               .append('text')
-              .text(d => brandMap.get(d.key).brand)
+              .text(d => groupMap.get(d.key).group)
               .attr('class', 'tk-atlas bin-brandTitle')
 
-            brandTitleGroup
-              .append('text')
-              .text(d => brandMap.get(d.key).product)
-              .attr('class', 'tk-atlas bin-brandProduct')
-
-            brandTitleGroup
-              .append('text')
-              .text(d => `${countMap.get(d.key).value} shades`)
-              .attr('class', 'tk-atlas bin-brandTotal')
-
           // adding lightness categories spread class goes here
-          const categories = brands
+
+          const catGroup = brands
+            .append('div')
+            .attr('class', 'category-group')
+
+          const categories = catGroup
             .selectAll('.bin-category')
             .data(d => {
               const val = d.values
@@ -142,71 +148,13 @@ d3.selection.prototype.headToHead = function init(options) {
             .enter()
             .append('div')
             .attr('class', d => `bin-swatch bin-swatch-${d.L}`)
-            .style('height', `4px`)
-            .style('width', `75px`)
+            .style('height', `3px`)
+            .style('width', `15px`)
             .style('background-color', d => `#${d.hex}`)
-
-          const counts = categories
-            .selectAll('.bin-count')
-            .data(d => [d])
-            .enter()
-            .append('text')
-            .attr('data-value', d => d.values.length)
-            .attr('data-group', d => d.key)
-            .attr('class', (d, i) => {
-              const filtered = allLightness.filter(e => e.key == d.key)
-              const filtMap = filtered.map(f => {
-                const length = f.values.length
-                return length
-              })
-              const maximum = Math.max(...filtMap)
-
-              if (d.values.length == 0) return 'tk-atlas bin-count bin-count-zero'
-              else if (d.values.length == maximum) return 'tk-atlas bin-count bin-count-winner'
-              else return 'tk-atlas bin-count'
-            })
-            .attr('data-status', (d, i) => {
-              const filtered = allLightness.filter(e => e.key == d.key)
-              const filtMap = filtered.map(f => {
-                const length = f.values.length
-                return length
-              })
-              const maximum = Math.max(...filtMap)
-
-              if (d.values.length == maximum) return 'winner'
-              else return 'loser'
-            })
-            .text(d => d.values.length)
-
-            // Setting up vs divs
-
-            const vsGroup = $sel
-              .selectAll('.bin-vsGroup')
-              .data([0])
-              .enter()
-              .append('div')
-              .attr('class', 'bin-vsGroup')
-
-            const vsCat = vsGroup
-              .selectAll('.bin-vsCat')
-              .data([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
-              .enter()
-              .append('div')
-              .attr('class', (d, i) => `tk-atlas bin-vsCat bin-vsCat-${d}`)
-
-            const vs = vsCat
-              .selectAll('.bin-vs')
-              .data(d => [d])
-              .enter()
-              .append('text')
-              .attr('class', (d, i) => `tk-atlas bin-vs bin-vs-${d}`)
-              .text('vs')
-              .attr('alignment-baseline', 'middle')
-              .attr('text-anchor', 'middle')
 
             // Setting up label divs
 
-            const labelGroup = $sel
+            const labelGroup = brands
               .selectAll('.bin-labelGroup')
               .data([0])
               .enter()
@@ -217,21 +165,30 @@ d3.selection.prototype.headToHead = function init(options) {
               .append('div')
               .attr('class', 'bin-labelTGroup')
 
+            const onlyLabels = labelGroup
+              .append('div')
+              .attr('class', 'bin-labelsOnly')
+
             const labelTitle = labelTitleGroup
               .selectAll('.bin-labelTitle')
-              .data(['Lightness', 'Range'])
+              .data(['Lightness'])
               .enter()
               .append('text')
               .text(d => d)
               .attr('class', 'tk-atlas bin-labelTitle')
 
 
-            const labelCat = labelGroup
+            const labelCat = onlyLabels
               .selectAll('.bin-labelCat')
-              .data([0, 1, 2, 3, 4, 5, 6, 7, 8, 9])
+              .data([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
               .enter()
               .append('div')
-              .attr('class', 'bin-labelCat')
+              .attr('class', d => {
+                // check if odd
+                if (d & 1) return `bin-labelCat bin-labelCat-odd`
+                else return `bin-labelCat bin-labelCat-even`
+              })
+              //.style('width', `15px`)
 
             const label = labelCat
               .selectAll('.bin-label')
@@ -239,7 +196,7 @@ d3.selection.prototype.headToHead = function init(options) {
               .enter()
               .append('text')
               .attr('class', 'tk-atlas bin-label')
-              .text(d => `${d * 10} - ${(d * 10) + 10}`)
+              .text(d => `${d * 10}`)
               .attr('alignment-baseline', 'middle')
               .attr('text-anchor', 'middle')
 
@@ -265,6 +222,7 @@ d3.selection.prototype.headToHead = function init(options) {
 				const legend = d3.selectAll('.graphic-legend')
         const fentyHigh = $sel.selectAll('.bin-category-2, .bin-vsCat-3, .bin-category-3, .bin-vsCat-4, .bin-category-5, .bin-vsCat-6, .bin-category-9, .bin-vsCat-10')
         const mufeHigh = $sel.selectAll('.bin-category-6, .bin-vsCat-7, .bin-category-7, .bin-vsCat-8, .bin-category-8, .bin-vsCat-9')
+				console.log({legend})
         function step0(){
           brands
             .classed('spread', false)

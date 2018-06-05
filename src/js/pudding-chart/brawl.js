@@ -102,8 +102,6 @@ d3.selection.prototype.brawl = function init(options) {
 
         const test = $sel.classed('brawl-pocMarketed')
 
-        console.log({$sel, test})
-
         if ($sel.classed('brawl-pocMarketed')) bipoc = true
 			},
 			// on resize, update new dimensions
@@ -305,10 +303,7 @@ d3.selection.prototype.brawl = function init(options) {
 				const selected = d3.select(`.${section}`)
 				const check = selected.select('.toggle input')
 
-				console.log({section})
-
 				function step0(){
-					console.log("step 0 ran")
 					check.property('checked', false)
 
 					selected.selectAll('.bin-brand-pf')
