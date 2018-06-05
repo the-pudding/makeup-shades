@@ -38,12 +38,12 @@
 
       .graphic-title
         text-transform uppercase
-        set-type-size('small', true)
+        set-type-size('xx-small', true)
         margin-bottom 0
         margin-top 0
 
       .graphic-sub
-        set-type-size('large', true)
+        set-type-size('medium', true)
         font-weight 600
         margin-top 0
         margin-bottom 0.25rem
@@ -109,13 +109,12 @@
             display flex
             align-items flex-start;
             justify-content space-between
-            border 1px solid lighten($gray-light, 5)
-            //background-color #eee
+            border 1px solid #ddd
             border-radius 2px
             padding 1px
             height 42px
             margin 3px 2px
-            box-shadow 0 2px 2px 0 rgba(0, 0, 0, 0.1), 0 3px 10px 0 rgba(0, 0, 0, 0.1)
+            box-shadow 0 2px 2px 0 rgba(0, 0, 0, 0.05), 0 2px 8px 0 rgba(0, 0, 0, 0.025)
 
             .bin-swatchGroup
               display flex
@@ -199,8 +198,10 @@
 
             text
               text-align center
-              set-type-size('x-small', true)
+              set-type-size('xx-small', true)
+              text-transform uppercase
               color $gray
+              line-height 1.33
 
           .bin-labelCat
             height 42px

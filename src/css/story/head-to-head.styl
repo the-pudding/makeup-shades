@@ -4,7 +4,7 @@
   display flex
   flex-direction row
   align-items flex-start
-  justify-content center
+  justify-content flex-start
 
   .bin-brand
     display flex
@@ -24,7 +24,7 @@
 
       .bin-category
         &.spread
-          border-left 1px dashed $gray-light
+          border-left 1px solid #eee
 
     &-1
       order 3
@@ -39,7 +39,8 @@
 
       .bin-category
         &.spread
-          border-right 1px dashed $gray-light
+          border-right 1px solid #eee
+
 
     .bin-category
       width 100%
@@ -51,8 +52,8 @@
 
       &.spread
         //height 45px
-        border-top 1px dashed $gray-light
-        border-bottom 1px dashed $gray-light
+        border-top 1px solid #eee
+        border-bottom 1px solid #eee
         //margin 2px
         padding-bottom 2px
 
@@ -95,8 +96,8 @@
     margin 5px 0
 
     .bin-vsCat
-      border-top 1px dashed $gray-light
-      border-bottom 1px dashed $gray-light
+      border-top 1px solid #eee
+      border-bottom 1px solid #eee
       margin 2px 0
       padding-bottom 2px
       display flex
@@ -120,7 +121,7 @@
     align-items center
     flex-direction column
     padding 2px
-    margin 5px 1rem
+    margin 5px 0.25rem
 
     .bin-labelTGroup
       display flex
@@ -131,7 +132,8 @@
 
       text
         text-align center
-        set-type-size('small', true)
+        set-type-size('xx-small', true)
+        text-transform uppercase
         color $gray
         line-height: 1.33
 
