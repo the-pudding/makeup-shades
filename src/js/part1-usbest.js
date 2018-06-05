@@ -70,6 +70,7 @@ function setupBrawl(){
     .on({dispatch, event: 'button'})
 
   setupUI()
+  scrollResize()
 }
 
 function filterDataNoDD(comp){
@@ -182,9 +183,37 @@ function setupUI(){
   }
 }
 
+function scrollResize(){
+  const stepHeight = Math.floor(window.innerHeight * 0.8)
 
+  const graphic = $sel.select('.scroll-graphic')
+  const chart = graphic.select('.chart')
+  const text = $sel.select('.scroll-text')
+  const step = text.selectAll('.step')
+  
+  step
+    .style('height',`${stepHeight}px`)
 
-function resize() {}
+  const containerWidth = d3.select('.scroll').node().offsetWidth
+
+  console.log({containerWidth})
+
+  graphic
+    .style('width', `${containerWidth }px`)
+    .style('height', `${window.innerHeight}px`)
+
+  const chartMargin = 50
+  const textWidth = text.node().offsetWidth
+  const chartWidth = graphic.node().offsetWidth - textWidth - chartMargin
+
+  chart
+    .style('width', `${chartWidth}px`)
+    .style('height', `${Math.floor(window.innerHeight)}px`)
+
+  scroller.resize()
+}
+
+function resize(){}
 
 function init() {
 

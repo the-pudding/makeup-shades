@@ -45,6 +45,8 @@ function scrollResize(){
 
   const containerWidth = container.node().offsetWidth
 
+  console.log({container, containerWidth})
+
   graphic
     .style('width', `${containerWidth}px`)
     .style('height', `${window.innerHeight}px`)

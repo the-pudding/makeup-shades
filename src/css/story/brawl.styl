@@ -1,189 +1,248 @@
-.brawl
-  //max-width 30rem
-  //margin 0 auto
+.comp-brawl
   display flex
   flex-direction row
-  align-items flex-start
-  justify-content center
+  justify-content: flex-end
+  position relative
+  max-width $column-width
+  margin 0 auto
 
-  .bin-brand
-    order 2
-    display flex
-    justify-content flex-start
-    align-items center;
-    flex-direction column
-    padding-bottom 1px
-    margin 5px 0
-    max-width 52px
+  .scroll-text
+    max-width 20rem
+    position relative
+    padding 0 1rem
+    //width 33%
+    margin-right 2rem
 
-    &-pf
-      order 1
-      margin-right 1.2rem
-      width 0
-      overflow hidden
-      transition width 500ms
-
-      .bin-numGroup
-        width 0 !important
-        overflow hidden
-
-      &.is-visible
-        width 50px
-        transition width 500ms
-        overflow visible
-
-        .bin-numGroup
-          width 40px !important
-          //height 40px
-          overflow visible
-
-      .bin-brandTitle
-        color #00f
-
-      .bin-brandProduct
-        color lighten(#00f, 30) !important
-
-    .bin-category
-      width 44px
+    .step
+      margin 2rem auto
       display flex
-      align-items flex-start;
-      justify-content space-between
-      border 1px solid lighten($gray-light, 5)
-      //background-color #eee
-      border-radius 2px
-      padding 1px
-      height 44px
-      margin 4px 2px
-      box-shadow 0 2px 2px 0 rgba(0, 0, 0, 0.1), 0 3px 10px 0 rgba(0, 0, 0, 0.1)
+      align-items center
 
-      .bin-swatchGroup
+  &_graphic
+    position absolute
+    top 0
+    left 0
+    bottom auto
+    transform translate3d(0, 0, 0)
+
+    &.is-fixed
+      position fixed
+
+    &.is-bottom
+      bottom 0
+      top auto
+
+    .graphic-hed
+      max-width $column-width
+      margin 0 auto
+
+      .graphic-title
+        text-transform uppercase
+        set-type-size('small', true)
+        margin-bottom 0
+        margin-top 0
+
+      .graphic-sub
+        set-type-size('large', true)
+        font-weight 600
+        margin-top 0
+
+    .chart
+      position absolute
+      //margin-left 2rem
+      //left 1rem
+      top 50%
+      -moz-transform: translateY(-50%);
+      -webkit-transform: translateY(-50%);
+      transform: translateY(-50%);
+
+
+      .brawl
+        //max-width 30rem
+        //margin 0 auto
         display flex
         flex-direction row
-        flex-wrap wrap
-        justify-content flex-start;
-        align-items flex-start;
-        opacity 0
-        transition opacity 500ms
-
-        &.is-visible
-          opacity 1
-          transition opacity 500ms
-
-        .bin-swatch
-          margin 1px
-          border-radius 2px
-          display relative
-
-      .bin-numGroup
-        width 40px
-        height 40px
-        display flex
+        align-items flex-start
         justify-content center
-        align-items center
-        position absolute
-        opacity 0
-        transition opacity 500ms
 
-        &.is-visible
-          opacity 1
-          transition opacity 500ms
+        .bin-brand
+          order 2
+          display flex
+          justify-content flex-start
+          align-items center;
+          flex-direction column
+          padding-bottom 1px
+          margin 5px 0
+          max-width 52px
 
-        .bin-num
-          &-0
-            color $gray-light
+          &-pf
+            order 1
+            margin-right 1.2rem
+            width 0
+            overflow hidden
+            transition width 500ms
+
+            .bin-numGroup
+              width 0 !important
+              overflow hidden
+
+            &.is-visible
+              width 50px
+              transition width 500ms
+              overflow visible
+
+              .bin-numGroup
+                width 40px !important
+                //height 40px
+                overflow visible
+
+            .bin-brandTitle
+              color #00f
+
+            .bin-brandProduct
+              color lighten(#00f, 30) !important
+
+          .bin-category
+            width 44px
+            display flex
+            align-items flex-start;
+            justify-content space-between
+            border 1px solid lighten($gray-light, 5)
+            //background-color #eee
+            border-radius 2px
+            padding 1px
+            height 44px
+            margin 4px 2px
+            box-shadow 0 2px 2px 0 rgba(0, 0, 0, 0.1), 0 3px 10px 0 rgba(0, 0, 0, 0.1)
+
+            .bin-swatchGroup
+              display flex
+              flex-direction row
+              flex-wrap wrap
+              justify-content flex-start;
+              align-items flex-start;
+              opacity 0
+              transition opacity 500ms
+
+              &.is-visible
+                opacity 1
+                transition opacity 500ms
+
+              .bin-swatch
+                margin 1px
+                border-radius 2px
+                display relative
+
+            .bin-numGroup
+              width 40px
+              height 40px
+              display flex
+              justify-content center
+              align-items center
+              position absolute
+              opacity 0
+              transition opacity 500ms
+
+              &.is-visible
+                opacity 1
+                transition opacity 500ms
+
+              .bin-num
+                &-0
+                  color $gray-light
 
 
-  .bin-vsGroup
-    order 2
-    display flex
-    justify-content center
-    align-items center
-    flex-direction column
-    padding 2px 0
-    margin 5px 0
+        .bin-vsGroup
+          order 2
+          display flex
+          justify-content center
+          align-items center
+          flex-direction column
+          padding 2px 0
+          margin 5px 0
 
-    .bin-vsCat
-      border-top 1px dashed $gray-light
-      border-bottom 1px dashed $gray-light
-      margin 2px 0
-      padding-bottom 2px
-      display flex
-      justify-content center
-      align-content center
-      flex-direction column
+          .bin-vsCat
+            border-top 1px dashed $gray-light
+            border-bottom 1px dashed $gray-light
+            margin 2px 0
+            padding-bottom 2px
+            display flex
+            justify-content center
+            align-content center
+            flex-direction column
 
-      &-0
-        visibility hidden
+            &-0
+              visibility hidden
 
-      .bin-vs
-        set-type-size('small', true)
-        color $gray
+            .bin-vs
+              set-type-size('small', true)
+              color $gray
 
 
 
-  .bin-labelGroup
-    order 0
-    display flex
-    justify-content center
-    align-items center
-    flex-direction column
-    padding 2px
-    margin 5px 0
-    transform translate(0, 12px)
+        .bin-labelGroup
+          order 0
+          display flex
+          justify-content center
+          align-items center
+          flex-direction column
+          padding 2px
+          margin 5px 0
+          transform translate(0, 12px)
 
-    .bin-labelTGroup
-      display flex
-      flex-direction column
-      justify-content: center
-      height 50px
-      margin 2px 0
+          .bin-labelTGroup
+            display flex
+            flex-direction column
+            justify-content: center
+            height 50px
+            margin 2px 0
 
-      text
-        text-align center
-        set-type-size('x-small', true)
-        color $gray
+            text
+              text-align center
+              set-type-size('x-small', true)
+              color $gray
 
-    .bin-labelCat
-      height 44px
-      margin 4px 0
-      padding-bottom 2px
-      display flex
-      justify-content center
-      align-content center
-      flex-direction column
+          .bin-labelCat
+            height 44px
+            margin 4px 0
+            padding-bottom 2px
+            display flex
+            justify-content center
+            align-content center
+            flex-direction column
 
-      .bin-label
-        set-type-size('xx-small', true)
-        color $gray
+            .bin-label
+              set-type-size('xx-small', true)
+              color $gray
 
-  .bin-brandTGroup
-    display flex
-    flex-direction column
-    justify-content: flex-end
-    height 50px
-    margin 10px
-    transform rotate(-45deg)
-    max-width 40px
+        .bin-brandTGroup
+          display flex
+          flex-direction column
+          justify-content: flex-end
+          height 50px
+          margin 10px
+          transform rotate(-45deg)
+          max-width 40px
 
-    text
-      text-align center
-      white-space nowrap
+          text
+            text-align center
+            white-space nowrap
 
-    .bin-brandTitle
-      set-type-size('small', true)
-      font-weight 600
+          .bin-brandTitle
+            set-type-size('small', true)
+            font-weight 600
 
-    .bin-brandProduct
-      set-type-size('xx-small', true)
-      color $gray
-      line-height 0.9
-      //display none
+          .bin-brandProduct
+            set-type-size('xx-small', true)
+            color $gray
+            line-height 0.9
+            //display none
 
-    .bin-brandTotal
-      set-type-size('xx-small', true)
-      color $gray
-      text-transform uppercase
-      display none
+          .bin-brandTotal
+            set-type-size('xx-small', true)
+            color $gray
+            text-transform uppercase
+            display none
 
-      text
-        line-height 0.8
+            text
+              line-height 0.8
