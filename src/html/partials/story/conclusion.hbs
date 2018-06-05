@@ -1,15 +1,20 @@
-<div class='conclusion text-content'>
-  <p class='conclusion-title'>{{copy.conclusion-title}}
-  <p class='prose'>{{{copy.conclusion-intro}}}</p>
 
-  <ul>
-    {{#each copy.conclusion}}
-      <li>{{{this}}}</li>
+<section class='conclusion'>
+  {{> story/divider }}
+
+  <div class='text-content'>
+    <p class='conclusion-title'>{{copy.conclusion-title}}
+    <p class='prose'>{{{copy.conclusion-intro}}}</p>
+
+    <ul>
+      {{#each copy.conclusion}}
+        <li>{{{this}}}</li>
+      {{/each}}
+    </ul>
+
+    {{#each copy.conclusion-post}}
+      <p class='prose'>{{{value}}}</p>
     {{/each}}
-  </ul>
 
-  {{#each copy.conclusion-post}}
-    <p class='prose'>{{{value}}}</p>
-  {{/each}}
-
-</div>
+  </div>
+</section>
