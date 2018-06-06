@@ -10,26 +10,27 @@ section
 .section-sub
 	font-weight bold
 	margin 1rem 0
-
-.emojiface 
-	margin: 2rem auto 0
-	width: 8rem
-	height: auto
-
+.text-content ul
+	line-height 1.5
+	margin-left 1.25rem
+	li
+		margin-bottom 0.75rem
+		padding-left 0.25rem
 .img1
+	max-width 12rem
+	margin 2rem auto 1rem
 	+mq('bp-3')
 		max-width 16rem
-		margin auto
 	+mq('bp-5')
 		float right
 		margin-left 2rem
 		margin-bottom 0.5rem
-		margin-right -4rem
+		margin-right -2rem
 		width 33%
 		height auto
 
 .divider
-	margin 0 auto 4rem
+	margin 2rem auto
 	text-align center
 .divider-dot
 	display inline-block
@@ -53,12 +54,24 @@ section
 	background-color red
 .dot11
 	background-color blue
+.part11img
+	margin 1rem auto
+	position relative
+	z-index 10
 .part12img
-	margin 2rem auto
+	margin 0 auto -0.5rem
+.part13img
+	margin 2rem auto 4rem
 .part2img 
 	margin 4rem auto 0
 	max-width 16rem
-
+.text-content + .comp-brawl
+	margin-top 4rem
+#part-1 .fenty-mufe + .text-content
+	margin-top -4rem
+#part-1 .comp-brawl + .text-content,
+#part-2 .comp-brawl + .text-content
+	margin-top -4rem
 a {
 	border-color: #ac7752
 }

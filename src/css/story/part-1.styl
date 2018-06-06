@@ -9,7 +9,7 @@
       padding 0 1rem
 
   .measurement
-    margin 2rem 1rem
+    margin 1rem 1rem 2rem
     background-color lighten(#fde9de, 2.5)
     padding 1rem 2rem
 
@@ -124,7 +124,8 @@
     margin 1rem
     background-color #583218
     color white
-    padding 1rem 
+    padding 0.5rem 1rem 
+    set-type-size('small', true)
 
   .part1-conclusion
     max-width $column-width
@@ -135,16 +136,24 @@
 
     ul
       padding 0 1rem
-  .founders-table-header
-    font-style italic
-    margin-top 2.5rem
+      margin-left 0.75rem
+      line-height 1.25
+      margin-top 2rem
+      margin-bottom 2rem
+      li
+        margin-left 1rem
+        padding-left 0
+        margin-bottom 1rem
+   .founders-table-header
+      font-style italic
+      margin-top 1.5rem
   .founders-table
-    margin-top -2rem
-    margin-bottom 2.5rem
+    margin-top -2.5rem
+    margin-bottom 1.5rem
     margin-left 1rem
     margin-right 1rem
     .bipoc-title
-      margin-bottom 0.5rem
+      margin-bottom 0.4rem
       display inline-block
       padding-bottom 0.125rem
       font-style italic
@@ -154,7 +163,27 @@
       vertical-align top
     .bipoc-white
       .bipoc-title
-        border-bottom 1px solid #f4cca8
+        border-bottom 0.25rem solid #f4cca8
     .bipoc-bipoc
       .bipoc-title
-        border-bottom 1px solid #894f29
+        border-bottom 0.25rem solid #894f29
+.part1-conclusion ul li.check::before {
+  content: '✅';
+  font-size: 0.8rem;
+  display: block;
+  height: 0;
+  width: 0;
+  left: -1.5rem;
+  top: 0.25rem;
+  position: relative;
+}
+.part1-conclusion ul li.cross::before {
+  content: '❌';
+  font-size: 0.8rem;
+  display: block;
+  height: 0;
+  width: 0;
+  left: -1.5rem;
+  top: 0.25rem;
+  position: relative;
+}

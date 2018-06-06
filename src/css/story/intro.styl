@@ -15,8 +15,8 @@
 			set-type-size('xxx-large', true)
 		+mq('bp-5')
 			set-type-size('xxxx-large', true)
-		color #000
-		text-shadow 2px 2px 2px #f4cca8
+		color red
+		text-shadow 0px 0px 1px #f4cca8, 1px 1px 1px #f4cca8, 2px 2px 1px #f4cca8 
 
 	&__byline
 		max-width $column-width
@@ -25,16 +25,47 @@
 		padding-bottom 1.5rem
 		text-align center
 		set-type-size('small', true)
+		line-height 2
+	&__credit
+		color #666
 
 	&__dek
-		max-width $column-width
 		font-weight bold
 		margin 0 auto
 		padding-top 1.5rem
 		text-align center
 		set-type-size('medium', true)
+		max-width $column-width
+		+mq('bp-3')
+			max-width 12rem
+		+mq('bp-5')
+			max-width $column-width
 
 	.by-line-sep
 		color blue
 		font-weight 600
 		margin 0 0.5rem
+
+.coverimage1
+	position absolute
+	left 0
+	max-width 5.5rem
+	top -2rem
+	+mq('bp-3')
+		max-width 7rem
+		top 6rem
+	+mq('bp-5')
+		left -0.25rem
+		max-width 15rem
+		top -2.5rem
+.coverimage2
+	position absolute
+	right 0
+	max-width 5.75rem	
+	top -2rem
+	+mq('bp-3')
+		max-width 7.5rem
+		top 6rem
+	+mq('bp-5')
+		max-width 15.5rem
+		top -2.5rem

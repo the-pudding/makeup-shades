@@ -1,11 +1,16 @@
 <div class='text-content part1-conclusion'>
-  <p class='conclusion-title'>{{{copy.part1-conclusion-title}}}</p>
+  {{> story/divider }}
+
+  <p class='conclusion-title section-sub tk-atlas'>{{{copy.part1-conclusion-title}}}</p>
   <p class='prose'>{{{copy.part1-conclusion-sub}}}</p>
   <ul>
-  {{#each copy.part1-conclusion-list}}
-    <li>{{{this}}}</li>
-  {{/each}}
+    <li class=check>Fenty foundations have a much better range than Make Up Forever</li>
+    <li class=check>They are as good for women of color as the best of the big mainstream brands</li>
+    <li class=cross>But do not support the darkest skin tone range (10-20 lightness)</li>
+    <li class=check>Fenty has unparalleled support for women with really light skin tones</li>
+    <li class=check>Having 40 shades as a BIPOC-created brand really is unique</li>
   </ul>
+
   
   {{#each copy.part1-post-conclusion}}
     <p class='prose'>{{{value}}}</p>
