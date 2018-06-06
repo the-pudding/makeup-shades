@@ -5,7 +5,7 @@
 
     .section-head
       padding 0 1rem
-      set-type-size('x-large', true)//font-weight 600
+      //set-type-size('x-large', true)//font-weight 600
 
       .part
         text-transform uppercase
@@ -17,14 +17,14 @@
 
     .section-sub
       padding 0 1rem
-      set-type-size('large', true)
+      font-size 28px
 
   .measurement
     margin 1rem 1rem 2rem
-    border 2px solid $boxing-yellow
+    border 2px solid $boxing-red
     //outline 2px solid $boxing-red
     border-radius 255px 15px 225px 15px/15px 225px 15px 255px;
-    background-color lighten($boxing-yellow, 35)
+    background-color lighten($boxing-red, 45)
     padding 1rem 2rem
 
     &-title
@@ -98,14 +98,15 @@
 
           .graphic-title
             text-transform uppercase
-            set-type-size('xx-small', true)
+            font-size 14px
             margin-bottom 0
             margin-top 0
 
           .graphic-sub
-            set-type-size('large', true)
+            font-size 20px
             font-weight 600
             margin-top 0
+            text-transform capitalize
 
           .graphic-legend
             set-type-size('x-small', true)
@@ -126,10 +127,10 @@
   .disclaimer
     margin 2rem 1rem
     //background-color lighten(#fde9de, 2.5)
-    border 2px solid $boxing-yellow
+    border 2px solid blue
     padding 1rem 2rem 0.5rem
     border-radius 255px 15px 225px 15px/15px 225px 15px 255px;
-    background-color lighten($boxing-yellow, 35)
+    background-color rgba(0, 0, 255, 0.2)
     padding 1rem 2rem
 
     &-title
@@ -168,38 +169,87 @@
       margin-bottom 1rem
       border-top 1px solid #fde9de
       border-bottom 1px solid #fde9de
+
       li
         margin-left 1rem
         padding-left 0
         margin-bottom 1rem
-   .founders-table-header
-      font-style italic
-      margin-top 1.5rem
+
+   // .founders-table-header
+   //    font-style italic
+   //    margin-top 1.5rem
   .founders-table
-    margin-top -2.5rem
-    margin-bottom 1.5rem
-    margin-left 1rem
-    margin-right 1rem
-    .bipoc-title
-      margin-bottom 0.4rem
-      display inline-block
-      padding-bottom 0.125rem
-      font-style italic
-    .bipoc-white, .bipoc-bipoc
-      width 48%
-      display inline-block
-      vertical-align top
-    .bipoc-white
-      .bipoc-title
-        border-bottom 0.25rem solid #f4cca8
-    .bipoc-bipoc
-      .bipoc-title
-        border-bottom 0.25rem solid #894f29
-    .bipoc-list
-      margin-left 0
-      li
-        padding-left 0
-        margin-bottom 0.5rem
+    display flex
+    flex-direction column
+    max-width 30rem
+    margin 0 auto
+    text-transform capitalize
+
+    &-header
+      font-weight 600
+      font-size 20px
+      margin 0.5rem auto
+
+    .columns
+      display flex
+      flex-direction row
+      align-items: flex-start
+      justify-content: space-around
+
+      .bipoc-white
+        .bipoc-title
+          border 2px solid #f4cca8
+          padding 0.1rem 0.4rem
+          background-color lighten(#f4cca8, 10)
+          border-radius 255px 25px 225px 25px/25px 225px 25px 255px;
+
+      .bipoc-bipoc
+        .bipoc-title
+          border 2px solid #894f29
+          padding 0.1rem 0.4rem
+          background-color rgba(137, 79, 41, 0.4)
+          border-radius 255px 25px 225px 25px/25px 225px 25px 255px;
+
+      .bipoc-column
+
+        .bipoc-title
+          text-align: center
+          text-transform capitalize
+          font-weight 600
+          margin 1rem 0
+          //border-bottom 1px solid red
+
+        .bipoc-list
+          margin-left 0 !important
+          li
+            text-align center
+            padding-left 0
+            margin-left 0
+            font-size 14px
+            line-height 1
+
+
+
+    // .bipoc-title
+    //   margin-bottom 0.4rem
+    //   display inline-block
+    //   padding-bottom 0.125rem
+    //   font-style italic
+    // .bipoc-white, .bipoc-bipoc
+    //   width 48%
+    //   display inline-block
+    //   vertical-align top
+    // .bipoc-white
+    //   .bipoc-title
+    //     border-bottom 0.25rem solid #f4cca8
+    // .bipoc-bipoc
+    //   .bipoc-title
+    //     border-bottom 0.25rem solid #894f29
+    // .bipoc-list
+    //   margin-left 0
+    //   li
+    //     padding-left 0
+    //     margin-bottom 0.5rem
 .part1-conclusion ul li.check::before {
   content: '✅';
   font-size: 0.8rem;

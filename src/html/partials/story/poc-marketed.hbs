@@ -1,6 +1,5 @@
 <div class='text-content'>
-  {{> story/divider }}
-
+    <img src='assets/img/round13.jpg' class='part13img'>
   <p class='section-sub tk-atlas'>{{copy.part1-3-title}}</p>
   <div class='bipoc-def'>
     <p class='definition tk-atlas'>{{{copy.bipoc-def}}}</p>
@@ -9,30 +8,33 @@
     <p class='prose'>{{{value}}}</p>
   {{/each}}
 
-  <p class='prose founders-table-header'>{{copy.founders-table-header}}</p>
+
   <div class='founders-table'>
-    <div class='bipoc-white'>
-      <p class='bipoc-title'>{{copy.white-founder-title}}</p>
-      <ul class='bipoc-list_white bipoc-list'>
-        {{#each copy.white-founders}}
-          <li>{{{this}}}</li>
-        {{/each}}
-      </ul>
-    </div>
-    <div class='bipoc-bipoc'>
-      <p class='bipoc-title'>{{copy.bipoc-founder-title}}</p>
-      <ul class='bipoc-list_bipoc bipoc-list'>
-        {{#each copy.bipoc-founders}}
-          <li>{{{this}}}</li>
-        {{/each}}
-      </ul>
+    <p class='prose founders-table-header tk-atlas'>{{copy.founders-table-header}}</p>
+    <div class='columns'>
+      <div class='bipoc-white bipoc-column'>
+        <p class='bipoc-title tk-atlas'>{{copy.white-founder-title}}</p>
+        <ul class='bipoc-list_white bipoc-list tk-atlas'>
+          {{#each copy.white-founders}}
+            <li>{{{this}}}</li>
+          {{/each}}
+        </ul>
+      </div>
+      <div class='bipoc-bipoc bipoc-column'>
+        <p class='bipoc-title tk-atlas'>{{copy.bipoc-founder-title}}</p>
+        <ul class='bipoc-list_bipoc bipoc-list tk-atlas'>
+          {{#each copy.bipoc-founders}}
+            <li>{{{this}}}</li>
+          {{/each}}
+        </ul>
+      </div>
     </div>
   </div>
   {{#each copy.part1-3-intro2}}
     <p class='prose'>{{{value}}}</p>
   {{/each}}
 
-  <img src='assets/img/round13.jpg' class='part13img'>
+
 </div>
 
 <div class='scroll-poc-marketed comp-brawl' data-competitors='poc-marketed'>
