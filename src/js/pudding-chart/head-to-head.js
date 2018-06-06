@@ -400,7 +400,7 @@ d3.selection.prototype.headToHead = function init(options) {
             .style('background-color', (d, i, n) => {
               const sel = d3.select(n[i])
 
-              if (sel.classed('bin-count-winner')) return '#84F0C9'
+              if (sel.classed('bin-count-winner')) return '#FCCB31'
               else return 'rgba(0,0,0,0)'
             })
 
@@ -466,7 +466,7 @@ d3.selection.prototype.headToHead = function init(options) {
             .style('background-color', (d, i, n) => {
               const sel = d3.select(n[i])
 
-              if (sel.classed('bin-count-winner')) return '#84F0C9'
+              if (sel.classed('bin-count-winner')) return '#FCCB31'
               else return 'rgba(0,0,0,0)'
             })
 
@@ -497,7 +497,7 @@ d3.selection.prototype.headToHead = function init(options) {
             .transition()
             .duration(500)
             .ease(d3.easeCubicInOut)
-            .style('background-color', 'rgba(132, 240, 201, .20)')
+            .style('background-color', 'rgba(252, 203, 49, 0.2)')
 
           mufeHigh
             .transition()
@@ -534,7 +534,7 @@ d3.selection.prototype.headToHead = function init(options) {
             .style('background-color', (d, i, n) => {
               const sel = d3.select(n[i])
 
-              if (sel.classed('bin-count-winner')) return '#84F0C9'
+              if (sel.classed('bin-count-winner')) return '#FCCB31'
               else return 'rgba(0,0,0,0)'
             })
 
@@ -571,7 +571,7 @@ d3.selection.prototype.headToHead = function init(options) {
             .transition()
             .duration(500)
             .ease(d3.easeCubicInOut)
-            .style('background-color', 'rgba(132, 240, 201, .20)')
+            .style('background-color', 'rgba(252, 203, 49, 0.2)')
 
         }
 

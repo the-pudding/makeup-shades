@@ -1,64 +1,82 @@
-.spark
-  display flex
-  flex-wrap wrap
-  max-width 800px
-  margin 3rem auto 2.25rem
+.spark-container
+  border-top 1px solid $gray-light
+  //border-bottom 1px solid $gray-light
 
-  .bin-group
+  .spark-title
+    max-width 800px
+    padding-top 1rem
+    font-weight 600
+    margin 0 auto
+    set-type-size('large', true)
+
+  .spark
     display flex
-    flex-direction column
-    align-items center
-    justify-content: flex-end
-    width 150px
-    max-height 500px
-    margin 0 1rem
+    flex-wrap wrap
+    max-width 800px
+    margin 3rem auto 2.25rem
 
-    .bin-brandTGroup
-      text-transform uppercase
-      font-weight 600
-      align-self center
-      border-bottom 1px solid $gray-light
-      set-type-size('small', true)
-
-
-    .category-group
+    .bin-group
       display flex
-      flex-direction row
-      align-items: flex-end
-      height: 180px
-      border-bottom 1px solid $gray
+      flex-direction column
+      align-items center
+      justify-content: flex-end
+      width 150px
+      max-height 500px
+      margin 0 1.5rem
 
-      .bin-category
-        display flex
-        align-items: flex-end
-        width 15px
+      .bin-brandTGroup
+        text-transform uppercase
+        font-weight 600
+        align-self center
+        border-bottom 1px solid $gray-light
+        set-type-size('small', true)
 
-    .bin-labelGroup
-      display flex
-      flex-direction column-reverse
-      justify-content: flex-start
-      align-items: center
-      //transform translate(8px, 0)
 
-      .bin-labelsOnly
-        order 0
+      .category-group
         display flex
         flex-direction row
-        justify-content: space-between;
-        set-type-size('xx-small', true)
-        text-align left
-        color $gray-light
-        opacity 1
-        width 150px
+        align-items: flex-end
+        height: 240px
+        border-bottom 1px solid $gray
 
-        .bin-labelCat
-          &-odd
-            opacity 0
+        .bin-category
+          display flex
+          align-items: flex-end
+          width 15px
+          margin 0 1px
+
+          .bin-swatch
+            border-radius 5px
+            margin-top 1px
+
+      .bin-labelGroup
+        display flex
+        flex-direction column-reverse
+        justify-content: flex-start
+        align-items: center
+        //transform translate(8px, 0)
+
+        .bin-labelsOnly
+          order 0
+          display flex
+          flex-direction row
+          //justify-content: space-between;
+          set-type-size('xx-small', true)
+          text-align left
+          color $gray-light
+          opacity 1
+          width 180px
+
+          .bin-labelCat
+            width 15px
+            margin 1px
+            &-odd
+              opacity 0
 
 
-      .bin-labelTitle
-        set-type-size('x-small', true)
-        text-transform: uppercase;
-        color $gray-light
-        text-align center
-        order 1
+        .bin-labelTitle
+          set-type-size('x-small', true)
+          text-transform: uppercase;
+          color $gray-light
+          text-align center
+          order 1

@@ -5,21 +5,38 @@
 
     .section-head
       padding 0 1rem
+      set-type-size('x-large', true)//font-weight 600
+
+      .part
+        text-transform uppercase
+        font-weight 600
+        color white
+        background-color $boxing-red
+        padding 0.25rem 0.5rem
+        border-radius 5px
+
     .section-sub
       padding 0 1rem
+      set-type-size('large', true)
 
   .measurement
     margin 1rem 1rem 2rem
-    background-color lighten(#fde9de, 2.5)
+    border 2px solid $boxing-yellow
+    //outline 2px solid $boxing-red
+    border-radius 255px 15px 225px 15px/15px 225px 15px 255px;
+    background-color lighten($boxing-yellow, 35)
     padding 1rem 2rem
 
     &-title
       margin 0.25rem 0.5em 1rem
       font-weight 600
       set-type-size('small', true)
+      text-transform capitalize
+      //color $gray-dark
 
     &-steps
       list-style-type square
+      //color $gray-dark
       li
         set-type-size('small', true)
         margin-bottom 0.5em
@@ -44,7 +61,7 @@
           align-items center
 
           .winnerHighlight
-            background-color $primary
+            background-color $boxing-yellow
             padding 0.1rem 0.3rem
             border-radius 5px
 
@@ -97,7 +114,7 @@
             margin 0.5rem 0 1.5rem
 
             #winner
-              background-color $primary
+              background-color $boxing-yellow
               color $off-black
               font-weight 600
               padding 0.2rem 0.5rem
@@ -108,13 +125,18 @@
 
   .disclaimer
     margin 2rem 1rem
-    background-color lighten(#fde9de, 2.5)
+    //background-color lighten(#fde9de, 2.5)
+    border 2px solid $boxing-yellow
     padding 1rem 2rem 0.5rem
+    border-radius 255px 15px 225px 15px/15px 225px 15px 255px;
+    background-color lighten($boxing-yellow, 35)
+    padding 1rem 2rem
 
     &-title
       margin 0.25rem 0 1rem
       font-weight 600
       set-type-size('small', true)
+      text-transform capitalize
 
     &-text
       margin 0 0 1rem
@@ -122,10 +144,14 @@
 
   .definition
     margin 1rem
-    background-color #583218
-    color white
-    padding 0.5rem 1rem 
+    //background-color #583218
+    //color white
+    border 2px solid $boxing-yellow
+    padding 0.5rem 1rem
     set-type-size('small', true)
+    border-radius 255px 25px 225px 25px/25px 225px 25px 255px;
+    background-color lighten($boxing-yellow, 35)
+    //padding 1rem 2rem
 
   .part1-conclusion
     max-width $column-width
