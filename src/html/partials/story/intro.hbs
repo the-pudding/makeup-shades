@@ -3,21 +3,31 @@
 	<img src='assets/img/coverimage2.png' class='coverimage2'>
 	<h1 class='intro__hed tk-atlas'>{{{copy.hed}}}</h1>
 	<p class='intro__dek tk-atlas'>{{copy.dek}}</p>
+	<p class='intro__date tk-atlas'>
+		{{{copy.date}}}
+	</p>
 	<p class='intro__byline tk-atlas'>
-		<span class="divider-dot dot11" style="vertical-align: middle;"></span>
+		<span class="divider-dot dot10" style="vertical-align: middle;"></span>
 		<span class="intro__credit">Story & illustrations by</span>
 		<a href='{{copy.author.url}}' target='_blank'>
 			<strong>{{copy.author1}}</strong>
 		</a>
-		<span class="divider-dot dot11" style="vertical-align: middle;"></span>
-		<br />
 		<span class="divider-dot dot10" style="vertical-align: middle;"></span>
+		<br />
+		<span class="divider-dot dot11" style="vertical-align: middle;"></span>
 		<span class="intro__credit">Code by</span>
 		<a href='{{copy.author2.url}}' target='_blank'>
 			<strong>{{copy.author2}}</strong>
 		</a>
-		<span class="divider-dot dot10" style="vertical-align: middle;"></span>
+		<span class="divider-dot dot11" style="vertical-align: middle;"></span>
+		<br />
+		<p class="intro__creditsmall tk-atlas">
+			<span class="divider-dot dot10" style="vertical-align: middle;"></span>
+			With assistance from
+			<a href='{{copy.author.url}}' target='_blank'>
+				<strong>{{copy.author3}}</strong>
+			</a>
+			<span class="divider-dot dot10" style="vertical-align: middle;"></span>
+		</p>
 	</p>
-
-	<p class='intro__date tk-atlas'>{{{copy.date}}}</p>
 </div>
