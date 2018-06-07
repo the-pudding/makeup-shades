@@ -1,6 +1,7 @@
 import loadData from './load-data'
 import './pudding-chart/brawl'
 import scrollama from 'scrollama'
+import intersectionObserver from 'intersection-observer'
 
 
 const scrollers = []

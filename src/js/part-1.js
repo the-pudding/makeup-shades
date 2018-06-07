@@ -1,6 +1,7 @@
 import loadData from './load-data'
 import './pudding-chart/head-to-head'
 import scrollama from 'scrollama'
+import intersectionObserver from 'intersection-observer'
 
 const scroller = scrollama()
 
@@ -44,7 +45,7 @@ function scrollResize(){
     .style('height',`${stepHeight}px`)
 
   const containerWidth = container.node().offsetWidth
-  
+
   graphic
     .style('width', `${containerWidth}px`)
     .style('height', `${window.innerHeight}px`)
@@ -84,8 +85,8 @@ function setupScroll(){
     debug: false
   })
   .onStepEnter(handleStepEnter)
-  .onContainerEnter(handleContainerEnter)
-  .onContainerExit(handleContainerExit)
+  // .onContainerEnter(handleContainerEnter)
+  // .onContainerExit(handleContainerExit)
 }
 
 function resize() {

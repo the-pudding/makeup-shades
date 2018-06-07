@@ -88,12 +88,6 @@ d3.selection.prototype.headToHead = function init(options) {
             .append('div')
             .attr('class', (d, i) => `bin-brand bin-brand-${i}`)
             .attr('data-brand', (d, i) => i)
-						// .style('height', (d, i) => {
-            //   const length = d.values.length
-            //   return `${length * 5}px`
-            // })
-            // .style('margin', '0px')
-            // .style('border-color', 'rgba(0,0,0,0)')
 
           // adding column headers
           const brandTitleGroup = brands
