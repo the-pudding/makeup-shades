@@ -4,20 +4,23 @@
   .spark-hed
     max-width $column-width
     margin 0 auto
+    text-align center
     .spark-title
-      color blue
-      font-size 28px
+      set-type-size('large', true)
+      text-transform uppercase
       font-weight 600
+      color white
+      background-color blue
+      padding 0.25rem 0.75rem
       border-radius 5px
-      padding 0 1rem
-      //color $gray
-      text-transform capitalize
-      margin-bottom 0.5rem
+      margin 0
+      display inline-block
 
     .spark-sub
       font-size 20px
       margin-top 0.5rem
-
+    .prose
+      text-align left
   .spark
     display flex
     flex-wrap wrap
