@@ -66,17 +66,18 @@
             border-radius 5px
 
       &-graphic
-        position absolute
+        position: -webkit-sticky;
+        position: sticky;
         top 0
         bottom auto
         transform translate3d(0, 0, 0)
 
-        &.is-fixed
-          position fixed
-
-        &.is-bottom
-          bottom 0
-          top auto
+        // &.is-fixed
+        //   position fixed
+        //
+        // &.is-bottom
+        //   bottom 0
+        //   top auto
 
         .chart
           position absolute

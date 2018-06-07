@@ -88,6 +88,12 @@ d3.selection.prototype.headToHead = function init(options) {
             .append('div')
             .attr('class', (d, i) => `bin-brand bin-brand-${i}`)
             .attr('data-brand', (d, i) => i)
+						// .style('height', (d, i) => {
+            //   const length = d.values.length
+            //   return `${length * 5}px`
+            // })
+            // .style('margin', '0px')
+            // .style('border-color', 'rgba(0,0,0,0)')
 
           // adding column headers
           const brandTitleGroup = brands
@@ -177,6 +183,8 @@ d3.selection.prototype.headToHead = function init(options) {
               else return 'loser'
             })
             .text(d => d.values.length)
+						.style('opacity', 0)
+						.style('background-color', 'rgba(0,0,0,0)')
 
             // Setting up vs divs
 
@@ -193,6 +201,13 @@ d3.selection.prototype.headToHead = function init(options) {
               .enter()
               .append('div')
               .attr('class', (d, i) => `tk-atlas bin-vsCat bin-vsCat-${d}`)
+							.style('height', (d, i) => {
+	              const brandTitles = $sel.select('.bin-brandTGroup')
+	              const brandHeight = brandTitles.node().offsetHeight
+	              if(i == 0) return `${brandHeight - 2}px`
+	              else return '0px'
+	            })
+	            .style('margin', '0px')
 
             const vs = vsCat
               .selectAll('.bin-vs')
@@ -203,6 +218,7 @@ d3.selection.prototype.headToHead = function init(options) {
               .text('vs')
               .attr('alignment-baseline', 'middle')
               .attr('text-anchor', 'middle')
+							.style('opacity', 0)
 
             // Setting up label divs
 
@@ -212,6 +228,7 @@ d3.selection.prototype.headToHead = function init(options) {
               .enter()
               .append('div')
               .attr('class', 'bin-labelGroup')
+							.style('opacity', 0)
 
             const labelTitleGroup = labelGroup
               .append('div')
@@ -265,7 +282,8 @@ d3.selection.prototype.headToHead = function init(options) {
 				const legend = d3.selectAll('.graphic-legend')
         const fentyHigh = $sel.selectAll('.bin-category-2, .bin-vsCat-3, .bin-category-3, .bin-vsCat-4, .bin-category-5, .bin-vsCat-6, .bin-category-9, .bin-vsCat-10')
         const mufeHigh = $sel.selectAll('.bin-category-6, .bin-vsCat-7, .bin-category-7, .bin-vsCat-8, .bin-category-8, .bin-vsCat-9')
-        function step0(){
+
+				function step0(){
           brands
             .classed('spread', false)
             .transition()

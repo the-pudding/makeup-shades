@@ -19,18 +19,19 @@
       align-items center
 
   &_graphic
-    position absolute
+    position: -webkit-sticky;
+    position: sticky;
     top 0
     left 0
     bottom auto
     transform translate3d(0, 0, 0)
-
-    &.is-fixed
-      position fixed
-
-    &.is-bottom
-      bottom 0
-      top auto
+    //
+    // &.is-fixed
+    //   position fixed
+    //
+    // &.is-bottom
+    //   bottom 0
+    //   top auto
 
     .graphic-hed
       max-width $column-width

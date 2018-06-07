@@ -285,8 +285,8 @@ function setupScroll(chart, comp){
   })
   //.onStepEnter(handleStepEnter)
   .onStepEnter((response, s) => handleStepEnter(chart, response, section))
-  .onContainerEnter((response, s) => handleContainerEnter(response, section))
-  .onContainerExit((response, s) => handleContainerExit(response, section))
+  // .onContainerEnter((response, s) => handleContainerEnter(response, section))
+  // .onContainerExit((response, s) => handleContainerExit(response, section))
 
   scrollers.push(scroller)
 }
