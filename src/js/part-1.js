@@ -2,6 +2,7 @@ import loadData from './load-data'
 import './pudding-chart/head-to-head'
 import scrollama from 'scrollama'
 import intersectionObserver from 'intersection-observer'
+import isMobile from './utils/is-mobile'
 
 const scroller = scrollama()
 
@@ -13,6 +14,7 @@ let toggle = null
 
 // selections
 const $h2h = d3.selectAll('.h2h')
+
 
 // part one scrolly selections
 const container = d3.selectAll('.scroll-part1')
@@ -39,12 +41,17 @@ function setupH2H(){
 
 
 function scrollResize(){
-  const stepHeight = Math.floor(window.innerHeight * 0.8)
+  const pageWidth = window.innerWidth
+
+  let desktop = pageWidth < 1000 ? false : true
+
+  const stepHeight = desktop == true ? Math.floor(window.innerHeight) : Math.floor(window.innerHeight * 0.8)
 
   step
     .style('height',`${stepHeight}px`)
 
   const containerWidth = container.node().offsetWidth
+  console.log({pageWidth, containerWidth})
 
   graphic
     .style('width', `${containerWidth}px`)
@@ -52,7 +59,7 @@ function scrollResize(){
 
   const chartMargin = 50
   const textWidth = text.node().offsetWidth
-  const chartWidth = graphic.node().offsetWidth - textWidth - chartMargin
+  const chartWidth = pageWidth < 1000 ?  graphic.node().offsetWidth : containerWidth//- textWidth //- chartMargin
 
   chart
     .style('width', `${chartWidth}px`)

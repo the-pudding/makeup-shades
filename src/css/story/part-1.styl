@@ -51,16 +51,28 @@
       margin-bottom 5rem
 
       &-text
-        max-width 30rem
         position relative
         padding 0 1rem
         //width 40%
         margin-right 2rem
+        +mq('bp-6')
+          max-width 30rem
 
         .step
           margin 2rem auto
           display flex
           align-items center
+
+          p
+            background-color lighten($boxing-yellow, 38)
+            padding 0.5rem
+            border-radius 255px 15px 225px 15px/15px 225px 15px 255px;
+            border 1px solid $boxing-yellow
+            box-shadow 0 2px 2px 0 rgba(0, 0, 0, 0.05), 0 2px 8px 0 rgba(0, 0, 0, 0.025)
+            +mq('bp-6')
+              background-color white
+              border none
+              box-shadow none
 
           .winnerHighlight
             background-color $boxing-yellow
@@ -70,9 +82,11 @@
       &-graphic
         position: -webkit-sticky;
         position: sticky;
-        top 1rem
+        top 0
         bottom auto
         transform translate3d(0, 0, 0)
+        +mq('bp-6')
+          top 1rem
 
         // &.is-fixed
         //   position fixed
@@ -109,12 +123,15 @@
             font-size 20px
             font-weight 600
             margin-top 0
+            margin-bottom 0.5rem
 
           .graphic-legend
             set-type-size('x-small', true)
             color $gray
             text-transform uppercase
-            margin 0.5rem 0 1.5rem
+            margin 0 0 0.25rem
+            +mq('bp-6')
+              margin 0.5rem 0 1.5rem
 
             #winner
               background-color $boxing-yellow
