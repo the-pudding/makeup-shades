@@ -24,6 +24,7 @@
   .spark
     display flex
     flex-wrap wrap
+    justify-content: space-around;
     max-width 800px
     margin 3rem auto 2.25rem
 
@@ -34,7 +35,9 @@
       justify-content: flex-end
       width 150px
       max-height 500px
-      margin 0 1.5rem
+      margin 0 1rem 1rem 1rem
+      +mq('bp-6')
+        margin 0 1.5rem
 
       .bin-brandTGroup
         text-transform uppercase
@@ -82,8 +85,18 @@
           .bin-labelCat
             width 15px
             margin 1px
+
             &-odd
               opacity 0
+
+            &-0
+              visibility hidden
+              +mq('bp-6')
+                visibility: visible;
+            &-10
+              visibility hidden
+              +mq('bp-6')
+                visibility: visible;
 
 
         .bin-labelTitle

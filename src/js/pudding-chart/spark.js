@@ -185,8 +185,8 @@ d3.selection.prototype.spark = function init(options) {
               .append('div')
               .attr('class', d => {
                 // check if odd
-                if (d & 1) return `bin-labelCat bin-labelCat-odd`
-                else return `bin-labelCat bin-labelCat-even`
+                if (d & 1) return `bin-labelCat bin-labelCat-odd bin-labelCat-${d}`
+                else return `bin-labelCat bin-labelCat-even bin-labelCat-${d}`
               })
               //.style('width', `15px`)
 
