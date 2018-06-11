@@ -44,17 +44,26 @@
   .fenty-mufe
     .scroll
       display flex
-      flex-direction row
-      justify-content: flex-end
+      flex-direction column
+      justify-content: center
       align-items: flex-start
       position relative
-      margin-bottom 5rem
+      margin-bottom 10rem
+      +mq('bp-6')
+        justify-content: flex-end
+        align-items: flex-start
+        flex-direction row
+        margin-bottom 5rem
+
 
       &-text
         position relative
         padding 0 1rem
+        display flex
+        justify-content center
+        flex-direction column
         //width 40%
-        margin-right 2rem
+        //margin-right 2rem
         +mq('bp-6')
           max-width 30rem
 
@@ -118,18 +127,24 @@
             font-size 14px
             margin-bottom 0
             margin-top 0
+            margin-left 0.5rem
+            +mq('bp-6')
+              margin-left 0
 
           .graphic-sub
             font-size 20px
             font-weight 600
             margin-top 0
             margin-bottom 0.5rem
+            margin-left 0.5rem
+            +mq('bp-6')
+              margin-left 0
 
           .graphic-legend
             set-type-size('x-small', true)
             color $gray
             text-transform uppercase
-            margin 0 0 0.25rem
+            margin 0 0 0.25rem 0.5rem
             +mq('bp-6')
               margin 0.5rem 0 1.5rem
 
