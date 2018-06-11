@@ -97,7 +97,6 @@ function setupBrawl(){
   setupUI(chart)
 
   const pageWidth = window.innerWidth
-  console.log({pageWidth})
 
   if (pageWidth >= 1000) {
     // only setup scrollytelling on desktop
@@ -303,6 +302,13 @@ function setupScroll(chart, comp){
 }
 
 function resize(){
+  const pageWidth = window.innerWidth
+  if (pageWidth >= 1000) {
+    // only setup scrollytelling on desktop
+    scrollResize()
+    setupScroll(chart, comp)
+  }
+
   chart.resize()
   scrollResize()
 }
