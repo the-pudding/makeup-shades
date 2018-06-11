@@ -54,12 +54,18 @@
         font-size 14px
         margin-bottom 0
         margin-top 0
+        margin-left 0.5rem
+        +mq('bp-6')
+          margin-left 0
 
       .graphic-sub
         font-size 20px
         font-weight 600
         margin-top 0
         margin-bottom 0.25rem
+        margin-left 0.5rem
+        +mq('bp-6')
+          margin-left 0
 
       .graphic-legend
         display none
@@ -80,6 +86,15 @@
         flex-direction row
         align-items flex-start
         justify-content flex-start
+
+        .all-brands
+          display flex
+          flex-direction row
+          order 2
+          overflow-x scroll
+          padding-top 1.1rem
+          +mq('bp-6')
+            overflow-x visible
 
         .bin-brand
           order 2
@@ -119,7 +134,7 @@
               color lighten(#00f, 30) !important
 
           .bin-category
-            width 44px
+            width 40px
             display flex
             align-items flex-start;
             justify-content space-between
@@ -127,20 +142,26 @@
             border-radius 2px
             //border-radius 255px 25px 225px 25px/25px 225px 25px 255px;
             padding 1px
-            height 42px
-            margin 3px 2px
+            height 33px
+            margin 2px 2px
             box-shadow 0 2px 2px 0 rgba(0, 0, 0, 0.05), 0 2px 8px 0 rgba(0, 0, 0, 0.025)
+            +mq('bp-6')
+              width 44px
+              height 42px
+              margin 3px 2px
+
 
             .bin-swatchGroup
-              display flex
-              flex-direction row
-              flex-wrap wrap
-              justify-content flex-start;
-              align-items flex-start;
               opacity 0
               transition opacity 500ms
+              display none
 
               &.is-visible
+                display flex
+                flex-direction row
+                flex-wrap wrap
+                justify-content flex-start;
+                align-items flex-start;
                 opacity 1
                 transition opacity 500ms
 
@@ -151,20 +172,24 @@
 
 
             .bin-numGroup
-              width 40px
-              height 40px
-              display flex
-              justify-content center
-              align-items center
-              position absolute
+              width 30px
+              height 30px
               opacity 0
               transition opacity 500ms
+              display none
+              +mq('bp-6')
+                width 40px
+                height 40px
 
               &.is-visible
+                display flex
+                justify-content center
+                align-items center
                 opacity 1
                 transition opacity 500ms
 
               .bin-num
+                display relative
                 &-0
                   color $gray-light
 
@@ -201,9 +226,12 @@
           justify-content center
           align-items center
           flex-direction column
-          padding 2px
-          margin 5px 0
+          padding 1.2rem 2px 2px 2px
+          margin 5px 0 0 0.5rem
           transform translate(0, 12px)
+          +mq('bp-6')
+            padding 2px
+            margin 5px 0
 
           .bin-labelTGroup
             display flex
@@ -220,13 +248,16 @@
               line-height 1.33
 
           .bin-labelCat
-            height 42px
-            margin 3px 0
+            height 33px
+            margin 2px 0
             padding-bottom 2px
             display flex
             justify-content center
             align-content center
             flex-direction column
+            +mq('bp-6')
+              height 42px
+              margin 3px 0
 
             .bin-label
               set-type-size('xx-small', true)
@@ -250,7 +281,7 @@
             font-weight 600
 
           .bin-brandProduct
-            set-type-size('x-small', true)
+            set-type-size('xx-small', true)
             color $gray
             line-height 0.9
             //display none

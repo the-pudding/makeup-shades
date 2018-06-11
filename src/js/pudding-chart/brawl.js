@@ -16,6 +16,7 @@ d3.selection.prototype.brawl = function init(options) {
     let bipoc = false
 
 		// dimension stuff
+		let pageWidth = 0
 		let width = 0;
 		let height = 0;
 		const marginTop = 0;
@@ -111,6 +112,8 @@ d3.selection.prototype.brawl = function init(options) {
 
 				height = $sel.node().offsetHeight - marginTop - marginBottom;
 
+				pageWidth = window.innerWidth
+
 				return Chart;
 			},
 			// update scales and render chart
@@ -126,6 +129,8 @@ d3.selection.prototype.brawl = function init(options) {
               return {total: total, group: group}
           })
           .entries(data)
+
+					console.log({nested})
 
         const brandCounts = d3.nest()
           .key(d => d.product_short)
@@ -155,10 +160,17 @@ d3.selection.prototype.brawl = function init(options) {
           })
             .sort((a, b) => d3.descending(a.values.total, b.values.total))
 
-            $sel.selectAll('.bin-brand').remove()
+            $sel.selectAll('.all-brands').remove()
 
             // enter category divs
-          const brands = $sel
+					const allBrands = $sel
+						.selectAll('.all-brands')
+						.data([0])
+						.enter()
+						.append('div')
+						.attr('class', `all-brands`)
+
+          const brands = allBrands
             .selectAll('.bin-brand')
             .data(allNested)
             .enter()
@@ -166,6 +178,7 @@ d3.selection.prototype.brawl = function init(options) {
             .attr('class', (d, i) => `bin-brand bin-brand-${d.key}`)
             .attr('data-brand', (d, i) => i)
 
+						console.log({$sel, allBrands, brands})
           // adding column headers
           const brandTitleGroup = brands
             .selectAll('.bin-brandTGroup')
@@ -183,7 +196,7 @@ d3.selection.prototype.brawl = function init(options) {
             .append('text')
             .text(d => {
               const product = brandMap.get(d.key).product
-              const count = `${d.values.total} shades`
+              const count = `${d.values.total}`
               return `${product} • ${count}`
             })
             .attr('class', 'tk-atlas bin-brandProduct')
@@ -219,8 +232,8 @@ d3.selection.prototype.brawl = function init(options) {
             .enter()
             .append('div')
             .attr('class', d => `bin-swatch bin-swatch-${d.L}`)
-            .style('height', `6px`)
-            .style('width', `6px`)
+            .style('height', d => pageWidth > 1000 ? `6px` : `5px`)
+            .style('width', d => pageWidth > 1000 ? `6px` : `5px`)
             .style('background-color', d => `#${d.hex}`)
 
 
