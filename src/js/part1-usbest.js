@@ -98,11 +98,8 @@ function setupBrawl(){
 
   const pageWidth = window.innerWidth
 
-  if (pageWidth >= 1000) {
-    // only setup scrollytelling on desktop
-    scrollResize()
-    setupScroll(chart, comp)
-  }
+  scrollResize()
+  setupScroll(chart, comp)
 
 }
 
@@ -230,19 +227,26 @@ function scrollResize(){
     .style('height',`${stepHeight}px`)
 
   const containerWidth = d3.select('.scroll').node().offsetWidth
+  const pageWidth = window.innerWidth
 
-  graphic
-    .style('width', `${containerWidth}px`)
-    .style('height', `${window.innerHeight}px`)
+  if (pageWidth > 1000){
+    graphic
+      .style('width', `${containerWidth}px`)
+      .style('height', `${window.innerHeight}px`)
 
-  const chartMargin = 50
-  const textWidth = text.node().offsetWidth
-  const chartWidth = graphic.node().offsetWidth //- textWidth - chartMargin
+    const chartMargin = 50
+    const textWidth = text.node().offsetWidth
+    const chartWidth = graphic.node().offsetWidth //- textWidth - chartMargin
 
-  chart
-    .style('height', `${Math.floor(window.innerHeight)}px`)
+    chart
+      .style('height', `${Math.floor(window.innerHeight)}px`)
+  } else {
+    graphic
+      .style('height', 'auto')
 
-    console.log({containerWidth, chartWidth})
+    chart
+      .style('height', 'auto')
+  }
 
   scrollers.forEach(scroller => scroller.resize())
 }
@@ -306,10 +310,10 @@ function resize(){
   if (pageWidth >= 1000) {
     // only setup scrollytelling on desktop
     scrollResize()
-    setupScroll(chart, comp)
+    // setupScroll(chart, comp)
   }
 
-  chart.resize()
+  //chart.resize()
   scrollResize()
 }
 

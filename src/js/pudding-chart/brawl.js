@@ -236,8 +236,8 @@ d3.selection.prototype.brawl = function init(options) {
             .enter()
             .append('div')
             .attr('class', d => `bin-swatch bin-swatch-${d.L}`)
-            .style('height', d => pageWidth > 1000 ? `6px` : `5px`)
-            .style('width', d => pageWidth > 1000 ? `6px` : `5px`)
+            // .style('height', d => pageWidth > 1000 ? `6px` : `5px`)
+            // .style('width', d => pageWidth > 1000 ? `6px` : `5px`)
             .style('background-color', d => `#${d.hex}`)
 
 
