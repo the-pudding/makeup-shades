@@ -95,7 +95,7 @@ d3.selection.prototype.headToHead = function init(options) {
             .data(d => [d])
             .enter()
             .append('div')
-            .attr('class', 'bin-brandTGroup')
+            .attr('class', (d, i) => `bin-brandTGroup bin-brandTGroup${i}`)
 
           brandTitleGroup
               .append('text')

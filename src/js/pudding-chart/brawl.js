@@ -135,8 +135,6 @@ d3.selection.prototype.brawl = function init(options) {
           })
           .entries(data)
 
-					console.log({nested})
-
         const brandCounts = d3.nest()
           .key(d => d.product_short)
           .rollup(e => e.length)
@@ -183,7 +181,6 @@ d3.selection.prototype.brawl = function init(options) {
             .attr('class', (d, i) => `bin-brand bin-brand-${d.key}`)
             .attr('data-brand', (d, i) => i)
 
-						console.log({$sel, allBrands, brands})
           // adding column headers
           const brandTitleGroup = brands
             .selectAll('.bin-brandTGroup')
@@ -248,7 +245,6 @@ d3.selection.prototype.brawl = function init(options) {
               .append('div')
               .attr('class', 'bin-numGroup')
 							.style('background-color', (d) => {
-								console.log({d})
 								const length = d.values.length
 								return `rgba(252, 203, 49, ${opacityScale(length)})`})
 
