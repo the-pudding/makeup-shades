@@ -13,6 +13,10 @@ d3.selection.prototype.brawl = function init(options) {
     const $sel = $selGroup.select('.brawl')
 		let data = $sel.datum();
 
+		let opacityScale = d3.scaleLinear()
+			.domain([0, 18])
+			.range([0, 1])
+
     let bipoc = false
 
 		// dimension stuff
@@ -53,8 +57,9 @@ d3.selection.prototype.brawl = function init(options) {
           $sel.selectAll(`.bin-${nonGroup}Group`)
             .classed('is-visible', false)
 
-          $sel.selectAll(`.bin-${action}Group`)
+          const active = $sel.selectAll(`.bin-${action}Group`)
             .classed('is-visible', true)
+
         }
       }
     }
@@ -217,7 +222,6 @@ d3.selection.prototype.brawl = function init(options) {
             .append('div')
             .attr('class', (d, i) => `bin-category bin-category-${i}`)
 
-
           const swatchGroup = categories
             .selectAll('.bin-swatchGroup')
             .data(d => [d])
@@ -243,6 +247,10 @@ d3.selection.prototype.brawl = function init(options) {
               .enter()
               .append('div')
               .attr('class', 'bin-numGroup')
+							.style('background-color', (d) => {
+								console.log({d})
+								const length = d.values.length
+								return `rgba(252, 203, 49, ${opacityScale(length)})`})
 
             const num = numGroup
               .selectAll('.bin-num')
