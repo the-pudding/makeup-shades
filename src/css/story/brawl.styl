@@ -1,30 +1,42 @@
 .comp-brawl
   display flex
-  flex-direction row
+  flex-direction column
   justify-content: flex-end
   position relative
   //max-width $column-width
   margin 0 auto 6rem auto
+  +mq('bp-6')
+    flex-direction row
 
   .scroll-text
     max-width 30rem
-    position relative
+    display none
+    //position absolute
     padding 0 1rem
     //width 33%
     margin-right 2rem
+    +mq('bp-6')
+      position relative
+      display inline-block
 
     .step
       margin 2rem auto
       display flex
       align-items center
 
+  .mobile-text
+    display inline-block
+    +mq('bp-6')
+      display none
+
   &_graphic
-    position: -webkit-sticky;
-    position: sticky;
-    top 0
-    left 0
-    bottom auto
-    transform translate3d(0, 0, 0)
+    +mq('bp-6')
+      position: -webkit-sticky;
+      position: sticky;
+      top 0
+      left 0
+      bottom auto
+      transform translate3d(0, 0, 0)
     //
     // &.is-fixed
     //   position fixed
@@ -53,13 +65,14 @@
         display none
 
     .chart
-      position absolute
-      //margin-left 2rem
-      //left 1rem
-      top 50%
-      -moz-transform: translateY(-50%);
-      -webkit-transform: translateY(-50%);
-      transform: translateY(-50%);
+      +mq('bp-6')
+        position absolute
+        //margin-left 2rem
+        //left 1rem
+        top 50%
+        -moz-transform: translateY(-50%);
+        -webkit-transform: translateY(-50%);
+        transform: translateY(-50%);
 
 
       .brawl

@@ -95,8 +95,16 @@ function setupBrawl(){
   toggle = chart.toggle
 
   setupUI(chart)
-  scrollResize()
-  setupScroll(chart, comp)
+
+  const pageWidth = window.innerWidth
+  console.log({pageWidth})
+
+  if (pageWidth >= 1000) {
+    // only setup scrollytelling on desktop
+    scrollResize()
+    setupScroll(chart, comp)
+  }
+
 }
 
 function filterbipoc(){
@@ -234,6 +242,8 @@ function scrollResize(){
 
   chart
     .style('height', `${Math.floor(window.innerHeight)}px`)
+
+    console.log({containerWidth, chartWidth})
 
   scrollers.forEach(scroller => scroller.resize())
 }
