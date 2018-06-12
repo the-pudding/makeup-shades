@@ -100,17 +100,17 @@ d3.selection.prototype.headToHead = function init(options) {
           brandTitleGroup
               .append('text')
               .text(d => brandMap.get(d.key).brand)
-              .attr('class', 'tk-atlas bin-brandTitle')
+              .attr('class', 'bin-brandTitle')
 
             brandTitleGroup
               .append('text')
               .text(d => brandMap.get(d.key).product)
-              .attr('class', 'tk-atlas bin-brandProduct')
+              .attr('class', 'bin-brandProduct')
 
             brandTitleGroup
               .append('text')
               .text(d => `${countMap.get(d.key).value} shades`)
-              .attr('class', 'tk-atlas bin-brandTotal')
+              .attr('class', 'bin-brandTotal')
 
           // adding lightness categories spread class goes here
           const categories = brands
@@ -161,9 +161,9 @@ d3.selection.prototype.headToHead = function init(options) {
               })
               const maximum = Math.max(...filtMap)
 
-              if (d.values.length == 0) return 'tk-atlas bin-count bin-count-zero'
-              else if (d.values.length == maximum) return 'tk-atlas bin-count bin-count-winner'
-              else return 'tk-atlas bin-count'
+              if (d.values.length == 0) return 'bin-count bin-count-zero'
+              else if (d.values.length == maximum) return 'bin-count bin-count-winner'
+              else return 'bin-count'
             })
             .attr('data-status', (d, i) => {
               const filtered = allLightness.filter(e => e.key == d.key)
@@ -194,7 +194,7 @@ d3.selection.prototype.headToHead = function init(options) {
               .data([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
               .enter()
               .append('div')
-              .attr('class', (d, i) => `tk-atlas bin-vsCat bin-vsCat-${d}`)
+              .attr('class', (d, i) => `bin-vsCat bin-vsCat-${d}`)
 							.style('height', (d, i) => {
 	              const brandTitles = $sel.select('.bin-brandTGroup')
 	              const brandHeight = brandTitles.node().offsetHeight
@@ -208,7 +208,7 @@ d3.selection.prototype.headToHead = function init(options) {
               .data(d => [d])
               .enter()
               .append('text')
-              .attr('class', (d, i) => `tk-atlas bin-vs bin-vs-${d}`)
+              .attr('class', (d, i) => `bin-vs bin-vs-${d}`)
               .text('vs')
               .attr('alignment-baseline', 'middle')
               .attr('text-anchor', 'middle')
@@ -234,7 +234,7 @@ d3.selection.prototype.headToHead = function init(options) {
               .enter()
               .append('text')
               .text(d => d)
-              .attr('class', 'tk-atlas bin-labelTitle')
+              .attr('class', 'bin-labelTitle')
 
 
             const labelCat = labelGroup
@@ -249,7 +249,7 @@ d3.selection.prototype.headToHead = function init(options) {
               .data(d => [d])
               .enter()
               .append('text')
-              .attr('class', 'tk-atlas bin-label')
+              .attr('class', 'bin-label')
               .text(d => `${d * 10} - ${(d * 10) + 10}`)
               .attr('alignment-baseline', 'middle')
               .attr('text-anchor', 'middle')

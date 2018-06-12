@@ -5,19 +5,26 @@
 
     .section-head
       padding 0 1rem
+      font-family Nunito, sans-serif
+      font-weight 400
+      text-transform: capitalize;
       //set-type-size('x-large', true)//font-weight 600
 
       .part
         text-transform uppercase
-        font-weight 600
-        color white
-        background-color $boxing-red
+        background-color lighten($boxing-red, 45)
+        //color white
+        //background-color $boxing-red
         padding 0.25rem 0.5rem
-        border-radius 5px
+        border-radius 255px 15px 225px 15px/15px 225px 15px 255px;
+        border 4px solid $boxing-red
+        font-family Rubik Mono One, sans-serif
 
     .section-sub
       padding 0 1rem
       font-size 28px
+      font-family Nunito, sans-serif
+      font-weight 700
 
   .measurement
     margin 1rem 1rem 2rem
@@ -26,6 +33,7 @@
     border-radius 255px 15px 225px 15px/15px 225px 15px 255px;
     background-color lighten($boxing-red, 45)
     padding 1rem 2rem
+    font-family Nunito, sans-serif
 
     &-title
       margin 0.25rem 0.5em 1rem
@@ -123,6 +131,7 @@
         .graphic-hed
           max-width $column-width
           margin 0 auto
+          font-family Nunito, sans-serif
 
           .graphic-title
             text-transform uppercase
@@ -168,6 +177,7 @@
     border-radius 255px 15px 225px 15px/15px 225px 15px 255px;
     background-color rgba(0, 0, 255, 0.2)
     padding 1rem 2rem
+    font-family Nunito, sans-serif
 
     &-title
       margin 0.25rem 0 1rem
@@ -188,6 +198,7 @@
     set-type-size('small', true)
     border-radius 255px 25px 225px 25px/25px 225px 25px 255px;
     background-color lighten($boxing-yellow, 35)
+    font-family Nunito, sans-serif
     //padding 1rem 2rem
 
   .part1-conclusion
@@ -207,7 +218,7 @@
       border-bottom 1px solid #fde9de
 
       li
-        margin-left 1rem
+        margin-left 2.5rem
         padding-left 0
         margin-bottom 1rem
 
@@ -220,6 +231,7 @@
     max-width 30rem
     margin 0 auto
     text-transform capitalize
+    font-family Nunito, sans-serif
 
     &-header
       font-weight 600
@@ -286,23 +298,61 @@
     //   li
     //     padding-left 0
     //     margin-bottom 0.5rem
-.part1-conclusion ul li.check::before {
-  content: '✅';
-  font-size: 0.8rem;
+
+.part1-conclusion
+  li
+    margin-left 4rem
+
+.part1-conclusion ul li.dark-down::before {
+  content: '👎🏿';
+  font-size: 1.4rem;
   display: block;
   height: 0;
   width: 0;
-  left: -1.5rem;
+  left: -2.5rem;
   top: 0.25rem;
   position: relative;
 }
-.part1-conclusion ul li.cross::before {
-  content: '❌';
-  font-size: 0.8rem;
+
+.part1-conclusion ul li.point::before {
+  content: '☝🏽';
+  font-size: 1.4rem;
   display: block;
   height: 0;
   width: 0;
-  left: -1.5rem;
+  left: -2.5rem;
+  top: 0.25rem;
+  position: relative;
+}
+.part1-conclusion ul li.clap::before {
+  content: '👏🏾';
+  font-size: 1.4rem;
+  display: block;
+  height: 0;
+  width: 0;
+  left: -2.5rem;
+  top: 0.25rem;
+  position: relative;
+}
+
+.part1-conclusion ul li.light-up::before {
+  content: '👍🏻';
+  font-size: 1.4rem;
+  display: block;
+  height: 0;
+  width: 0;
+  left: -2.5rem;
+  top: 0.25rem;
+  position: relative;
+}
+
+.part1-conclusion ul li.nails::before {
+  content: '💅🏽';
+  font-size: 1.4rem;
+  display: block;
+  height: 0;
+  width: 0;
+  left: -2.5rem;
   top: 0.25rem;
   position: relative;
 }

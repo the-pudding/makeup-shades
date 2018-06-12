@@ -192,7 +192,7 @@ d3.selection.prototype.brawl = function init(options) {
           brandTitleGroup
               .append('text')
               .text(d => brandMap.get(d.key).brand)
-              .attr('class', 'tk-atlas bin-brandTitle')
+              .attr('class', 'bin-brandTitle')
 
           brandTitleGroup
             .append('text')
@@ -201,12 +201,12 @@ d3.selection.prototype.brawl = function init(options) {
               const count = `${d.values.total}`
               return `${product} • ${count}`
             })
-            .attr('class', 'tk-atlas bin-brandProduct')
+            .attr('class', 'bin-brandProduct')
 
           brandTitleGroup
             .append('text')
             .text(d => `${d.values.total} shades`)
-            .attr('class', 'tk-atlas bin-brandTotal')
+            .attr('class', 'bin-brandTotal')
 
           // adding lightness categories spread class goes here
           const categories = brands
@@ -255,7 +255,7 @@ d3.selection.prototype.brawl = function init(options) {
               .append('text')
               .attr('class', d => {
                 const length = d.values.length
-                return `bin-num bin-num-${length} tk-atlas`})
+                return `bin-num bin-num-${length}`})
               .text(d => {
                 const length = d.values.length
                 return length
@@ -281,7 +281,7 @@ d3.selection.prototype.brawl = function init(options) {
               .enter()
               .append('text')
               .text(d => d)
-              .attr('class', 'tk-atlas bin-labelTitle')
+              .attr('class', 'bin-labelTitle')
 
 
             const labelCat = labelGroup
@@ -296,7 +296,7 @@ d3.selection.prototype.brawl = function init(options) {
               .data(d => [d])
               .enter()
               .append('text')
-              .attr('class', 'tk-atlas bin-label')
+              .attr('class', 'bin-label')
               .text(d => `${d * 10} - ${(d * 10) + 10}`)
               .attr('alignment-baseline', 'middle')
               .attr('text-anchor', 'middle')

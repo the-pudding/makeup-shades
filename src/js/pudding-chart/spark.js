@@ -111,7 +111,7 @@ d3.selection.prototype.spark = function init(options) {
           brandTitleGroup
               .append('text')
               .text(d => groupMap.get(d.key).group)
-              .attr('class', 'tk-atlas bin-brandTitle')
+              .attr('class', 'bin-brandTitle')
 
           // adding lightness categories spread class goes here
 
@@ -175,7 +175,7 @@ d3.selection.prototype.spark = function init(options) {
               .enter()
               .append('text')
               .text(d => d)
-              .attr('class', 'tk-atlas bin-labelTitle')
+              .attr('class', 'bin-labelTitle')
 
 
             const labelCat = onlyLabels
@@ -195,7 +195,7 @@ d3.selection.prototype.spark = function init(options) {
               .data(d => [d])
               .enter()
               .append('text')
-              .attr('class', 'tk-atlas bin-label')
+              .attr('class', 'bin-label')
               .text(d => `${d * 10}`)
               .attr('alignment-baseline', 'middle')
               .attr('text-anchor', 'middle')
