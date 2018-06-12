@@ -4,22 +4,46 @@ section
   max-width 60rem
   margin 0 auto
 
+// .section-head
+// 	font-size 2em
+// 	//text-align center
+// .section-sub
+//   padding 0 1rem
+//   font-size 28px
+//   font-weight 600
 .section-head
-	font-size 2em
-	//text-align center
+  padding 0 1rem
+  font-family Nunito, sans-serif
+  font-weight 400
+  text-transform: capitalize;
+  font-size 24px
+  +mq('bp-4')
+    font-size 28px
+  +mq('bp-6')
+    font-size 32px
+
+  //set-type-size('x-large', true)//font-weight 600
+
+  .part
+    text-transform uppercase
+    background-color lighten($boxing-red, 45)
+    //color white
+    //background-color $boxing-red
+    padding 0.25rem 0.5rem
+    border-radius 255px 15px 225px 15px/15px 225px 15px 255px;
+    border 4px solid $boxing-red
+    font-family Rubik Mono One, sans-serif
+
 .section-sub
   padding 0 1rem
-  font-size 28px
-  font-weight 600
-// 
-// .part
-//   text-transform uppercase
-//   font-weight 600
-//   color white
-//   background-color $boxing-red
-//   padding 0.25rem 0.75rem
-//   border-radius 5px
-//   margin-right 0.5rem
+  font-family Nunito, sans-serif
+  font-weight 700
+  font-size 20px
+  +mq('bp-4')
+    font-size 24px
+  +mq('bp-6')
+    font-size 28px
+
 .text-content ul
 	line-height 1.5
 	margin-left 1.25rem
@@ -29,7 +53,7 @@ section
 .img1
 	max-width 12rem
 	margin 2rem auto 1rem
-	+mq('bp-3')
+	+mq('bp-4')
 		max-width 16rem
 	+mq('bp-5')
 		float right

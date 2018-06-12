@@ -5,24 +5,44 @@
 	// background linear-gradient(#583218, #894f29, #ac7752, #d59d6d, #f4cca8, #fde9de, #ffffff);
 
 	&__hed
-		//max-width $column-width
+		//max-width 30rem
 		margin 0 auto
 		padding-top 2rem
 		font-weight 600
-		text-align center
+		text-align left
 		text-transform uppercase
 		set-type-size('xx-large', true)
-		+mq('bp-4')
-			font-size 60px
-		+mq('bp-6')
-			font-size 75px
+
+		p
+			margin 0 auto
+			max-width 12rem
+			+mq('bp-4')
+				max-width 20rem
+			+mq('bp-6')
+				max-width 28rem
 
 		#beauty
 			font-family Nunito, sans-serif
 			font-weight 300
+			font-size 50px
+			line-height 0.8em
+			+mq('bp-4')
+				font-size 80px
+				line-height 0.8em
+			+mq('bp-6')
+				font-size 110px
+				line-height 0.8em
 			//font-size 70px
 		#brawl
 			font-family Rubik Mono One, sans-serif
+			font-size 46px
+			line-height 0.8em
+			+mq('bp-4')
+				font-size 76px
+				line-height 0.8em
+			+mq('bp-6')
+				font-size 106px
+				line-height 0.8em
 		//font-size 70px
 		//color #eb0c13
 		//text-shadow 0px 0px 1px #f4cca8, 1px 1px 1px #f4cca8, 2px 2px 1px #f4cca8
@@ -61,11 +81,11 @@
 		font-weight 300
 		border-top 1px solid $gray-dark
 		set-type-size('large', true)
-		line-height 1.33
-		max-width $column-width
-		+mq('bp-3')
-			max-width 12rem
-		+mq('bp-5')
+		line-height 1em !important
+		max-width 15rem
+		+mq('bp-4')
+			max-width 20rem
+		+mq('bp-6')
 			max-width 25rem
 			set-type-size('x-large', true)
 

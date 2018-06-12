@@ -1,3 +1,4 @@
+
 .spark-container
   //border-top 4px solid $boxing-yellow
   //border-bottom 1px solid $gray-light
@@ -26,90 +27,106 @@
       margin-top 0.5rem
     .prose
       text-align left
-  .spark
+
+  .spark-group
     display flex
-    flex-wrap wrap
-    justify-content: space-around;
-    max-width 800px
-    margin 3rem auto 2.25rem
+    flex-direction column
+    align-items: flex-start
 
-    .bin-group
-      display flex
-      flex-direction column
-      align-items center
-      justify-content: flex-end
-      width 150px
-      max-height 500px
-      margin 0 1rem 1rem 1rem
+    .spark-main-title
+      max-width 800px
+      margin 0 auto
+      font-family Nunito, sans-serif
+      font-weight 700
+      //text-transform uppercase
+      font-size 20px
       +mq('bp-6')
-        margin 0 1.5rem
+        margin-left 0
 
-      .bin-brandTGroup
-        text-transform uppercase
-        font-weight 600
-        align-self center
-        border-bottom 1px solid $gray-light
-        set-type-size('small', true)
-        font-family Nunito, sans-serif
+    .spark
+      display flex
+      flex-wrap wrap
+      justify-content: space-around;
+      max-width 800px
+      margin 1rem auto 2.25rem
 
-
-      .category-group
+      .bin-group
         display flex
-        flex-direction row
-        align-items: flex-end
-        height: 240px
-        border-bottom 1px solid $gray
+        flex-direction column
+        align-items center
+        justify-content: flex-end
+        width 150px
+        max-height 500px
+        margin 0 1rem 1rem 1rem
+        +mq('bp-6')
+          margin 0 1.5rem
 
-        .bin-category
-          display flex
-          align-items: flex-end
-          width 15px
-          margin 0 1px
+        .bin-brandTGroup
+          text-transform uppercase
+          //font-weight 600
+          align-self center
+          border-bottom 1px solid $gray-light
+          set-type-size('small', true)
+          font-family Nunito, sans-serif
 
-          .bin-swatch
-            border-radius 5px
-            margin-top 1px
 
-      .bin-labelGroup
-        display flex
-        flex-direction column-reverse
-        justify-content: flex-start
-        align-items: center
-        font-family Nunito, sans-serif
-        line-height 1
-        //transform translate(8px, 0)
-
-        .bin-labelsOnly
-          order 0
+        .category-group
           display flex
           flex-direction row
-          //justify-content: space-between;
-          set-type-size('xx-small', true)
-          text-align left
-          color $gray-light
-          opacity 1
-          width 180px
+          align-items: flex-end
+          height: 240px
+          border-bottom 1px solid $gray
 
-          .bin-labelCat
+          .bin-category
+            display flex
+            align-items: flex-end
             width 15px
-            margin 1px
+            margin 0 1px
 
-            &-odd
-              opacity 0
+            .bin-swatch
+              border-radius 5px
+              margin-top 1px
 
-            &-0
-              visibility hidden
-              +mq('bp-6')
-                visibility: visible;
-            &-10
-              visibility hidden
-              +mq('bp-6')
-                visibility: visible;
+        .bin-labelGroup
+          display flex
+          flex-direction column-reverse
+          justify-content: flex-start
+          align-items: center
+          font-family Nunito, sans-serif
+          line-height 1
+          //transform translate(8px, 0)
+
+          .bin-labelsOnly
+            order 0
+            display flex
+            flex-direction row
+            //justify-content: space-between;
+            set-type-size('xx-small', true)
+            text-align left
+            color $gray-light
+            opacity 1
+            width 180px
+
+            .bin-labelCat
+              width 15px
+              margin 1px
+
+              &-odd
+                opacity 0
+
+              &-0
+                visibility hidden
+                +mq('bp-6')
+                  visibility: visible;
+              &-10
+                visibility hidden
+                +mq('bp-6')
+                  visibility: visible;
 
 
-        .bin-labelTitle
-          set-type-size('x-small', true)
-          text-transform: uppercase;
-          color $gray-light
-          text-align center
-          order 1
+          .bin-labelTitle
+            set-type-size('x-small', true)
+            text-transform: uppercase;
+            color $gray-light
+            text-align center
+            order 1
