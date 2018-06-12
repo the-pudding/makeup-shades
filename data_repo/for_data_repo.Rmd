@@ -1,0 +1,31 @@
+---
+title: "Preparing for Sharing"
+author: "Amber Thomas"
+date: "6/12/2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Why is this here?
+
+The data that we used for the project "Beauty Brawl" on The Pudding was fed into Javascript in a mostly-helpful way. But it could be cleaned up a bit before sharing on our public data repository. 
+```{r}
+library(dplyr)
+```
+
+```{r}
+shades <- read.csv("../src/assets/data/shades.csv", header = TRUE, stringsAsFactors = FALSE)
+brand_dictionary <- read.csv("../src/assets/data/brand_dictionary.csv", header = TRUE, stringsAsFactors = FALSE)
+```
+
+```{r}
+cleanShades <- left_join(shades, brand_dictionary, by = c('brand' = 'brand_short', 'product' = 'foundation_short')) %>% 
+  rename(brand_short = brand, brand = brand.y, product_short = product, product = foundation) %>% 
+  select(c(brand, brand_short, product, product_short, hex, H, S, V, L, group))
+```
+
+
+
