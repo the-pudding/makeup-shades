@@ -1,13 +1,13 @@
 {
-	"title": "Beauty Brawl",
+	"title": "The Diversity of Makeup Shades",
 	"description":
-		"40 shades may be the new magic number for beauty brands' foundation lines, but how inclusive are these shades?",
-	"url": "https://pudding.cool/2018/06/makeup_shades/",
-	"keywords": "makeup, make-up, foundation, Fenty, beauty, shade, inclusivity",
+		"Rihanna's Fenty Beauty may have kicked off the recent 40 shades trend, but how inclusive are these foundation lines in the US and around the world?",
+	"url": "https://pudding.cool/2018/06/makeup-shades/",
+	"keywords": "makeup, make-up, diversity, Rihanna, foundation, Fenty, beauty, shade, inclusivity",
 	"imgFacebook":
-		"https://pudding.cool/year/month/name/assets/social/social-facebook.jpg",
+		"https://pudding.cool/2018/06/makeup-shades/assets/social/social-facebook.jpg",
 	"imgTwitter":
-		"https://pudding.cool/year/month/name/assets/social/social-twitter.jpg",
+		"https://pudding.cool/2018/06/makeup-shades/assets/social/social-twitter.jpg",
 		"author": {
 				"name": "Jason Li",
 				"url": "https://pudding.cool/author/jason-li/",
@@ -17,5 +17,9 @@
 				"name": "Amber Thomas",
 				"url": "https://pudding.cool/author/amber-thomas/",
 				"twitterHandle": "@ProQuesAsker"
+			},
+			"author3": {
+				"name": "Divya Manian",
+				"url": "https://pudding.cool/author/divya-manian/",
 			}
 }
