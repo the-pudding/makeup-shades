@@ -5,17 +5,15 @@
   position relative
   //max-width $column-width
   margin 0 auto 6rem auto
-  +mq('bp-6' and 'bp-h')
+  @media (min-width: 1000px) and (min-height: 640px)
     flex-direction row
 
   .scroll-text
     max-width 30rem
     display none
-    //position absolute
     padding 0 1rem
-    //width 33%
     margin-right 2rem
-    +mq('bp-6' and 'bp-h')
+    @media (min-width: 1000px) and (min-height: 640px)
       position relative
       display inline-block
 
@@ -26,11 +24,11 @@
 
   .mobile-text
     display inline-block
-    +mq('bp-6' and 'bp-h')
+    @media (min-width: 1000px) and (min-height: 640px)
       display none
 
   &_graphic
-    +mq('bp-6' and 'bp-h')
+    @media (min-width: 1000px) and (min-height: 640px)
       position: -webkit-sticky;
       position: sticky;
       top 0
@@ -56,7 +54,7 @@
         margin-bottom 0
         margin-top 0
         margin-left 0.5rem
-        +mq('bp-6' and 'bp-h')
+        @media (min-width: 1000px) and (min-height: 640px)
           margin-left 0
 
       .graphic-sub
@@ -65,14 +63,14 @@
         margin-top 0
         margin-bottom 0.25rem
         margin-left 0.5rem
-        +mq('bp-6' and 'bp-h')
+        @media (min-width: 1000px) and (min-height: 640px)
           margin-left 0
 
       .graphic-legend
         display none
 
     .chart
-      +mq('bp-6' and 'bp-h')
+      @media (min-width: 1000px) and (min-height: 640px)
         position absolute
         //margin-left 2rem
         //left 1rem
@@ -96,7 +94,7 @@
           overflow-x auto
           padding-top 1.1rem
           padding-right 5.5rem
-          +mq('bp-6' and 'bp-h')
+          @media (min-width: 1000px) and (min-height: 640px)
             overflow-x visible
 
         .bin-brand
@@ -148,7 +146,7 @@
             height 33px
             margin 2px 2px
             box-shadow 0 2px 2px 0 rgba(0, 0, 0, 0.05), 0 2px 8px 0 rgba(0, 0, 0, 0.025)
-            +mq('bp-6' and 'bp-h')
+            @media (min-width: 1000px) and (min-height: 640px)
               width 44px
               height 36px
               margin 3px 2px
@@ -174,7 +172,7 @@
                 display relative
                 height 5px
                 width 5px
-                +mq('bp-6' and 'bp-h')
+                @media (min-width: 1000px) and (min-height: 640px)
                   height 6px
                   width 6px
 
@@ -186,7 +184,7 @@
               transition opacity 500ms
               display none
               font-family Nunito, sans-serif
-              +mq('bp-6' and 'bp-h')
+              @media (min-width: 1000px) and (min-height: 640px)
                 width 40px
                 height 32px
                 padding 1px
@@ -240,7 +238,7 @@
           margin 5px 0 0 0.5rem
           transform translate(0, 12px)
           font-family Nunito, sans-serif
-          +mq('bp-6' and 'bp-h')
+          @media (min-width: 1000px) and (min-height: 640px)
             margin 5px 0
 
           .bin-labelTGroup
@@ -265,7 +263,7 @@
             justify-content center
             align-content center
             flex-direction column
-            +mq('bp-6' and 'bp-h')
+            @media (min-width: 1000px) and (min-height: 640px)
               height 36px
               margin 3px 0
 

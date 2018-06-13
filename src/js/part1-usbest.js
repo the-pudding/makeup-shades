@@ -309,9 +309,12 @@ function resize(){
   const pageWidth = window.innerWidth
   const pageHeight = window.innerHeight
   if (pageWidth >= 1000 && pageHeight >= 640) {
+    console.log("we're on a big screen")
     // only setup scrollytelling on desktop
     scrollResize()
     // setupScroll(chart, comp)
+  } else {
+    console.log("we're on a small screen")
   }
 
   //chart.resize()
