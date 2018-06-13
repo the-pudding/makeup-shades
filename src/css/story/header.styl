@@ -5,12 +5,18 @@ header
 	left 0
 	width 100%
 	background-color $off-black
+	height 50px
+	+mq('bp-4')
+		height auto
 
 	a.logo
 		display block
 		border none
-		max-width 9rem
-		margin 1rem auto
+		margin 0 auto
+		max-width 6rem
+		+mq('bp-4')
+			margin 1rem auto
+			max-width 9rem
 
 		svg
 			display block
