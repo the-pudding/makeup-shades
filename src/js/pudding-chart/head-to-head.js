@@ -126,6 +126,7 @@ d3.selection.prototype.headToHead = function init(options) {
               const length = d.values.length
               return `${length * 5}px`
             })
+						.style('border-color', 'rgba(0,0,0,0)')
 
 
           const swatchGroup = categories
@@ -254,6 +255,11 @@ d3.selection.prototype.headToHead = function init(options) {
               .attr('alignment-baseline', 'middle')
               .attr('text-anchor', 'middle')
 
+						const legend = d3.selectAll('.graphic-legend')
+
+						legend
+							.style('opacity', 0)
+
         //enter update exit goes here
 				return Chart;
 			},
@@ -338,7 +344,7 @@ d3.selection.prototype.headToHead = function init(options) {
             .duration(500)
             .ease(d3.easeCubicInOut)
             //.delay((d, i) => -(d.key - 10) * 100)
-            .style('height', '45px')
+            .style('height', '42px')
             .style('margin', '2px 0')
             .style('border-color', '#c9c9c9')
 
@@ -366,7 +372,7 @@ d3.selection.prototype.headToHead = function init(options) {
               const brandTitles = $sel.select('.bin-brandTGroup')
               const brandHeight = brandTitles.node().offsetHeight
               if(i == 0) return `${brandHeight - 2}px`
-              else return '45px'
+              else return '42px'
             })
             .style('border-color', '#c9c9c9')
             .style('margin', '2px 0')
@@ -387,7 +393,7 @@ d3.selection.prototype.headToHead = function init(options) {
         function step2(){
 					brands
             .classed('spread', true)
-            .style('height', '45px')
+            .style('height', '42px')
             .style('margin', '2px 0')
             .style('border-color', '#c9c9c9')
 
@@ -421,7 +427,7 @@ d3.selection.prototype.headToHead = function init(options) {
               const brandTitles = $sel.select('.bin-brandTGroup')
               const brandHeight = brandTitles.node().offsetHeight
               if(i == 0) return `${brandHeight - 2}px`
-              else return '45px'
+              else return '42px'
             })
             .style('border-color', '#c9c9c9')
             .style('margin', '2px 0')
@@ -453,7 +459,7 @@ d3.selection.prototype.headToHead = function init(options) {
         function step3(){
 					brands
             .classed('spread', true)
-            .style('height', '45px')
+            .style('height', '42px')
             .style('margin', '2px 0')
             .style('border-color', '#c9c9c9')
 
@@ -487,7 +493,7 @@ d3.selection.prototype.headToHead = function init(options) {
               const brandTitles = $sel.select('.bin-brandTGroup')
               const brandHeight = brandTitles.node().offsetHeight
               if(i == 0) return `${brandHeight - 2}px`
-              else return '45px'
+              else return '42px'
             })
             .style('border-color', '#c9c9c9')
             .style('margin', '2px 0')
@@ -521,7 +527,7 @@ d3.selection.prototype.headToHead = function init(options) {
         function step4(){
 					brands
             .classed('spread', true)
-            .style('height', '45px')
+            .style('height', '42px')
             .style('margin', '2px 0')
             .style('border-color', '#c9c9c9')
 
@@ -555,7 +561,7 @@ d3.selection.prototype.headToHead = function init(options) {
               const brandTitles = $sel.select('.bin-brandTGroup')
               const brandHeight = brandTitles.node().offsetHeight
               if(i == 0) return `${brandHeight - 2}px`
-              else return '45px'
+              else return '42px'
             })
             .style('border-color', '#c9c9c9')
             .style('margin', '2px 0')
