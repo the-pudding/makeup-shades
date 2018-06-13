@@ -116,8 +116,14 @@ section
 #part-2 .comp-brawl + .text-content
 	margin-top -4rem
 a {
-	border-color: #ac7752
+	border-color: blue
+  transition 300ms
 }
 a:visited {
-	border-color: #fde9de
+	border-color: darken(blue, 15)
+  transition 300ms
 }
+
+a:hover
+  border-color $boxing-red
+  transition 300ms

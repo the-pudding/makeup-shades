@@ -214,6 +214,10 @@ d3.selection.prototype.headToHead = function init(options) {
               .attr('alignment-baseline', 'middle')
               .attr('text-anchor', 'middle')
 							.style('opacity', 0)
+							.style('border-top', 'none')
+							.style('border-bottom', 'none')
+							// .style('border-top', '1px solid #eee')
+							// .style('border-bottom', '1px solid #eee')
 
             // Setting up label divs
 
@@ -321,6 +325,10 @@ d3.selection.prototype.headToHead = function init(options) {
               else return '0px'
             })
             .style('margin', '0px')
+						.style('border-top', 'none')
+						.style('border-bottom', 'none')
+						// .style('border-top', '1px solid #eee')
+						// .style('border-bottom', '1px solid #eee')
 
           vs
             .style('opacity', 0)
@@ -374,8 +382,12 @@ d3.selection.prototype.headToHead = function init(options) {
               if(i == 0) return `${brandHeight - 2}px`
               else return '42px'
             })
-            .style('border-color', '#c9c9c9')
+            //.style('border-color', '#c9c9c9')
             .style('margin', '2px 0')
+						// .style('border-top', 'none')
+						// .style('border-bottom', 'none')
+						.style('border-top', '1px solid #c9c9c9')
+						.style('border-bottom', '1px solid #c9c9c9')
 
           vs
             .style('opacity', 0)
@@ -429,8 +441,10 @@ d3.selection.prototype.headToHead = function init(options) {
               if(i == 0) return `${brandHeight - 2}px`
               else return '42px'
             })
-            .style('border-color', '#c9c9c9')
+            //.style('border-color', '#c9c9c9')
             .style('margin', '2px 0')
+						.style('border-top', '1px solid #c9c9c9')
+						.style('border-bottom', '1px solid #c9c9c9')
 
           vs
             .transition()
@@ -495,7 +509,8 @@ d3.selection.prototype.headToHead = function init(options) {
               if(i == 0) return `${brandHeight - 2}px`
               else return '42px'
             })
-            .style('border-color', '#c9c9c9')
+						.style('border-top', '1px solid #c9c9c9')
+						.style('border-bottom', '1px solid #c9c9c9')
             .style('margin', '2px 0')
 
           vs
@@ -563,7 +578,8 @@ d3.selection.prototype.headToHead = function init(options) {
               if(i == 0) return `${brandHeight - 2}px`
               else return '42px'
             })
-            .style('border-color', '#c9c9c9')
+						.style('border-top', '1px solid #c9c9c9')
+						.style('border-bottom', '1px solid #c9c9c9')
             .style('margin', '2px 0')
 
           vs
