@@ -9,12 +9,14 @@ import spark from './spark-graphic'
 
 const $body = d3.select('body');
 let previousWidth = 0;
+let previousHeight = 0
 
 function resize() {
 	// only do resize on width changes, not height
 	// (remove the conditional if you want to trigger on height change)
 	const width = $body.node().offsetWidth;
-	if (previousWidth !== width) {
+	const height = $body.node().offsetHeight
+	if (previousWidth !== width || previousHeight !== height) {
 		previousWidth = width;
 		graphic.resize();
 		usbest.resize()
