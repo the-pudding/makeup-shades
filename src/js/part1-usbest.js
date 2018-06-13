@@ -307,7 +307,8 @@ function setupScroll(chart, comp){
 
 function resize(){
   const pageWidth = window.innerWidth
-  if (pageWidth >= 1000) {
+  const pageHeight = window.innerHeight
+  if (pageWidth >= 1000 && pageHeight >= 640) {
     // only setup scrollytelling on desktop
     scrollResize()
     // setupScroll(chart, comp)
