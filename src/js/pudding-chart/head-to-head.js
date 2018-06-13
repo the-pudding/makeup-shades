@@ -288,6 +288,7 @@ d3.selection.prototype.headToHead = function init(options) {
         const mufeHigh = $sel.selectAll('.bin-category-6, .bin-vsCat-7, .bin-category-7, .bin-vsCat-8, .bin-category-8, .bin-vsCat-9')
 
 				function step0(){
+					console.log("step 0 fired")
           brands
             .classed('spread', false)
             .transition()
@@ -310,6 +311,8 @@ d3.selection.prototype.headToHead = function init(options) {
             .style('opacity', 0)
 
           counts
+						.transition()
+						.duration(0)
             .style('opacity', 0)
 						.style('background-color', 'rgba(0,0,0,0)')
 
@@ -327,10 +330,10 @@ d3.selection.prototype.headToHead = function init(options) {
             .style('margin', '0px')
 						.style('border-top', 'none')
 						.style('border-bottom', 'none')
-						// .style('border-top', '1px solid #eee')
-						// .style('border-bottom', '1px solid #eee')
 
           vs
+						.transition()
+						.duration(0)
             .style('opacity', 0)
 
 					legend
@@ -369,6 +372,8 @@ d3.selection.prototype.headToHead = function init(options) {
             .style('opacity', 1)
 
           counts
+						.transition()
+						.duration(0)
             .style('opacity', 0)
             .style('background-color', 'rgba(0,0,0,0)')
 
@@ -390,6 +395,8 @@ d3.selection.prototype.headToHead = function init(options) {
 						.style('border-bottom', '1px solid #c9c9c9')
 
           vs
+						.transition()
+						.duration(0)
             .style('opacity', 0)
 
 					legend
